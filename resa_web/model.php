@@ -68,19 +68,19 @@ function getUser($login)
 function insertUser($tab)
 {
     global $db;
-    $requete = "INSERT INTO user VALUES (:login, :mdp, :nom, :prenom, NULL);";
+    $requete = "INSERT INTO user VALUES (:login, :mdp, :nom, :prenom, :birt_date);";
     $stmt = $db->prepare($requete);
     $stmt->bindParam(':login', $tab["login"], PDO::PARAM_STR);
     $mdp_hash = password_hash($tab["mdp"], PASSWORD_DEFAULT);
     $stmt->bindParam(':mdp', $mdp_hash, PDO::PARAM_STR);
     $stmt->bindParam(':nom', $tab["nom"], PDO::PARAM_STR);
     $stmt->bindParam(':prenom', $tab["prenom"], PDO::PARAM_STR);
-    // if (isset($tab["birth_date"])){
-    //     $stmt->bindParam(':birt_date', $tab["birth_date"],PDO::PARAM_STR);
-    // }else{
-    //     $null=NULL;
-    //     $stmt->bindParam(':birt_date', $null,PDO::PARAM_STR);
-    // }
+    if (isset($tab["birth_date"])){
+        $stmt->bindParam(':birt_date', $tab["birth_date"],PDO::PARAM_STR);
+    }else{
+        $null=NULL;
+        $stmt->bindParam(':birt_date', $null,PDO::PARAM_STR);
+    }
     $stmt->execute();
 }
 ;

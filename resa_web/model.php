@@ -12,6 +12,9 @@ function login($infoLogin)
     if ($user = getUser($infoLogin["login"])) {
         if (password_verify($infoLogin["mdp"], $user["mdp"])) {
             $_SESSION["login"] = $infoLogin["login"];
+            $infoUser=getUser($infoLogin["login"]);
+            $_SESSION["prenom"] = $infoUser["prenom"];
+            $_SESSION["nom"] = $infoUser["nom"];
             // Revenir à la page d'accueil
             header("location: index.php");
             // return "connexion";
@@ -32,7 +35,7 @@ function inscription($infoLogin)
 
         if ($infoLogin["mdp"] == $infoLogin["conf"]) {
 
-            insertUser($infoLogin["login"], $infoLogin["mdp"]);
+            insertUser($infoLogin);
 
             // echo "<br> Vous êtes inscrit";
             // echo "<a href='login.php'>Vous connectez</a>";
@@ -62,14 +65,22 @@ function getUser($login)
 ;
 
 
-function insertUser($login, $mdp)
+function insertUser($tab)
 {
     global $db;
-    $requete = "INSERT INTO user VALUES (NULL, :login, :mdp);";
+    $requete = "INSERT INTO user VALUES (:login, :mdp, :nom, :prenom, NULL);";
     $stmt = $db->prepare($requete);
-    $stmt->bindParam(':login', $login, PDO::PARAM_STR);
-    $mdp_hash = password_hash($mdp, PASSWORD_DEFAULT);
+    $stmt->bindParam(':login', $tab["login"], PDO::PARAM_STR);
+    $mdp_hash = password_hash($tab["mdp"], PASSWORD_DEFAULT);
     $stmt->bindParam(':mdp', $mdp_hash, PDO::PARAM_STR);
+    $stmt->bindParam(':nom', $tab["nom"], PDO::PARAM_STR);
+    $stmt->bindParam(':prenom', $tab["prenom"], PDO::PARAM_STR);
+    // if (isset($tab["birth_date"])){
+    //     $stmt->bindParam(':birt_date', $tab["birth_date"],PDO::PARAM_STR);
+    // }else{
+    //     $null=NULL;
+    //     $stmt->bindParam(':birt_date', $null,PDO::PARAM_STR);
+    // }
     $stmt->execute();
 }
 ;

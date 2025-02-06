@@ -4,14 +4,18 @@
     <?php if (isset($msg) && $msg == "inscription") {
         echo "Votre compte à bien été créé <br>";
     } ?>
-    <label for="login">Login</label>
-    <input type="text" name="login" id="login" required>
+    <div>
+        <label for="login">Adresse mail</label>
+        <input type="email" name="login" id="login" required>
+    </div>
     <?php if (isset($msg) && $msg == "err-login") {
         echo "Mauvais login";
     } ?>
 
-    <label for="mdp">Mot de passe</label>
-    <input type="text" name="mdp" id="mdp" required>
+    <div>
+        <label for="mdp">Mot de passe</label>
+        <input type="text" name="mdp" id="mdp" required>
+    </div>
     <?php if (isset($msg) && $msg == "err-mdp") {
         echo "Mauvais mot de passe";
     } ?>

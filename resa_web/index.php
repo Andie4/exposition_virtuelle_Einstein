@@ -21,6 +21,8 @@
                     } else {
                         $result=getAllUser();
                     }
+                    header('Content-Type: application/json');
+                    echo json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
                     break;
                 case 'resa':
                     if (isset($_GET["id"])){
@@ -28,6 +30,8 @@
                     } else {
                         $result=getAllResa();
                     }
+                    header('Content-Type: application/json');
+                    echo json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
                     break;
                 case 'billet':
                     if (isset($_GET["id"])){
@@ -35,6 +39,8 @@
                     } else {
                         $result=getAllBillet();
                     }
+                    header('Content-Type: application/json');
+                    echo json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
                     break;
                 case 'tarif':
                     if (isset($_GET["id"])){
@@ -42,6 +48,8 @@
                     } else {
                         $result=getAllTarif();
                     }
+                    header('Content-Type: application/json');
+                    echo json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
                     break;
             }
             break;

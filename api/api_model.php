@@ -120,26 +120,26 @@ function postTarif()
 // ===============================================================  PUT  ============================================================================
 
 // PUT USER
-function putUser()
+function putUser($id)
 {
 
 }
 ;
 
 // PUT RESA
-function putResa()
+function putResa($id)
 {
 }
 ;
 
 // PUT BILLET
-function putBillet()
+function putBillet($id)
 {
 }
 ;
 
 // PUT TARIF
-function putTarif()
+function putTarif($id)
 {
 }
 ;
@@ -148,26 +148,26 @@ function putTarif()
 // ===============================================================  DELETE  ============================================================================
 
 // DELETE USER
-function deleteUser()
+function deleteUser($id)
 {
 
 }
 ;
 
 // DELETE RESA
-function deleteResa()
+function deleteResa($id)
 {
 }
 ;
 
 // DELETE BILLET
-function deleteBillet()
+function deleteBillet($id)
 {
 }
 ;
 
 // DELETE TARIF
-function deleteTarif()
+function deleteTarif($id)
 {
 }
 ;

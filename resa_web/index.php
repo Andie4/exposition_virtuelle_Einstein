@@ -56,36 +56,48 @@
         case 'POST':
             switch ($type) {
                 case 'user':
+                    postUser();
                     break;
                 case 'resa':
+                    postResa();
                     break;
                 case 'billet':
+                    postBillet();
                     break;
                 case 'tarif':
+                    postTarif();
                     break;
             }
             break;
         case 'PUT':
             switch ($type) {
                 case 'user':
+                    putUser($_GET["id"]);
                     break;
                 case 'resa':
+                    putResa($_GET["id"]);
                     break;
                 case 'billet':
+                    putBillet($_GET["id"]);
                     break;
                 case 'tarif':
+                    putTarif($_GET["id"]);
                     break;
             }
             break;
         case 'DELETE':
             switch ($type) {
                 case 'user':
+                    deleteUser($_GET["id"]);
                     break;
                 case 'resa':
+                    deleteResa($_GET["id"]);
                     break;
                 case 'billet':
+                    deleteBillet($_GET["id"]);
                     break;
                 case 'tarif':
+                    deleteTarif($_GET["id"]);
                     break;
             }
             break;

@@ -3,7 +3,7 @@
 $db = new PDO('mysql:host=localhost;dbname=expo_einstein', 'root', '');
 
 
-// ===============================================================  GET  ============================================================================
+// ===============================================================  GET  ===================================================================
 
 // GET USER
 function getOneUser($id)
@@ -89,7 +89,7 @@ function getAllTarif()
 }
 ;
 
-// ===============================================================  POST  ============================================================================
+// ===============================================================  POST  ==================================================================
 
 // POST USER
 function postUser()
@@ -117,7 +117,7 @@ function postTarif()
 ;
 
 
-// ===============================================================  PUT  ============================================================================
+// ===============================================================  PUT  ===================================================================
 
 // PUT USER
 function putUser($id)
@@ -145,29 +145,52 @@ function putTarif($id)
 ;
 
 
-// ===============================================================  DELETE  ============================================================================
+// ===============================================================  DELETE  ================================================================
 
 // DELETE USER
 function deleteUser($id)
 {
-
+    global $db;
+    $requete = "DELETE FROM user WHERE id_user=:id";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 ;
 
 // DELETE RESA
 function deleteResa($id)
 {
+    global $db;
+    $requete = "DELETE FROM resa WHERE id_resa=:id";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 ;
 
 // DELETE BILLET
 function deleteBillet($id)
 {
+    global $db;
+    $requete = "DELETE FROM billet WHERE id_billet=:id";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 ;
 
 // DELETE TARIF
 function deleteTarif($id)
 {
+    global $db;
+    $requete = "DELETE FROM tarif WHERE id_tarif=:id";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 ;

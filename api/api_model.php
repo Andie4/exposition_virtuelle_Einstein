@@ -92,26 +92,26 @@ function getAllTarif()
 // ===============================================================  POST  ==================================================================
 
 // POST USER
-function postUser()
+function postUser($_POST)
 {
 
 }
 ;
 
 // POST RESA
-function postResa()
+function postResa($_POST)
 {
 }
 ;
 
 // POST BILLET
-function postBillet()
+function postBillet($_POST)
 {
 }
 ;
 
 // POST TARIF
-function postTarif()
+function postTarif($_POST)
 {
 }
 ;
@@ -120,26 +120,26 @@ function postTarif()
 // ===============================================================  PUT  ===================================================================
 
 // PUT USER
-function putUser($id)
+function putUser($_PUT)
 {
 
 }
 ;
 
 // PUT RESA
-function putResa($id)
+function putResa($_PUT)
 {
 }
 ;
 
 // PUT BILLET
-function putBillet($id)
+function putBillet($_PUT)
 {
 }
 ;
 
 // PUT TARIF
-function putTarif($id)
+function putTarif($_PUT)
 {
 }
 ;

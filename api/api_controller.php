@@ -1,6 +1,6 @@
 <?php
 
-require_once 'api/api_model.php';
+require_once 'api_model.php';
 
 $request_method = $_SERVER['REQUEST_METHOD'];
 

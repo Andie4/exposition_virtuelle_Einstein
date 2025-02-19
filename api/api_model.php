@@ -148,25 +148,59 @@ function postTarif($_POST)
 // PUT USER
 function putUser($_PUT)
 {
-
+    global $db;
+    $requete = "UPDATE user SET mail_user=:mail, nom_user=:nom, prenom_user=:prenom WHERE id_user=:id_user";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':id_user', $_PUT["id_user"], PDO::PARAM_INT);
+    $stmt->bindParam(':mail', $_PUT["mail"], PDO::PARAM_STR);
+    $stmt->bindParam(':nom', $_PUT["nom"], PDO::PARAM_STR);
+    $stmt->bindParam(':prenom', $_PUT["prenom"], PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 ;
 
 // PUT RESA
 function putResa($_PUT)
 {
+    global $db;
+    $requete = "UPDATE resa SET date_resa=:date, heure_resa=:heure, mail_resp_resa=:mail WHERE id_resa=:id_resa";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':id_resa', $_PUT["id_resa"], PDO::PARAM_INT);
+    $stmt->bindParam(':mail', $_PUT["mail"], PDO::PARAM_STR);
+    $stmt->bindParam(':date', $_PUT["date"], PDO::PARAM_STR);
+    $stmt->bindParam(':heure', $_PUT["heure"], PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 ;
 
 // PUT BILLET
 function putBillet($_PUT)
 {
+    global $db;
+    $requete = "UPDATE billet SET user=:user, resa=:resa, tarif=:tarif WHERE id_billet=:id_billet";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':id_billet', $_PUT["id_billet"], PDO::PARAM_INT);
+    $stmt->bindParam(':user', $_PUT["user"], PDO::PARAM_STR);
+    $stmt->bindParam(':resa', $_PUT["resa"], PDO::PARAM_STR);
+    $stmt->bindParam(':tarif', $_PUT["tarif"], PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 ;
 
 // PUT TARIF
 function putTarif($_PUT)
 {
+    global $db;
+    $requete = "UPDATE tarif SET nom_tarif=:nom, prix=:prix WHERE id_tarif=:id_tarif";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':id_tarif', $_PUT["id_tarif"], PDO::PARAM_INT);
+    $stmt->bindParam(':nom', $_PUT["nom"], PDO::PARAM_STR);
+    $stmt->bindParam(':prix', $_PUT["prix"], PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 ;
 

@@ -94,25 +94,51 @@ function getAllTarif()
 // POST USER
 function postUser($_POST)
 {
-
+    global $db;
+    $requete = "INSERT INTO user VALUES (:mail, :nom, :prenom);";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':mail', $_POST["mail"], PDO::PARAM_STR);
+    $stmt->bindParam(':nom', $_POST["nom"], PDO::PARAM_STR);
+    $stmt->bindParam(':prenom', $_POST["prenom"], PDO::PARAM_STR);
+    $stmt->execute();
 }
 ;
 
 // POST RESA
 function postResa($_POST)
 {
+    global $db;
+    $requete = "INSERT INTO resa VALUES (NULL, :date, :heure, :mail);";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':mail', $_POST["mail"], PDO::PARAM_STR);
+    $stmt->bindParam(':nom', $_POST["nom"], PDO::PARAM_STR);
+    $stmt->bindParam(':prenom', $_POST["prenom"], PDO::PARAM_STR);
+    $stmt->execute();
 }
 ;
 
 // POST BILLET
 function postBillet($_POST)
 {
+    global $db;
+    $requete = "INSERT INTO billet VALUES (NULL, :user, :resa, :tarif);";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':user', $_POST["user"], PDO::PARAM_STR);
+    $stmt->bindParam(':resa', $_POST["resa"], PDO::PARAM_STR);
+    $stmt->bindParam(':tarif', $_POST["tarif"], PDO::PARAM_STR);
+    $stmt->execute();
 }
 ;
 
 // POST TARIF
 function postTarif($_POST)
 {
+    global $db;
+    $requete = "INSERT INTO tarif VALUES (NULL, :nom_tarif, :prix);";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':nom_tarif', $_POST["nom_tarif"], PDO::PARAM_STR);
+    $stmt->bindParam(':prix', $_POST["prix"], PDO::PARAM_STR);
+    $stmt->execute();
 }
 ;
 

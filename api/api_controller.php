@@ -43,32 +43,32 @@ switch ($request_method) {
     case "POST":
         switch ($_GET["type"]) {
             case "user":
-                $result = insertUser($_POST);
+                postUser($_POST);
                 break;
             case "resa":
-                $result = insertResa($_POST);
+                postResa($_POST);
                 break;
             case "billet":
-                $result = insertBillet($_POST);
+                postBillet($_POST);
                 break;
             case "tarif":
-                $result = insertTarif($_POST);
+                postTarif($_POST);
                 break;
         }
         break;
     case "PUT":
         switch ($_GET["type"]) {
             case "user":
-                $result = updateUser($_PUT);
+                putUser($_PUT);
                 break;
             case "resa":
-                $result = updateResa($_PUT);
+                putResa($_PUT);
                 break;
             case "billet":
-                $result = updateBillet($_PUT);
+                putBillet($_PUT);
                 break;
             case "tarif":
-                $result = updateTarif($_PUT);
+                putTarif($_PUT);
                 break;
 
         }
@@ -76,16 +76,16 @@ switch ($request_method) {
     case "DELETE":
         switch ($_GET["type"]) {
             case "user":
-                $result = deleteUser($_GET["id"]);
+                deleteUser($_GET["id"]);
                 break;
             case "resa":
-                $result = deleteResa($_GET["id"]);
+                deleteResa($_GET["id"]);
                 break;
             case "billet":
-                $result = deleteBillet($_GET["id"]);
+                deleteBillet($_GET["id"]);
                 break;
             case "tarif":
-                $result = deleteTarif($_GET["id"]);
+                deleteTarif($_GET["id"]);
                 break;
         }
         break;

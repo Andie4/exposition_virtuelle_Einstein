@@ -1,4 +1,8 @@
 RewriteEngine On
 RewriteBase /exposition_virtuelle_Einstein/
 
+# Redirige /api/user/1 vers api/api_controller.php?type=user&id=1
+RewriteRule ^api/(\w+)/(\d+)$ api/api_controller.php?type=$1&id=$2 [QSA,L]
+
+# Redirige /api/user vers api/api_controller.php?type=user
 RewriteRule ^api/(\w+)$ api/api_controller.php?type=$1 [QSA,L]

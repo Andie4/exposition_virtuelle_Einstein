@@ -1,0 +1,150 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* Réinitialisation */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Menu Burger */
+.menu-burger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+/* Mobile */
+/* @media screen and (max-width: 768px) {
+    #nav-menu {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100vh;
+        background: darkseagreen;
+        transition: left 0.3s ease-in-out;
+    }
+
+    .nav-open {
+        left: 0;
+    }
+
+    .menu-burger {
+        display: block;
+    }
+} */
+
+
+/* tablette
+
+
+
+
+/* desktop */
+@media screen and (min-width: 1024px) {
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    width: 80px; 
+    height: 100vh;
+    background-color: darkseagreen;
+    padding: 20px;
+    transition: width 0.3s ease-in-out;
+    overflow: hidden;
+    white-space: nowrap;
+    color: black;
+}
+
+#header:hover {
+    width: 250px;
+    margin: 0;
+    padding: 10px;
+}
+
+#header .hoverNav :hover{
+    background-color: rgb(49, 47, 79);
+    padding: 0.5vh;
+    color: white;
+}
+
+.initiales{
+    background-color: dark;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 70px 70px 70px 70px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 20px;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.icone_nav {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+/* Liens */
+a {
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+    opacity: 0; 
+    transition: opacity 0.3s ease-in-out, margin-left 0.3s ease-in-out;
+    margin-left: -50px;
+}
+
+#header:hover a {
+    opacity: 1;
+    margin-left: 10px;
+    
+}
+
+/* Styles supplémentaires */
+.initiales {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+p {
+    color: white;
+    margin: 0;
+}
+
+.margin-bottom{
+    margin-bottom: 80px;
+}
+ 
+    
+}
+
+

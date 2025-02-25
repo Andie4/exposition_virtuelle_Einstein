@@ -1,0 +1,156 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    padding: 0;
+
+}
+
+h1{
+    display: grid;
+    justify-content: center;
+}
+
+h2{
+    display: grid;
+    justify-content: center ;
+}
+
+
+/* mobile  */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 0.8rem;
+    }
+
+    .blocInfos{
+        padding: 5px;
+        font-size: 0.8rem;
+        margin-bottom: 20px;
+        max-width: 300px;
+        margin: 1rem;
+    }
+
+    h2{
+        display: grid;
+        justify-content: center ;
+    }
+    .blocUpdateMdp{
+        padding: 0.4rem;
+        font-size: 0.8rem;
+        margin-bottom: 5rem;
+        max-width: 700rem;
+        background-color: grey;
+        border-radius: 5px;
+        margin: 1rem;
+    }
+
+    .updateMdp{
+        display: grid;
+        margin: auto;
+        min-width: 1rem;
+    }
+
+    button{
+        margin: 0.5rem;
+        background-color: darkslategrey;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 0.5rem;
+        
+    }
+}
+
+/* tablette */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .blocInfos{
+        padding: 5px;
+        font-size: 0.8rem;
+        margin-bottom: 20px;
+        max-width: 300px;
+        margin: 1rem;
+    }
+
+    .blocUpdateMdp{
+        display: flex;
+        align-items: center;
+        padding: 0.4rem;
+        font-size: 0.8rem;
+        margin-bottom: 5rem;
+        max-width: 700rem;
+        background-color: grey;
+        border-radius: 5px;
+        margin: 1rem;
+        width: 70%;
+    }
+
+    .updateMdp{
+        display: flex;
+        min-width: 5rem;
+        max-width: 19rem;
+    }
+
+    .flex{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    label{
+        margin: 0.5rem;
+        width: 5rem;
+    }
+}
+
+/* desktop */
+@media screen and (min-width: 1024px) {
+    body {
+        font-size: 1.2rem;
+    }
+
+    .blocInfos{
+        padding: 5px;
+        font-size: 0.8rem;
+        margin-bottom: 20px;
+        max-width: 300px;
+        margin: 1rem;
+    }
+
+    .blocUpdateMdp{
+        display: block;
+        align-items: center;
+        padding: 0.4rem;
+        font-size: 0.8rem;
+        margin-bottom: 5rem;
+        max-width: 700rem;
+        background-color: rgb(128, 128, 128);
+        border-radius: 5px;
+        margin: 1rem;
+        width: 50%;
+    }
+
+    .updateMdp{
+        /* display: flex; */
+        min-width: 5rem;
+        max-width: 19rem;
+    }
+
+    .flex{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    label{
+        margin: 0.5rem;
+        width: 5rem;
+    }
+    
+}

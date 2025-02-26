@@ -56,11 +56,14 @@
         </form>
 
         <div class="ticket">
-            <img src="images/img_ticket.jpg" alt="">
-            <div>
-                <p>Titre</p>
-                <p>Mode d'obtention : e-ticket (gratuit)</p>
+            <div class="pointilles">
+                <img src="images/img_ticket.jpg" alt="">
+                <div class="ticketInfos">
+                    <p>Lorem ipsum dolor sit</p>
+                    <p>Mode d'obtention : e-ticket (gratuit)</p>
+                </div>
             </div>
+            
 
         </div>
 

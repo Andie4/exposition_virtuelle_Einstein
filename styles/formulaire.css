@@ -111,6 +111,7 @@ form{
     }
     .buttons button:hover {
         background-color: gray;
+        color: var(--white);
     }
     .validate {
         margin-top: 20px;
@@ -124,7 +125,7 @@ form{
 
     .validate .hover{
         background-color: gray;
-        color: var(--black) ;
+        color: var(--white) ;
     }
 
 
@@ -145,10 +146,27 @@ form{
     }
 
     .ticket{
-        margin-left: 2rem;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
         margin-top: 1rem;
         margin-bottom: 1rem;
         border:solid 1px var(--white);
+        border-radius: 10px;
+        min-width: 13rem;
+        max-width: 19rem;
+    }
+    .pointilles{
+        border-top: 1px dashed var(--white);
+        border-bottom: 1px dashed var(--white);
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        display: flex;
+        justify-content:flex-start;
+
+    }
+    .ticketInfos{
+        margin-left: 1rem;
     }
 
 

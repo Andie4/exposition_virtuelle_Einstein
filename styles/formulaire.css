@@ -1,0 +1,179 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background-color: var(--black);
+    margin: 0;
+    padding: 0;
+    color: var(--white);
+}
+
+:root{
+    --darkRed :#4F0000;
+    --lightPink : #F4D1D1;
+    --black : black;
+    --white : white;
+    --red: #FF0000;
+}
+
+button{
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid var(--white);
+    color: var(--black);
+}
+
+h1{
+    font-size: 2rem;
+    font-weight: lighter;
+    margin-left: 1rem;
+}
+
+  
+  
+/* Slider formulaire */
+.slider {
+  width: 500px;
+  /* height: 500px; */
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.slider-content {
+  position: relative;
+  display: flex;
+  left: 0;
+  transition: left 0.3s ease;
+}
+
+fieldset {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  align-items: center;
+  width: 500px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0;
+  flex-shrink: 0;
+}
+
+form{
+    color : var(--white);
+}
+
+.red{
+    color: var(--red);
+}
+
+.tinyMarginBottom{
+    margin-bottom: 0.1rem;
+}
+
+.tinyMarginTop{
+    margin-top: 0.1rem;
+}
+.bigMarginBottom{
+    margin-bottom: 2rem;
+}
+.bigMarginTop{
+    margin-top: 2rem;
+}
+
+/* mobile */
+@media (max-width: 425px) {
+    .container {
+        max-width: 400px;
+        margin: auto;
+        padding: 20px;
+    }
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 10px;
+        width: 16rem;
+    }
+    .buttons button {
+        background-color: white;
+        color: black;
+        border: none;
+        padding: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+    .buttons button:hover {
+        background-color: gray;
+    }
+    .validate {
+        margin-top: 20px;
+        background-color: white;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    .validate .hover{
+        background-color: gray;
+        color: var(--black) ;
+    }
+
+
+    .date{
+        min-width: 16rem;
+        height: 2rem;
+        border-radius: 5px;
+    }
+    h2{
+        font-size: 1.5rem;
+        font-weight: lighter;
+    }
+    h1{
+        margin-left: 2rem;
+    }
+    .minuscule{
+        font-size: 0.8rem;
+    }
+
+    .ticket{
+        margin-left: 2rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border:solid 1px var(--white);
+    }
+
+
+}
+
+/* ------------------tablet ------------------ */
+@media (min-width: 426px) and (max-width: 768px) {
+  .slider {
+    width: 100%;
+  }
+
+  fieldset {
+    width: 100%;
+  }
+}
+
+/* ------------------ desktop ------------------ */
+@media (min-width: 769px) {
+  .slider {
+    width: 500px;
+  }
+  .slider-content {
+    width: 500%;
+  }
+  fieldset {
+    width: 500px;
+  }
+}

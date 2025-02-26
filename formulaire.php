@@ -22,39 +22,68 @@
     </header>
 
         <section>
-            
+        <h1>Acheter un billet</h1>
+
+        <!-- Dates & horaires  -->
+        <form action="">
+            <div class="container">
+                <div class="bigMarginBottom">
+                    <h2 class="tinyMarginBottom">Dates & horaires</h2>
+                    <p class="minuscule tinyMarginTop">Les champs suivis d'un <span class="red">*</span> sont obligatoires.</p>
+                </div>
+
+                <div class="bigMarginBottom">
+                    <label for="date">Choisissez une date <span class="red">*</span></label><br>
+                    <input type="date" id="date" class="date" required><br>
+                </div>
+
+                <div class="bigMarginBottom">
+                    <label>Choisissez un horaire <span class="red">*</span></label>
+                    <div class="buttons">
+                        <button>10:00</button>
+                        <button>11:00</button>
+                        <button>12:00</button>
+                        <button>14:00</button>
+                        <button>15:00</button>
+                        <button>16:00</button>
+                        <button>17:00</button>
+                        <button>18:00</button>
+                    </div>
+                </div>
+                
+                <button class="validate">Valider</button>
+            </div>
+        </form>
+
+        <div class="ticket">
+            <img src="images/img_ticket.jpg" alt="">
+            <div>
+                <p>Titre</p>
+                <p>Mode d'obtention : e-ticket (gratuit)</p>
+            </div>
+
+        </div>
+
+
+
+        <!-- Nombre de billets -->
+        <form action="">
+
+        </form>
+
+
+
+        <!-- Coordonnées -->
+        <form action="">
+
+        </form>
+
+
         </section>
 
-    <footer>
-        <div>
-            <div>
-                <p>LOGO</p>
-                <p>RelatiX</p>
-            </div>
-            <div>
-                <p>Accueil</p>
-                <p>Infos pratiques</p>
-                <p>Réserver un billet</p>
-            </div>
-            <div>
-                <p>Haut de page</p>
-                <p>Agence Xploria</p>
-                <p>2 Rue Albert Einstein</p>
-                <p>77420 Champs-sur-Marne</p>
-                <div>
-                    <a href=""><img src="" alt=""></a>
-                    <a href=""><img src="" alt=""></a>
-                    <a href=""><img src="" alt=""></a>
-                </div>
-            </div>
-        </div>
-        <div>
-            <p>Conditions Générales de vente</p>
-            <p>Mentions Légales</p>
-            <p>Ouvert tous les jours de 10h à 19h</p>
-            <p>© 2020 RelatiX. Tous droits réservés.</p>
-        </div>
-    </footer>
+   <?php require_once('footer.php'); ?>
 
 </body>
 </html>
+
+

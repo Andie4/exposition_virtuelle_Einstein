@@ -1,0 +1,30 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+
+
+/* mobile */
+@media (max-width: 425px) {
+    footer{
+        margin-left: 2rem;
+    
+    }
+    .spaceFooter{
+        margin-bottom: 2rem;
+    }
+
+}
+
+/* tablet */
+@media (min-width: 426px) and (max-width: 768px) {
+
+
+}
+
+/* desktop */
+@media (min-width: 769px) {
+    
+}

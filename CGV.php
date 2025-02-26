@@ -49,36 +49,8 @@
         </div>
     </section>
 
-    <footer>
-        <div>
-            <div>
-                <p>LOGO</p>
-                <p>RelatiX</p>
-            </div>
-            <div>
-                <p>Accueil</p>
-                <p>Infos pratiques</p>
-                <p>Réserver un billet</p>
-            </div>
-            <div>
-                <p>Haut de page</p>
-                <p>Agence Xploria</p>
-                <p>2 Rue Albert Einstein</p>
-                <p>77420 Champs-sur-Marne</p>
-                <div>
-                    <a href=""><img src="" alt=""></a>
-                    <a href=""><img src="" alt=""></a>
-                    <a href=""><img src="" alt=""></a>
-                </div>
-            </div>
-        </div>
-        <div>
-            <p>Conditions Générales de vente</p>
-            <p>Mentions Légales</p>
-            <p>Ouvert tous les jours de 10h à 19h</p>
-            <p>© 2020 RelatiX. Tous droits réservés.</p>
-        </div>
-    </footer>
+    <?php include 'footer.php'; ?>
+
 
     
 </body>

@@ -1,0 +1,57 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--black);
+    margin: 0;
+    padding: 0;
+    color: var(--white);
+}
+
+:root {
+    --black: black;
+    --white: white;
+    --red: #FF0000;
+}
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;    
+}
+
+h1{
+    font-size: 2rem;
+    font-weight: lighter;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--black);
+    color: var(--white);
+    padding: 1rem;
+
+}
+
+/* mobile */
+@media (max-width: 768px) {
+    img{
+        width: 10rem;
+    }
+}
+
+/* tablet */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+}
+
+/* desktop */
+@media (min-width: 1024px) {
+
+}

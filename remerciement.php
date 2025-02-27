@@ -22,9 +22,12 @@
     </header>
 
     <section>
-        <h1>Merci pour votre réservation </h1>
-        <p>Vous recevrez votre billet dans votre boîte mail</p>
-        <img src="" alt="">
+        <div class="container">
+            <h1>Merci pour votre réservation </h1>
+            <p>Vous recevrez votre billet dans votre boîte mail</p>
+            <img src="images/img_einstein.png" alt="">
+        </div>
+        
     </section>
 
     <?php include 'footer.php'; ?>

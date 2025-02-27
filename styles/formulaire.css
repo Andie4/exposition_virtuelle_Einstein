@@ -96,13 +96,43 @@ form{
 .bigMarginTop{
     margin-top: 2rem;
 }
-section{
-    margin-top: 5rem;
-    margin-bottom: 5rem;
+
+.borderResa{
+    border: 1px solid var(--white);
+    padding: 1rem;
+}
+
+.nom{
+    background-color:black;
+    color: var(--white);
+    border: 1px solid var(--white);
+    padding: 1rem;
+    border-radius: 5px;
+}
+.prenom{
+    background-color:black;
+    color: var(--white);
+    border: 1px solid var(--white);
+    padding: 1rem;
+    border-radius: 5px;
+
+}   
+.email{
+    background-color:black;    
+    color: var(--white);
+    border: 1px solid var(--white);
+    padding: 1rem;
+    border-radius: 5px;
+
 }
 
 /* mobile */
 @media (max-width: 425px) {
+    section{
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+    }
+    
     /* date et heure */
     .container {
         max-width: 400px;
@@ -245,30 +275,331 @@ section{
         display: flex;
         align-items: center;
     }
+    .flex{
+        /* display: flex !important;conflit avec le css du footer  */ 
+    }
 
 
 }
 
 /* ------------------tablet ------------------ */
 @media (min-width: 426px) and (max-width: 768px) {
-  .slider {
-    width: 100%;
-  }
+    section{
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+    }
+    
+    /* date et heure */
+    .container {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+    }
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .buttons button {
+        background-color: white;
+        color: black;
+        border: none;
+        padding: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+    .buttons button:hover {
+        background-color: gray;
+        color: var(--white);
+    }
+    .validate {
+        margin-top: 20px;
+        background-color: white;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
 
-  fieldset {
-    width: 100%;
-  }
+    .validate .hover{
+        background-color: gray;
+        color: var(--white) ;
+    }
+
+
+    .date{
+        min-width: 16rem;
+        height: 2rem;
+        border-radius: 5px;
+    }
+    h2{
+        font-size: 1.5rem;
+        font-weight: lighter;
+    }
+    h1{
+        margin-left: 1.5rem;
+    }
+    .minuscule{
+        font-size: 0.8rem;
+    }
+
+    .ticket{
+        margin-left: 5rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border:solid 1px var(--white);
+        border-radius: 10px;
+        min-width: 13rem;
+        max-width: 19rem;
+    }
+    .pointilles{
+        border-top: 1px dashed var(--white);
+        border-bottom: 1px dashed var(--white);
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        display: flex;
+        justify-content:flex-start;
+
+    }
+    .ticketInfos{
+        margin-left: 1rem;
+    }
+
+
+    /* nombre de billets */
+    .ticket-category {
+        border-bottom: 1px solid white;
+        padding: 10px 0;
+    }
+    .counter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .counter button {
+        background: white;
+        color: black;
+        border: none;
+        padding: 5px;
+        margin: 0 5px;
+    }
+    .details {
+        border: 1px solid white;
+        padding: 10px;
+        margin-top: 10px;
+    }
+    .person {
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0;
+    }
+    input {
+        margin: 5px 0;
+        padding: 5px;
+        border: none;
+    }
+    /* .validate {
+        background: white;
+        color: black;
+        padding: 10px;
+        border: none;
+        margin-top: 10px;
+    } */
+
+    
+    .tarif{
+        /* en majuscule; */
+        text-transform: uppercase;
+    }
+    .blocInfosBillet{
+        display: inline;
+    }
+
+    .infosBillet{
+        border-radius: 10px;
+    }
+    .padding{
+        display: inline;
+        width:4rem;
+    }
+    .groupeInfosBillet{
+        display: flex;
+        align-items: center;
+    }
+    .flex{
+        /* display: flex !important; */
+        /*conflit avec le css du footer  */ 
+    }
+
+
 }
 
 /* ------------------ desktop ------------------ */
 @media (min-width: 769px) {
-  .slider {
-    width: 500px;
-  }
-  .slider-content {
-    width: 500%;
-  }
-  fieldset {
-    width: 500px;
-  }
+    section{
+        margin-top: 15rem;
+        margin-bottom: 15rem;
+        margin: 8rem;
+    }
+    
+    .container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+    }
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .buttons button {
+        background-color: white;
+        color: black;
+        border: none;
+        padding: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+    .buttons button:hover {
+        background-color: gray;
+        color: var(--white);
+    }
+    .validate {
+        margin-top: 20px;
+        background-color: white;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    .validate .hover{
+        background-color: gray;
+        color: var(--white) ;
+    }
+
+
+    .date{
+        min-width: 16rem;
+        height: 2rem;
+        border-radius: 5px;
+    }
+    h2{
+        font-size: 1.5rem;
+        font-weight: lighter;
+    }
+    h1{
+        margin-left: 1.5rem;
+    }
+    .minuscule{
+        font-size: 0.8rem;
+    }
+
+    .ticket{
+        /* margin-left: 5rem; */
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border:solid 1px var(--white);
+        border-radius: 10px;
+        width: 30rem;
+        height: 20rem;
+    }
+    .pointilles{
+        border-top: 1px dashed var(--white);
+        border-bottom: 1px dashed var(--white);
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        display: flex;
+        justify-content:flex-start;
+
+    }
+    .ticketInfos{
+        margin-left: 1rem;
+        display: block;
+        align-content: space-around;
+        align-items: center;
+        justify-self: center;
+    }
+
+
+    /* nombre de billets */
+    .ticket-category {
+        border-bottom: 1px solid white;
+        padding: 10px 0;
+    }
+    .counter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .counter button {
+        background: white;
+        color: black;
+        border: none;
+        padding: 5px;
+        margin: 0 5px;
+    }
+    .details {
+        border: 1px solid white;
+        padding: 10px;
+        margin-top: 10px;
+    }
+    .person {
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0;
+    }
+    input {
+        margin: 5px 0;
+        padding: 5px;
+        border: none;
+    }
+    /* .validate {
+        background: white;
+        color: black;
+        padding: 10px;
+        border: none;
+        margin-top: 10px;
+    } */
+
+    
+    .tarif{
+        /* en majuscule; */
+        text-transform: uppercase;
+    }
+    .blocInfosBillet{
+        display: inline;
+    }
+
+    .infosBillet{
+        border-radius: 10px;
+    }
+    .padding{
+        display: inline;
+        width:4rem;
+    }
+    .groupeInfosBillet{
+        display: flex;
+        align-items: center;
+    }
+    .flex{
+    /* display: flex !important; */
+    /*conflit avec le css du footer */ 
+    }
+    .column{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .ticketImg{
+        width: 10rem;
+    }
+    
 }

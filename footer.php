@@ -12,7 +12,7 @@
         <footer>
         <p>Haut de page</p>
     
-            <div>
+            <div class="flex">
                 <div class="spaceFooter">
                     <p>LOGO</p>
                     <p>RelatiX</p>
@@ -33,7 +33,7 @@
                     </div>
                 </div>
             </div>
-            <div class="spaceFooter">
+            <div class="flex">
                 <p>Conditions Générales de vente</p>
                 <p>Mentions Légales</p>
                 <p>Ouvert tous les jours de 10h à 19h</p>

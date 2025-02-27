@@ -6,11 +6,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles/footer.css">
-        <title>footer</title>
     </head>
     <body>
         <footer>
-        <p>Haut de page</p>
+        <a href="#top">Haut de page</a>
     
             <div class="flex">
                 <div class="spaceFooter">

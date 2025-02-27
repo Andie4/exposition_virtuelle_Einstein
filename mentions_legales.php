@@ -7,19 +7,8 @@
     <title>Réservation exposition</title>
 </head>
 <body>
-    <header>
-        <div>
-            <p>LOGO</p>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.php">Accueil</a></li>
-                <li><a href="infos_pratiques.php">Infos pratiques</a></li>
-                <li><a href="formulaire.php">Réserver un billet</a></li>
-                <li>FR/EN</li>
-            </ul>
-        </nav>
-    </header>
+<?php include 'nav.php'; ?>
+
 
     <section>
         <h1>Mentions Légales</h1>

@@ -80,7 +80,7 @@ section{
         margin-right: 5rem;
     }
     img{
-        width: 40rem;
+        width: 30rem;
     }
     iframe{
         width: 30rem;
@@ -90,7 +90,7 @@ section{
         width: 70rem;
     }
     .marginLeft{
-        margin-left: 5rem;
+        margin-left: 3rem;
     }
     .centerH{
         display: flex;

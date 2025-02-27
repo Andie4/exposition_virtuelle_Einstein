@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>bloc manage resa</title>
     <link rel="stylesheet" href="styles/manage_resa.css">
+    <script src="./scripts/nav_admin.js" defer></script>
 </head>
 <body>
+<?php include 'nav_admin.php';?>
+
     <section class="forme">
 
         <h1>Gestion des réservations </h1>

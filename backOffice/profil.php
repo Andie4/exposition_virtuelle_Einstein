@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles/profil.css">
 </head>
 <body>
+<?php include 'nav_admin.php';?>
+
 
     <h1>Profil</h1>
 

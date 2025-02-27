@@ -4,6 +4,13 @@
     box-sizing: border-box;
 }
 
+a{
+    text-decoration: none;
+    color: white;
+}
+.icone{
+    width: 2rem;
+}
 
 
 /* mobile */
@@ -14,6 +21,9 @@
     }
     .spaceFooter{
         margin-bottom: 2rem;
+    }
+    .flex{
+        display:block;
     }
 
 }
@@ -28,12 +38,16 @@
     .spaceFooter{
         margin-bottom: 2rem;
     }
+    .flex{
+        display:block;
+    }
 }
 
 /* desktop */
 @media (min-width: 1024px) {
     footer{
         margin: 2rem;
+        color: white;
     
     }
     .flex{

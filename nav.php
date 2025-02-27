@@ -17,7 +17,7 @@
             <ul>
                 <li><a href="index.php" class="black">Accueil</a></li>
                 <li><a href="infos_pratiques.php" class="black">Infos pratiques</a></li>
-                <li><a href="formulaire.php" class="black">Réserver un billet</a></li>
+                <li><a href="formulaire.php" class="black border">Réserver un billet</a></li>
                 <li><a href="#" class="black langues">Fr/En</a></li>
             </ul>
             </div>

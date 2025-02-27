@@ -11,6 +11,10 @@ a{
 .icone{
     width: 2rem;
 }
+.grid{
+    display: grid;
+
+}
 
 
 /* mobile */

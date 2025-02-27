@@ -17,7 +17,7 @@
                     <p>LOGO</p>
                     <p>RelatiX</p>
                 </div>
-                <div class="spaceFooter">
+                <div class="spaceFooter grid">
                     <a href="index.php">Accueil</a>
                     <a href="infos_pratiques.php">Infos pratiques</a>
                     <a href="formulaire.php">Réserver un billet</a>

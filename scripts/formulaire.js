@@ -9,8 +9,20 @@ addBillet.forEach((button) => {
     button.addEventListener('click', function () {
         event.preventDefault(); // Empêche la soumission du formulaire je vais devoir les remettre pour le fonctionnement du form une fois que j'aurais mis les différentes étapes du slider dans des fielsets.
 
+        let counterSpan = this.parentElement.querySelector('span');
+        let count = parseInt(counterSpan.textContent);
+        counterSpan.textContent = count + 1;
 
         //ajoute un nouveau billet à la catégorie
+        const ticketCategory = this.closest('.ticket-category');
+        let detailsDiv = ticketCategory.querySelector('.details');
+
+        if (!detailsDiv) {
+            detailsDiv = document.createElement('div');
+            detailsDiv.classList.add('details');
+            ticketCategory.appendChild(detailsDiv);
+        }
+
         const newBillet = document.createElement('div');
         newBillet.classList.add('person');
         newBillet.innerHTML = `
@@ -33,13 +45,14 @@ deleteBillet.forEach((button) => {
     button.addEventListener('click', function () {
         event.preventDefault(); // Empêche la soumission du formulaire je vais devoir les remettre pour le fonctionnement du form une fois que j'aurais mis les différentes étapes du slider dans des fielsets.
 
-
+        let counterSpan = this.parentElement.querySelector('span');
         let count = parseInt(counterSpan.textContent);
 
         if (count > 0) {
             counterSpan.textContent = count - 1;
 
             // Supprimer le dernier billet de la cat selectionné
+            const ticketCategory = this.closest('.ticket-category');
             let detailsDiv = ticketCategory.querySelector('.details');
 
             if (detailsDiv) {

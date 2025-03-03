@@ -574,7 +574,7 @@ form{
         text-transform: uppercase;
     }
     .blocInfosBillet{
-        display: inline;
+        display: flex;
     }
 
     .infosBillet{
@@ -587,6 +587,7 @@ form{
     .groupeInfosBillet{
         display: flex;
         align-items: center;
+        margin-left: 2rem;
     }
     .flex{
     /* display: flex !important; */

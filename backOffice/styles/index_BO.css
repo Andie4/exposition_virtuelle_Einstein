@@ -82,7 +82,7 @@ h2 {
         margin-top: 1rem;
         width: 9rem;
         padding: 0.2rem 1rem;
-        height: 5rem;
+        height: 7rem;
         margin: 0.5rem;
     }
     .linkSite{
@@ -153,7 +153,7 @@ h2 {
         margin-top: 1rem;
         width: 9rem;
         padding: 0.2rem 1rem;
-        height: 5rem;
+        height: 8rem;
         margin: 0.5rem;
     }
     .linkSite{
@@ -251,7 +251,7 @@ h2 {
         grid-template-areas:
             "blocInfos myChart1 myChart3"
             "myChart2 myChart4";
-        width: 1rem;
+        width: 70rem;
     }
     .myChart1{
         grid-column: 1;

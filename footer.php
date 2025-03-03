@@ -14,7 +14,7 @@
             <div class="flex">
                 <div class="spaceFooter">
                     <p>LOGO</p>
-                    <p>RelatiX</p>
+                    <a href="https://xploria.fr">Xploria</a>
                 </div>
                 <div class="spaceFooter grid">
                     <a href="index.php">Accueil</a>

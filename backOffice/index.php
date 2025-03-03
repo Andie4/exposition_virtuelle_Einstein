@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./styles/nav.css"> 
-    <script src="./scripts/nav.js" defer></script> 
+    <link rel="stylesheet" href="./styles/nav_admin.css"> 
+    <script src="./scripts/nav_admin.js" defer></script> 
     <link rel="stylesheet" href="./styles/index_BO.css">
     <!-- <link rel="stylesheet" href="./styles/nav_admin.css"> -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -14,6 +14,7 @@
 
 </head>
 <body>
+  <?php include 'nav_admin.php';?>
 
     <h1>Tableau de bord</h1>
     <section class="center">
@@ -39,7 +40,7 @@
             </div>
         </div>
 
-        <div class="multiColumn">
+        <div class="multiColumn center">
             <div class="myChart1">
                 <h2>Visite par jour de la semaine</h2>
                 <div data class="chart myChart1">

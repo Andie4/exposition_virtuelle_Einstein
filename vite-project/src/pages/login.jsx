@@ -26,11 +26,15 @@ export function Login() {
 
         const data = JSON.parse(text); // Convertir la réponse en JSON
 
-        if (!data.success) {
+        if (data.success) {
+            console.log("🎉 Connexion réussie !");
+            localStorage.setItem("isLoggedIn", "true");
+            window.location.href = "/home";
+        } else {
             console.warn("⚠️ Identifiants incorrects !");
             setMessage(data.message || "Identifiants incorrects");
         }
-        
+
     } catch (error) {
         console.error("❌ Erreur de connexion:", error);
         setMessage("Erreur de connexion");

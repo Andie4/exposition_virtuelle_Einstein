@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 
 function PrivateRoute({ children }) {
   const isLoggedIn = localStorage.getItem("isLoggedIn");
+  console.log("isLoggedIn", isLoggedIn);
   return isLoggedIn ? children : <Navigate to="/login" />;
 }
 
@@ -16,9 +17,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={ <PrivateRoute> <Home /> </PrivateRoute> } />
+        <Route path="/home" element={ <PrivateRoute> <Home /> </PrivateRoute> } />
         <Route path="/profil" element={ <PrivateRoute> <Profil /> </PrivateRoute> } />
         <Route path="*" element={<Navigate to="/home" />} />
       </Routes>

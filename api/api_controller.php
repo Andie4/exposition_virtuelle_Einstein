@@ -48,6 +48,14 @@ switch ($request_method) {
         break;
     case "POST":
         switch ($_GET["type"]) {
+            case "admin_login":
+                $user = checkAdmin($_POST['login'], $_POST['mdp']);
+                if ($user) {
+                    echo json_encode(["success" => true, "message" => "Connexion réussie"]);
+                } else {
+                    echo json_encode(["success" => false, "message" => "Identifiants incorrects"]);
+                }
+                break;
             case "user":
                 postUser($_POST);
                 break;

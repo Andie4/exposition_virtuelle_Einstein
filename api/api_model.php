@@ -312,3 +312,20 @@ function deleteAdmin($id)
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
+
+//  =============================================================  CHECK  ==================================================================
+
+function checkAdmin($login, $mdp) {
+    global $db;
+
+    $sql = "SELECT * FROM admin WHERE login_admin = :login";
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':login', $login);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($user && password_verify($mdp, $user['mdp_admin'])) {
+        return $user;
+    }
+
+    return null;
+}

@@ -2,57 +2,64 @@ import React from "react";
 import { useState } from "react";
 
 export function Login() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [login, setLogin] = useState("");
+    const [mdp, setMdp] = useState("");
     const [message, setMessage] = useState("");
 
     const handleLogin = async (e) => {
-        e.preventDefault();
+    e.preventDefault();
 
-        try {
-            const response = await fetch("http://localhost/api/login.php", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ email, password }),
-            });
+    const params = new URLSearchParams();
+    params.append("login", login);
+    params.append("mdp", mdp);
 
-            if (!response.ok) {
-                throw new Error("Erreur réseau ou serveur");
-            }
+    try {
+        const response = await fetch("http://localhost/exposition_virtuelle_Einstein/api/admin_login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: params.toString(),
+        });
 
-            const data = await response.json();
+        const text = await response.text();
 
-            if (data.success) {
-                localStorage.setItem("isLoggedIn", "true"); // Stocke la connexion
-                window.location.href = "/dashboard"; // Redirige vers le back-office
-            } else {
-                setMessage("Identifiants incorrects");
-            }
-        } catch (error) {
-            setMessage("Erreur de connexion");
+        const data = JSON.parse(text); // Convertir la réponse en JSON
+
+        if (!data.success) {
+            console.warn("⚠️ Identifiants incorrects !");
+            setMessage(data.message || "Identifiants incorrects");
         }
-    };
+        
+    } catch (error) {
+        console.error("❌ Erreur de connexion:", error);
+        setMessage("Erreur de connexion");
+    }
+};
+
+    
+    
+
+
 
     return (
         <div>
             <h2>Connexion</h2>
             <form onSubmit={handleLogin}>
-                <label htmlFor="login">Login</label>
+                <label htmlFor="login">Identifiant</label>
                 <input
                     type="text"
-                    placeholder="Login"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Identifiant"
+                    value={login}
+                    onChange={(e) => setLogin(e.target.value)}
                     required
                 />
                 <label htmlFor="password">Mot de passe</label>
                 <input
                     type="password"
                     placeholder="Mot de passe"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={mdp}
+                    onChange={(e) => setMdp(e.target.value)}
                     required
                 />
                 <button type="submit">Se connecter</button>

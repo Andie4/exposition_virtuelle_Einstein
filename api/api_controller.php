@@ -1,4 +1,8 @@
 <?php
+header("Access-Control-Allow-Origin: *"); 
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE");
+header("Access-Control-Allow-Headers: Content-Type"); 
+header("Content-Type: application/json");
 
 require_once 'api_model.php';
 
@@ -6,45 +10,35 @@ $request_method = $_SERVER['REQUEST_METHOD'];
 
 switch ($request_method) {
     case "GET":
-        switch ($_GET["type"]) {
-            case "user":
-                if (!empty($_GET["id"])) {
-                    $result = getOneUser($_GET["id"]);
-                } else {
-                    $result = getAllUser();
-                }
-                break;
-            case "resa":
-                if (!empty($_GET["id"])) {
-                    $result = getOneResa($_GET["id"]);
-                } else {
-                    $result = getAllResa();
-                }
-                break;
-            case "billet":
-                if (!empty($_GET["id"])) {
-                    $result = getOneBillet($_GET["id"]);
-                } else {
-                    $result = getAllBillet();
-                }
-                break;
-            case "tarif":
-                if (!empty($_GET["id"])) {
-                    $result = getOneTarif($_GET["id"]);
-                } else {
-                    $result = getAllTarif();
-                }
-                break;
-            case "admin":
-                if (!empty($_GET["id"])) {
-                    $result = getOneAdmin($_GET["id"]);
-                } else {
-                    $result = getAllAdmin();
-                }
-                break;
+        $result = null; // Initialiser la variable
+
+        if (!empty($_GET["type"])) {
+            switch ($_GET["type"]) {
+                case "user":
+                    $result = !empty($_GET["id"]) ? getOneUser($_GET["id"]) : getAllUser();
+                    break;
+                case "resa":
+                    $result = !empty($_GET["id"]) ? getOneResa($_GET["id"]) : getAllResa();
+                    break;
+                case "billet":
+                    $result = !empty($_GET["id"]) ? getOneBillet($_GET["id"]) : getAllBillet();
+                    break;
+                case "tarif":
+                    $result = !empty($_GET["id"]) ? getOneTarif($_GET["id"]) : getAllTarif();
+                    break;
+                case "admin":
+                    $result = !empty($_GET["id"]) ? getOneAdmin($_GET["id"]) : getAllAdmin();
+                    break;
+                default:
+                    $result = ["error" => "Type inconnu"];
+                    break;
+            }
+        } else {
+            $result = ["error" => "Aucun type spécifié"];
         }
+
         header('Content-Type: application/json');
-        echo json_encode($result, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+        echo json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         break;
     case "POST":
         switch ($_GET["type"]) {
@@ -55,6 +49,7 @@ switch ($request_method) {
                 } else {
                     echo json_encode(["success" => false, "message" => "Identifiants incorrects"]);
                 }
+                header("Content-Type: application/json");
                 break;
             case "user":
                 postUser($_POST);

@@ -130,9 +130,9 @@ function postResa($tab)
     global $db;
     $requete = "INSERT INTO resa VALUES (NULL, :date, :heure, :mail);";
     $stmt = $db->prepare($requete);
+    $stmt->bindParam(':date', $tab["date"], PDO::PARAM_STR);
+    $stmt->bindParam(':heure', $tab["heure"], PDO::PARAM_STR);
     $stmt->bindParam(':mail', $tab["mail"], PDO::PARAM_STR);
-    $stmt->bindParam(':nom', $tab["nom"], PDO::PARAM_STR);
-    $stmt->bindParam(':prenom', $tab["prenom"], PDO::PARAM_STR);
     $stmt->execute();
 }
 ;
@@ -156,7 +156,7 @@ function postTarif($tab)
     global $db;
     $requete = "INSERT INTO tarif VALUES (NULL, :nom_tarif, :prix);";
     $stmt = $db->prepare($requete);
-    $stmt->bindParam(':nom_tarif', $tab["nom_tarif"], PDO::PARAM_STR);
+    $stmt->bindParam(':nom_tarif', $tab["nom"], PDO::PARAM_STR);
     $stmt->bindParam(':prix', $tab["prix"], PDO::PARAM_STR);
     $stmt->execute();
 }
@@ -166,9 +166,9 @@ function postTarif($tab)
 function postAdmin($tab)
 {
     global $db;
-    $requete = "INSERT INTO admin VALUES (NULL,:mail, :mdp);";
+    $requete = "INSERT INTO admin VALUES (NULL,:login, :mdp);";
     $stmt = $db->prepare($requete);
-    $stmt->bindParam(':mail', $tab["mail"], PDO::PARAM_STR);
+    $stmt->bindParam(':login', $tab["login"], PDO::PARAM_STR);
     $mdp_hash = password_hash($tab["mdp"], PASSWORD_DEFAULT);
     $stmt->bindParam(':mdp', $mdp_hash, PDO::PARAM_STR);
     $stmt->execute();

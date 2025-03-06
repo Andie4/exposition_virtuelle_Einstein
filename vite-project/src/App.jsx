@@ -2,12 +2,14 @@ import React from 'react'
 import { Home } from './pages/home'
 import { Profil } from './pages/profil'
 import { Login } from './pages/login'
+import { Nav } from './component/nav/nav'
 import './styles/App.css'
 import { Routes, Route, Link } from 'react-router-dom'
 
 function App() {
   return (
     <>
+    <Nav/>
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/profil" element={<Profil />} />

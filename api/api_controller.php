@@ -5,7 +5,6 @@ require_once 'api_model.php';
 $request_method = $_SERVER['REQUEST_METHOD'];
 
 switch ($request_method) {
-    // Archives
     case "GET":
         switch ($_GET["type"]) {
             case "user":
@@ -36,6 +35,13 @@ switch ($request_method) {
                     $result = getAllTarif();
                 }
                 break;
+            case "admin":
+                if (!empty($_GET["id"])) {
+                    $result = getOneAdmin($_GET["id"]);
+                } else {
+                    $result = getAllAdmin();
+                }
+                break;
         }
         header('Content-Type: application/json');
         echo json_encode($result, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
@@ -54,6 +60,9 @@ switch ($request_method) {
             case "tarif":
                 postTarif($_POST);
                 break;
+            case "admin":
+                postAdmin($_POST);
+                break;
         }
         break;
     case "PUT":
@@ -70,7 +79,9 @@ switch ($request_method) {
             case "tarif":
                 putTarif($_PUT);
                 break;
-
+            case "admin":
+                putAdmin($_PUT);
+                break;
         }
         break;
     case "DELETE":
@@ -86,6 +97,9 @@ switch ($request_method) {
                 break;
             case "tarif":
                 deleteTarif($_GET["id"]);
+                break;
+            case "admin":
+                deleteAdmin($_GET["id"]);
                 break;
         }
         break;

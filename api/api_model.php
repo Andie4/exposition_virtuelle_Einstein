@@ -89,13 +89,33 @@ function getAllTarif()
 }
 ;
 
+// GET ADMIN
+function getOneAdmin($id)
+{
+    global $db;
+    $requete = "SELECT * FROM admin WHERE id_admin=:id";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+;
+
+function getAllAdmin()
+{
+    global $db;
+    $requete = "SELECT * FROM admin";
+    $stmt = $db->query($requete);
+    return $result = $stmt->fetchall(PDO::FETCH_ASSOC);
+}
+
 // ===============================================================  POST  ==================================================================
 
 // POST USER
 function postUser($tab)
 {
     global $db;
-    $requete = "INSERT INTO user VALUES (:mail, :nom, :prenom);";
+    $requete = "INSERT INTO user VALUES (NULL,:mail, :nom, :prenom);";
     $stmt = $db->prepare($requete);
     $stmt->bindParam(':mail', $tab["mail"], PDO::PARAM_STR);
     $stmt->bindParam(':nom', $tab["nom"], PDO::PARAM_STR);
@@ -141,6 +161,18 @@ function postTarif($tab)
     $stmt->execute();
 }
 ;
+
+// POST ADMIN
+function postAdmin($tab)
+{
+    global $db;
+    $requete = "INSERT INTO admin VALUES (NULL,:mail, :mdp);";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':mail', $tab["mail"], PDO::PARAM_STR);
+    $mdp_hash = password_hash($tab["mdp"], PASSWORD_DEFAULT);
+    $stmt->bindParam(':mdp', $mdp_hash, PDO::PARAM_STR);
+    $stmt->execute();
+}
 
 
 // ===============================================================  PUT  ===================================================================
@@ -204,6 +236,20 @@ function putTarif($_PUT)
 }
 ;
 
+// PUT ADMIN
+function putAdmin($_PUT)
+{
+    global $db;
+    $requete = "UPDATE admin SET mail_admin=:mail, mdp_admin=:mdp WHERE id_admin=:id_admin";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':id_admin', $_PUT["id_admin"], PDO::PARAM_INT);
+    $stmt->bindParam(':mail', $_PUT["mail"], PDO::PARAM_STR);
+    $mdp_hash = password_hash($_PUT["mdp"], PASSWORD_DEFAULT);
+    $stmt->bindParam(':mdp', $mdp_hash, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
 
 // ===============================================================  DELETE  ================================================================
 
@@ -254,3 +300,15 @@ function deleteTarif($id)
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 ;
+
+
+// DELETE ADMIN
+function deleteAdmin($id)
+{
+    global $db;
+    $requete = "DELETE FROM admin WHERE id_admin=:id";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}

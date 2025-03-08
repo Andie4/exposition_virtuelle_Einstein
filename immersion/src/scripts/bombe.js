@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-const canvas = document.getElementById("tv");
+const canvas = document.getElementById("bombe");
 
 // Création de la scène
 const scene = new THREE.Scene();
@@ -20,7 +20,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 /////////--> cette partie la à été faite avec chatGPT
 const loader = new GLTFLoader();
 loader.load(
-    'models/retro_television/scene.gltf',
+    'models/bombe/bomb_shading_v005.obj',
     (gltf) => {
         const model = gltf.scene;
         model.position.set(0.1, -2, -1);

@@ -1,19 +1,31 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+
+import { Nav } from "../component/nav";
 
 export function Home() {
-    const navigate = useNavigate();
-
-    const handleLogout = () => {
-        localStorage.removeItem("isLoggedIn"); // Supprime la connexion
-        navigate("/login"); // Redirige vers la connexion
-    };
-
     return (
+        <>
+        <Nav />
         <div>
             <h2>Bienvenue sur le back-office !</h2>
-            <button onClick={handleLogout}>Se déconnecter</button>
+            <div>
+                <p>10</p>
+                <p>Réservation aujourd'hui</p>
+            </div>
+            <div>
+                <p>5</p>
+                <p>Visite en cours</p>
+            </div>
+            <div>
+                <p>graphique 1 </p>
+                <p>graphique 2 </p>
+                <p>graphique 3 </p>
+                <p>graphique 4 </p>
+            </div>
+            <a href="">Site de l'exposition</a>
+            <a href="">Site de l'agence</a>
         </div>
+        </>
     );
 }
 

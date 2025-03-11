@@ -1,21 +1,61 @@
-*
-{
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-html,
-body
-{
+body {
+    height: 200vh; 
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    position: fixed; /* sinon l'image se balade dans la page */
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
 }
 
-.webgl
-{
-    position: fixed;
-    top: 0;
-    left: 0;
-    outline: none;
+.zoom-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
-body { margin: 0; overflow: hidden; }
-canvas { display: block; }
+
+#tv-button.visible {
+    opacity: 1;
+}
+
+#tv-button {
+    position: absolute;
+    top: 25%; 
+    right: 15%;
+    transform: translate(-80%, -50%);
+    padding: 1rem 2rem;
+    background: rgb(69, 51, 51);
+    text-decoration: none;
+    color: white;
+    border: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    animation-delay: 5s;
+    animation-name: clignoter;
+    animation-iteration-count: infinite;
+}
+/* faitre clignoter le btn  --> pas fonctionnel faire des recherches pour savoir quel est le pb*/
+@keyframes clignoter {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+

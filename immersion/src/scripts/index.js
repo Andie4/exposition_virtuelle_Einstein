@@ -36,7 +36,7 @@ if (tvButton) {
 
 
 document.querySelector("#tv-button").addEventListener("click", () => {
-    alert("tesssstttt");
+    // alert("tesssstttt");
 });
 
 

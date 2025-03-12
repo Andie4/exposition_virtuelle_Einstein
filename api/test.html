@@ -1,25 +1,15 @@
-<pre class='xdebug-var-dump' dir='ltr'>
-    <small>C:\wamp64\www\exposition_virtuelle_Einstein\api\api_model.php: 366:</small>
-    <b>array</b> <i>(size=3)</i>
-      'nom' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'Martin'</font> <i>(length=6)</i>
-      'prenom' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'Sophie'</font> <i>(length=6)</i>
-      'tarif' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'1'</font> <i>(length=1)</i>
-    </pre><pre class='xdebug-var-dump' dir='ltr'>
-    <small>C:\wamp64\www\exposition_virtuelle_Einstein\api\api_model.php: 374:</small>
-    <b>array</b> <i>(size=3)</i>
-      'user' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'7'</font> <i>(length=1)</i>
-      'resa' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'2'</font> <i>(length=1)</i>
-      'tarif' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'1'</font> <i>(length=1)</i>
-    </pre><pre class='xdebug-var-dump' dir='ltr'>
-    <small>C:\wamp64\www\exposition_virtuelle_Einstein\api\api_model.php: 366:</small>
-    <b>array</b> <i>(size=3)</i>
-      'nom' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'Durand'</font> <i>(length=6)</i>
-      'prenom' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'Paul'</font> <i>(length=4)</i>
-      'tarif' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'2'</font> <i>(length=1)</i>
-    </pre><pre class='xdebug-var-dump' dir='ltr'>
-    <small>C:\wamp64\www\exposition_virtuelle_Einstein\api\api_model.php: 374:</small>
-    <b>array</b> <i>(size=3)</i>
-      'user' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'8'</font> <i>(length=1)</i>
-      'resa' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'2'</font> <i>(length=1)</i>
-      'tarif' <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'2'</font> <i>(length=1)</i>
-    </pre>
+<br />
+<font size='1'><table class='xdebug-error xe-uncaught-exception' dir='ltr' border='1' cellspacing='0' cellpadding='1'>
+<tr><th align='left' bgcolor='#f57900' colspan="5"><span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span> Fatal error: Uncaught PDOException: SQLSTATE[
+    23000
+]: Integrity constraint violation: 1048 Le champ 'nom_user' ne peut être vide (null) in C:\wamp64\www\exposition_virtuelle_Einstein\api\api_model.php on line <i>128</i></th></tr>
+<tr><th align='left' bgcolor='#f57900' colspan="5"><span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span> PDOException: SQLSTATE[
+    23000
+]: Integrity constraint violation: 1048 Le champ 'nom_user' ne peut être vide (null) in C:\wamp64\www\exposition_virtuelle_Einstein\api\api_model.php on line <i>128</i></th></tr>
+<tr><th align='left' bgcolor='#e9b96e' colspan='5'>Call Stack</th></tr>
+<tr><th align='center' bgcolor='#eeeeec'>#</th><th align='left' bgcolor='#eeeeec'>Time</th><th align='left' bgcolor='#eeeeec'>Memory</th><th align='left' bgcolor='#eeeeec'>Function</th><th align='left' bgcolor='#eeeeec'>Location</th></tr>
+<tr><td bgcolor='#eeeeec' align='center'>1</td><td bgcolor='#eeeeec' align='center'>0.0028</td><td bgcolor='#eeeeec' align='right'>364080</td><td bgcolor='#eeeeec'>{main
+}(  )</td><td title='C:\wamp64\www\exposition_virtuelle_Einstein\api\api_controller.php' bgcolor='#eeeeec'>...\api_controller.php<b>:</b>0</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>2</td><td bgcolor='#eeeeec' align='center'>0.0101</td><td bgcolor='#eeeeec' align='right'>414184</td><td bgcolor='#eeeeec'>postUser( <span>$tab = </span><span>[]</span> )</td><td title='C:\wamp64\www\exposition_virtuelle_Einstein\api\api_controller.php' bgcolor='#eeeeec'>...\api_controller.php<b>:</b>73</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>3</td><td bgcolor='#eeeeec' align='center'>0.0102</td><td bgcolor='#eeeeec' align='right'>416200</td><td bgcolor='#eeeeec'><a href='http: //www.php.net/PDOStatement.execute' target='_new'>execute</a>(  )</td><td title='C:\wamp64\www\exposition_virtuelle_Einstein\api\api_model.php' bgcolor='#eeeeec'>...\api_model.php<b>:</b>128</td></tr>
+</table></font>

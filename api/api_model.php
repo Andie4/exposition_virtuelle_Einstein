@@ -363,7 +363,6 @@ function postResaComplet($tab)
     // Insérer les billets liés à cette réservation
     foreach ($tab["billets"] as $billet) {
         // Insérer le billet avec la réservation liée
-        var_dump($billet);
         postUser(tab: $billet);
         $userId = $db->lastInsertId();
         $billetInfo = [
@@ -371,14 +370,13 @@ function postResaComplet($tab)
             "resa" => $resaId,
             "tarif" => $billet["tarif"]
         ];
-        var_dump($billetInfo);
         postBillet($billetInfo);
     }
 
     return [
         "success" => true,
         "message" => "Réservation et billets ajoutés avec succès.",
-        "user_id" => $respId,
+        "resp_id" => $respId,
         "reservation_id" => $resaId
     ];
 

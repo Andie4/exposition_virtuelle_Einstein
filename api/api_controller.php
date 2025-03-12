@@ -1,12 +1,24 @@
 <?php
-header("Access-Control-Allow-Origin: *"); 
+header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE");
-header("Access-Control-Allow-Headers: Content-Type"); 
+header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 
 require_once 'api_model.php';
+require_once 'auth.php'; // On inclut l'authentification
 
 $request_method = $_SERVER['REQUEST_METHOD'];
+
+// Exclure certaines routes de la vérification du token (ex: login)
+$public_routes = [
+    "POST" => ["admin_login","resaComplet"]
+];
+
+// Vérifier si la route est protégée
+$type = isset($_GET["type"]) ? $_GET["type"] : null;
+if (!in_array($type, $public_routes[$request_method] ?? [])) {
+    $user_id = verifyToken(); // Vérifie le token et récupère l'ID utilisateur
+}
 
 switch ($request_method) {
     case "GET":
@@ -45,14 +57,17 @@ switch ($request_method) {
             case "admin_login":
                 $user = checkAdmin($_POST['login'], $_POST['mdp']);
                 if ($user) {
-                    echo json_encode(["success" => true, "message" => "Connexion réussie"]);
+                    $token = generateToken($user["id_admin"]);
+                    echo json_encode(["success" => true, "message" => "Connexion réussie","token" => $token]);
                 } else {
                     echo json_encode(["success" => false, "message" => "Identifiants incorrects"]);
                 }
                 header("Content-Type: application/json");
                 break;
             case "resaComplet":
-                postResaComplet($_POST);
+                $result = postResaComplet($_POST);
+                header("Content-Type: application/json");
+                echo json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
                 break;
             case "user":
                 postUser($_POST);

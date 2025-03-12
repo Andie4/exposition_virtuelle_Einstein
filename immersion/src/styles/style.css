@@ -26,11 +26,11 @@ body {
     object-fit: cover;
 }
 
-#tv-button.visible {
+#play.visible {
     opacity: 1;
 }
 
-#tv-button {
+#play {
     position: absolute;
     top: 25%; 
     right: 15%;
@@ -57,5 +57,14 @@ body {
     100% {
         opacity: 0;
     }
+}
+
+
+
+
+/* vidéo*/
+video{
+    width: 12rem;
+    height: 12rem;
 }
 

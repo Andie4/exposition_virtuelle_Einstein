@@ -51,6 +51,9 @@ switch ($request_method) {
                 }
                 header("Content-Type: application/json");
                 break;
+            case "resaComplet":
+                postResaComplet($_POST);
+                break;
             case "user":
                 postUser($_POST);
                 break;

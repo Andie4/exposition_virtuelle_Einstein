@@ -133,11 +133,11 @@ function postUser($tab)
 function postResa($tab)
 {
     global $db;
-    $requete = "INSERT INTO resa VALUES (NULL, :date, :heure, :mail);";
+    $requete = "INSERT INTO resa VALUES (NULL, :date, :heure, :responsable);";
     $stmt = $db->prepare($requete);
     $stmt->bindParam(':date', $tab["date"], PDO::PARAM_STR);
     $stmt->bindParam(':heure', $tab["heure"], PDO::PARAM_STR);
-    $stmt->bindParam(':mail', $tab["mail"], PDO::PARAM_STR);
+    $stmt->bindParam(':responsable', $tab["responsable"], PDO::PARAM_STR);
     $stmt->execute();
 }
 ;
@@ -341,14 +341,17 @@ function checkAdmin($login, $mdp)
 function postResaComplet($tab)
 {
     global $db;
-
     // Insérer l'utilisateur responsable de la réservation
     postUser($tab["responsable"]);
     $respId = $db->lastInsertId();
 
-
     // Insérer la réservation
-    postResa($tab["reservation"]);
+    $resaInfo= [
+        "date" => $tab["reservation"]["date"],
+        "heure" => $tab["reservation"]["heure"],
+        "responsable" => $respId
+    ];
+    postResa($resaInfo);
     $resaId = $db->lastInsertId();
 
 
@@ -360,13 +363,15 @@ function postResaComplet($tab)
     // Insérer les billets liés à cette réservation
     foreach ($tab["billets"] as $billet) {
         // Insérer le billet avec la réservation liée
-        postUser($billet);
+        var_dump($billet);
+        postUser(tab: $billet);
         $userId = $db->lastInsertId();
         $billetInfo = [
             "user" => $userId,
             "resa" => $resaId,
             "tarif" => $billet["tarif"]
         ];
+        var_dump($billetInfo);
         postBillet($billetInfo);
     }
 

@@ -2,14 +2,15 @@
 <font size='1'><table class='xdebug-error xe-uncaught-exception' dir='ltr' border='1' cellspacing='0' cellpadding='1'>
 <tr><th align='left' bgcolor='#f57900' colspan="5"><span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span> Fatal error: Uncaught PDOException: SQLSTATE[
     23000
-]: Integrity constraint violation: 1048 Le champ 'nom_user' ne peut être vide (null) in C:\wamp64\www\exposition_virtuelle_Einstein\api\api_model.php on line <i>128</i></th></tr>
+]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`expo_einstein`.`resa`, CONSTRAINT `resa_ibfk_1` FOREIGN KEY (`resp_resa`) REFERENCES `user` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT) in C:\wamp64\www\exposition_virtuelle_Einstein\api\api_model.php on line <i>210</i></th></tr>
 <tr><th align='left' bgcolor='#f57900' colspan="5"><span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span> PDOException: SQLSTATE[
     23000
-]: Integrity constraint violation: 1048 Le champ 'nom_user' ne peut être vide (null) in C:\wamp64\www\exposition_virtuelle_Einstein\api\api_model.php on line <i>128</i></th></tr>
+]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`expo_einstein`.`resa`, CONSTRAINT `resa_ibfk_1` FOREIGN KEY (`resp_resa`) REFERENCES `user` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT) in C:\wamp64\www\exposition_virtuelle_Einstein\api\api_model.php on line <i>210</i></th></tr>
 <tr><th align='left' bgcolor='#e9b96e' colspan='5'>Call Stack</th></tr>
 <tr><th align='center' bgcolor='#eeeeec'>#</th><th align='left' bgcolor='#eeeeec'>Time</th><th align='left' bgcolor='#eeeeec'>Memory</th><th align='left' bgcolor='#eeeeec'>Function</th><th align='left' bgcolor='#eeeeec'>Location</th></tr>
-<tr><td bgcolor='#eeeeec' align='center'>1</td><td bgcolor='#eeeeec' align='center'>0.0028</td><td bgcolor='#eeeeec' align='right'>364080</td><td bgcolor='#eeeeec'>{main
+<tr><td bgcolor='#eeeeec' align='center'>1</td><td bgcolor='#eeeeec' align='center'>0.0001</td><td bgcolor='#eeeeec' align='right'>363392</td><td bgcolor='#eeeeec'>{main
 }(  )</td><td title='C:\wamp64\www\exposition_virtuelle_Einstein\api\api_controller.php' bgcolor='#eeeeec'>...\api_controller.php<b>:</b>0</td></tr>
-<tr><td bgcolor='#eeeeec' align='center'>2</td><td bgcolor='#eeeeec' align='center'>0.0101</td><td bgcolor='#eeeeec' align='right'>414184</td><td bgcolor='#eeeeec'>postUser( <span>$tab = </span><span>[]</span> )</td><td title='C:\wamp64\www\exposition_virtuelle_Einstein\api\api_controller.php' bgcolor='#eeeeec'>...\api_controller.php<b>:</b>73</td></tr>
-<tr><td bgcolor='#eeeeec' align='center'>3</td><td bgcolor='#eeeeec' align='center'>0.0102</td><td bgcolor='#eeeeec' align='right'>416200</td><td bgcolor='#eeeeec'><a href='http: //www.php.net/PDOStatement.execute' target='_new'>execute</a>(  )</td><td title='C:\wamp64\www\exposition_virtuelle_Einstein\api\api_model.php' bgcolor='#eeeeec'>...\api_model.php<b>:</b>128</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>2</td><td bgcolor='#eeeeec' align='center'>0.0058</td><td bgcolor='#eeeeec' align='right'>414888</td><td bgcolor='#eeeeec'>putResa( <span>$_PUT = </span><span>[&#39;date&#39; =&gt; &#39;2025-12-05&#39;, &#39;heure&#39; =&gt; &#39;10: 30&#39;, &#39;responsable&#39; =&gt; &#39;15&#39;, &#39;id_resa&#39; =&gt; &#39;5&#39;
+]</span> )</td><td title='C:\wamp64\www\exposition_virtuelle_Einstein\api\api_controller.php' bgcolor='#eeeeec'>...\api_controller.php<b>:</b>107</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>3</td><td bgcolor='#eeeeec' align='center'>0.0058</td><td bgcolor='#eeeeec' align='right'>417056</td><td bgcolor='#eeeeec'><a href='http: //www.php.net/PDOStatement.execute' target='_new'>execute</a>(  )</td><td title='C:\wamp64\www\exposition_virtuelle_Einstein\api\api_model.php' bgcolor='#eeeeec'>...\api_model.php<b>:</b>210</td></tr>
 </table></font>

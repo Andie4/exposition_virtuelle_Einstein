@@ -117,7 +117,12 @@ function postUser($tab)
     global $db;
     $requete = "INSERT INTO user VALUES (NULL,:mail, :nom, :prenom);";
     $stmt = $db->prepare($requete);
-    $stmt->bindParam(':mail', $tab["mail"], PDO::PARAM_STR);
+    if (!isset($tab["mail"])){
+        $mail=NULL;
+    } else {
+        $mail=$tab["mail"];
+    }
+    $stmt->bindParam(':mail', $mail, PDO::PARAM_STR);
     $stmt->bindParam(':nom', $tab["nom"], PDO::PARAM_STR);
     $stmt->bindParam(':prenom', $tab["prenom"], PDO::PARAM_STR);
     $stmt->execute();
@@ -315,7 +320,8 @@ function deleteAdmin($id)
 
 //  =============================================================  CHECK  ==================================================================
 
-function checkAdmin($login, $mdp) {
+function checkAdmin($login, $mdp)
+{
     global $db;
 
     $sql = "SELECT * FROM admin WHERE login_admin = :login";
@@ -328,4 +334,47 @@ function checkAdmin($login, $mdp) {
     }
 
     return null;
+}
+
+//  =============================================================  RESA COMP  =============================================================
+
+function postResaComplet($tab)
+{
+    global $db;
+
+    // Insérer l'utilisateur responsable de la réservation
+    postUser($tab["responsable"]);
+    $respId = $db->lastInsertId();
+
+
+    // Insérer la réservation
+    postResa($tab["reservation"]);
+    $resaId = $db->lastInsertId();
+
+
+    // Vérifier si des billets sont fournis
+    if (!isset($tab["billets"]) || !is_array($tab["billets"]) || count($tab["billets"]) === 0) {
+        throw new Exception("Aucun billet fourni pour cette réservation.");
+    }
+
+    // Insérer les billets liés à cette réservation
+    foreach ($tab["billets"] as $billet) {
+        // Insérer le billet avec la réservation liée
+        postUser($billet);
+        $userId = $db->lastInsertId();
+        $billetInfo = [
+            "user" => $userId,
+            "resa" => $resaId,
+            "tarif" => $billet["tarif"]
+        ];
+        postBillet($billetInfo);
+    }
+
+    return [
+        "success" => true,
+        "message" => "Réservation et billets ajoutés avec succès.",
+        "user_id" => $respId,
+        "reservation_id" => $resaId
+    ];
+
 }

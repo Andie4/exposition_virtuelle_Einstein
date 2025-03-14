@@ -52,14 +52,15 @@ switch ($request_method) {
         echo json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         break;
     case "POST":
+        $result = null;
         switch ($_GET["type"]) {
             case "admin_login":
                 $user = checkAdmin($_POST['login'], $_POST['mdp']);
                 if ($user) {
                     $token = generateToken($user["id_admin"]);
-                    echo json_encode(["success" => true, "message" => "Connexion réussie", "token" => $token]);
+                    $result = ["success" => true, "message" => "Connexion réussie", "token" => $token];
                 } else {
-                    echo json_encode(["success" => false, "message" => "Identifiants incorrects"]);
+                    $result = ["success" => false, "message" => "Identifiants incorrects"];
                 }
                 header("Content-Type: application/json");
                 break;
@@ -86,7 +87,7 @@ switch ($request_method) {
         echo json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         break;
     case "PUT":
-
+        $result = null;
         $rawData = file_get_contents("php://input");
         if (strpos($_SERVER["CONTENT_TYPE"], "application/json") !== false) {
             $putData = json_decode($rawData, true);
@@ -107,7 +108,6 @@ switch ($request_method) {
                 $result = putResa($putData);
                 break;
             case "billet":
-                echo json_encode($putData);
                 $result = putBillet($putData);
                 break;
             case "tarif":
@@ -121,6 +121,7 @@ switch ($request_method) {
         echo json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         break;
     case "DELETE":
+        $result = null;
         if (empty($_GET["id"])) {
             echo json_encode(["error" => "ID manquant pour la suppression"]);
             exit;

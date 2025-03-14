@@ -137,7 +137,7 @@ function postResa($tab)
 {
     global $db;
     try {
-        $requete = "INSERT INTO resa (date, heure, responsable) VALUES (:date, :heure, :responsable);";
+        $requete = "INSERT INTO resa VALUES (NULL, :date, :heure, :responsable);";
         $stmt = $db->prepare($requete);
         $stmt->bindParam(':date', $tab["date"], PDO::PARAM_STR);
         $stmt->bindParam(':heure', $tab["heure"], PDO::PARAM_STR);
@@ -155,11 +155,12 @@ function postBillet($tab)
 {
     global $db;
     try {
-        $requete = "INSERT INTO billet (user, resa, tarif) VALUES (:user, :resa, :tarif);";
+        $requete = "INSERT INTO billet VALUES (NULL, :nom, :prenom, :resa, :tarif);";
         $stmt = $db->prepare($requete);
-        $stmt->bindParam(':user', $tab["user"], PDO::PARAM_INT);
+        $stmt->bindParam(':nom', $tab["nom"], PDO::PARAM_STR);
+        $stmt->bindParam(':prenom', $tab["prenom"], PDO::PARAM_STR);
         $stmt->bindParam(':resa', $tab["resa"], PDO::PARAM_INT);
-        $stmt->bindParam(':tarif', $tab["tarif"], PDO::PARAM_STR);
+        $stmt->bindParam(':tarif', $tab["tarif"], PDO::PARAM_INT);
         $stmt->execute();
 
         return ["success" => true, "message" => "Billet ajouté", "id" => $db->lastInsertId()];
@@ -251,12 +252,13 @@ function putBillet($_PUT)
 {
     global $db;
     try {
-        $requete = "UPDATE billet SET user = :user, resa = :resa, tarif = :tarif WHERE id_billet = :id_billet";
+        $requete = "UPDATE billet SET nom = :nom, prenom= :prenom, resa = :resa, tarif = :tarif WHERE id_billet = :id_billet";
         $stmt = $db->prepare($requete);
         $stmt->bindParam(':id_billet', $_PUT["id_billet"], PDO::PARAM_INT);
-        $stmt->bindParam(':user', $_PUT["user"], PDO::PARAM_INT);
+        $stmt->bindParam(':nom', $_PUT["nom"], PDO::PARAM_STR);
+        $stmt->bindParam(':prenom', $_PUT["prenom"], PDO::PARAM_STR);
         $stmt->bindParam(':resa', $_PUT["resa"], PDO::PARAM_INT);
-        $stmt->bindParam(':tarif', $_PUT["tarif"], PDO::PARAM_STR);
+        $stmt->bindParam(':tarif', $_PUT["tarif"], PDO::PARAM_INT);
         $stmt->execute();
 
         return ["success" => $stmt->rowCount() > 0, "message" => $stmt->rowCount() > 0 ? "Billet mis à jour" : "Aucune modification"];
@@ -419,6 +421,7 @@ function postResaComplet($tab)
         "heure" => $tab["reservation"]["heure"],
         "responsable" => $respId
     ];
+    var_dump($resaInfo);
     postResa($resaInfo);
     $resaId = $db->lastInsertId();
 
@@ -431,10 +434,9 @@ function postResaComplet($tab)
     // Insérer les billets liés à cette réservation
     foreach ($tab["billets"] as $billet) {
         // Insérer le billet avec la réservation liée
-        postUser(tab: $billet);
-        $userId = $db->lastInsertId();
         $billetInfo = [
-            "user" => $userId,
+            "nom" => $billet["nom"],
+            "prenom" => $billet["prenom"],
             "resa" => $resaId,
             "tarif" => $billet["tarif"]
         ];

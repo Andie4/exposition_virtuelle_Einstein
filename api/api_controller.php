@@ -1,16 +1,27 @@
 <?php
-header("Access-Control-Allow-Origin: *"); 
+header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE");
-header("Access-Control-Allow-Headers: Content-Type"); 
+header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 
 require_once 'api_model.php';
+require_once 'auth.php';
 
 $request_method = $_SERVER['REQUEST_METHOD'];
 
+$public_routes = [
+    "POST" => ["admin_login", "resaComplet"]
+];
+
+// Vérifier si la route est protégée
+$type = isset($_GET["type"]) ? $_GET["type"] : null;
+if (!in_array($type, $public_routes[$request_method] ?? [])) {
+    $user_id = verifyToken(); 
+}
+
 switch ($request_method) {
     case "GET":
-        $result = null; // Initialiser la variable
+        $result = null;
 
         if (!empty($_GET["type"])) {
             switch ($_GET["type"]) {
@@ -41,70 +52,100 @@ switch ($request_method) {
         echo json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         break;
     case "POST":
+        $result = null;
         switch ($_GET["type"]) {
             case "admin_login":
                 $user = checkAdmin($_POST['login'], $_POST['mdp']);
                 if ($user) {
-                    echo json_encode(["success" => true, "message" => "Connexion réussie"]);
+                    $token = generateToken($user["id_admin"]);
+                    $result = ["success" => true, "message" => "Connexion réussie", "token" => $token];
                 } else {
-                    echo json_encode(["success" => false, "message" => "Identifiants incorrects"]);
+                    $result = ["success" => false, "message" => "Identifiants incorrects"];
                 }
                 header("Content-Type: application/json");
                 break;
+            case "resaComplet":
+                $result = postResaComplet($_POST);
+                break;
             case "user":
-                postUser($_POST);
+                $result = postUser($_POST);
                 break;
             case "resa":
-                postResa($_POST);
+                $result = postResa($_POST);
                 break;
             case "billet":
-                postBillet($_POST);
+                $result = postBillet($_POST);
                 break;
             case "tarif":
-                postTarif($_POST);
+                $result = postTarif($_POST);
                 break;
             case "admin":
-                postAdmin($_POST);
+                $result = postAdmin($_POST);
                 break;
         }
+        header('Content-Type: application/json');
+        echo json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         break;
     case "PUT":
+        $result = null;
+        $rawData = file_get_contents("php://input");
+        if (strpos($_SERVER["CONTENT_TYPE"], "application/json") !== false) {
+            $putData = json_decode($rawData, true);
+        } else {
+            parse_str($rawData, $putData);
+        }
+
+        if (!$putData) {
+            echo json_encode(["error" => "Données PUT invalides"]);
+            exit;
+        }
+
         switch ($_GET["type"]) {
             case "user":
-                putUser($_PUT);
+                $result = putUser($putData);
                 break;
             case "resa":
-                putResa($_PUT);
+                $result = putResa($putData);
                 break;
             case "billet":
-                putBillet($_PUT);
+                $result = putBillet($putData);
                 break;
             case "tarif":
-                putTarif($_PUT);
+                $result = putTarif($putData);
                 break;
             case "admin":
-                putAdmin($_PUT);
+                $result = putAdmin($putData);
                 break;
         }
+        header('Content-Type: application/json');
+        echo json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         break;
     case "DELETE":
+        $result = null;
+        if (empty($_GET["id"])) {
+            echo json_encode(["error" => "ID manquant pour la suppression"]);
+            exit;
+        }
+
         switch ($_GET["type"]) {
             case "user":
-                deleteUser($_GET["id"]);
+                $result = deleteUser($_GET["id"]);
                 break;
             case "resa":
-                deleteResa($_GET["id"]);
+                $result = deleteResa($_GET["id"]);
                 break;
             case "billet":
-                deleteBillet($_GET["id"]);
+                $result = deleteBillet($_GET["id"]);
                 break;
             case "tarif":
-                deleteTarif($_GET["id"]);
+                $result = deleteTarif($_GET["id"]);
                 break;
             case "admin":
-                deleteAdmin($_GET["id"]);
+                $result = deleteAdmin($_GET["id"]);
                 break;
         }
+        header('Content-Type: application/json');
+        echo json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         break;
     default:
         break;

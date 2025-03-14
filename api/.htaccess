@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteBase /exposition_virtuelle_Einstein/api/
+
+# Si on accède à /backend/api/, afficher index.php (doc API)
+RewriteRule ^/?$ index.php [L]
+
+# Rediriger /backend/api/user/1 vers api_controller.php?type=user&id=1
+RewriteRule ^(\w+)/(\d+)$ api_controller.php?type=$1&id=$2 [QSA,L]
+
+# Rediriger /backend/api/user vers api_controller.php?type=user
+RewriteRule ^(\w+)$ api_controller.php?type=$1 [QSA,L]

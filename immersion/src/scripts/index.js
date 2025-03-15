@@ -58,38 +58,42 @@ if (tvButton) {
 
 
 
-/////////lancement de la vidéo neige + écran blanc 
-document.addEventListener("DOMContentLoaded", function () {
-    const playlist = [
-        {
-            name: "video1.webm",
-        },
-        {
-            name: "video2.webm",
-        }];
+// /////////lancement de la vidéo neige + écran blanc 
+// document.addEventListener("DOMContentLoaded", function () {
+//     const playlist = [
+//         {
+//             name: "video1.webm",
+//         },
+//         {
+//             name: "video2.webm",
+//         }];
 
-        console.log(playlist);
+//         console.log(playlist);
 
-        const video = document.getElementById("video");
+//         const video = document.getElementById("video");
 
-        //Fonction qui lance la vidéo
-        const playVideo = () => {
-            video.play();
-        };
+//         //Fonction qui lance la vidéo
+//         const playVideo = () => {
+//             video.play();
+//         };
 
-        const container = document.getElementById("container");
+//         const container = document.getElementById("container");
 
-           //Évènement qui lance la vidéo si l'utilisateur clique sur play
-    document.getElementById('play').addEventListener('click', function() {
-        alert("tesssstttt");
-        container.style.display = "none";
-        playVideo();
+//            //Évènement qui lance la vidéo si l'utilisateur clique sur play
+//         document.getElementById('play').addEventListener('click', function() {
+//         // alert("tesssstttt");
+//         container.style.display = "none";
+//         playVideo();
+//         addEventListener('ended',video,false);
+//         function video() {
+//             window.location.href = "lobby.html";
+//     }
         
-    });
+//     });
 
-        // media.removeAttribute("controls");
-        // controls.style.visibility = "visible";
+//         // media.removeAttribute("controls");
+//         // controls.style.visibility = "visible";
 
-    });
+//     });
 
 

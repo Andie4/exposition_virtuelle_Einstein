@@ -94,8 +94,21 @@ document.addEventListener('click', () => {
     if (intersects.length > 0) {
         console.log(intersects[0].object.name);
 
-        
-        intersects[0].object.material.color.set(0xff0000);
+        if (intersects[0].object.name === "boussoleEcran") {
+            window.location.href = "boussole.html";
+        }
+        if (intersects[0].object.name === "journalEcran") {
+            window.location.href = "journal.html";
+        }
+        if (intersects[0].object.name === "balleEcran") {
+            window.location.href = "balle.html";
+        }
+        if (intersects[0].object.name === "cosmologieEcran") {
+            window.location.href = "cosmos.html";
+        }
+        if (intersects[0].object.name === "bombe") {
+            window.location.href = "bombe.html";
+        }
     }
 });
 

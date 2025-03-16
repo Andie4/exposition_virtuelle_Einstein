@@ -16,16 +16,15 @@ function onMouseMove(event) {
 // scene
 const scene = new THREE.Scene();
 
-///////////////////////////////////////////////////////////////////////
 // lumieres
 const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 scene.add(ambientLight);
 
-const light = new THREE.DirectionalLight(0xff00, 1);
-light.position.set(10, 10, 15);
+const light = new THREE.DirectionalLight(0xffffff, 1);
+light.position.set(1, -8, 1);
 scene.add(light);
 
-///////////////////////////////////////////////////////////////////////
+
 // //point central du code 
 // const center = new THREE.Mesh(
 //     new THREE.BoxGeometry(0.1, 0.1, 0.1),
@@ -64,15 +63,15 @@ document.body.appendChild(renderer.domElement);
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.autorotate = true;
 
-///////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
 
 // Chargement du modèle 3D 
 const loader = new GLTFLoader();
 loader.load(
-    'models/lobby.glb',
+    'models/salleLobby.glb',
     (gltf) => {
         const model = gltf.scene;
-        model.position.set(0, 0, 0);
+        model.position.set(0, -0.0008, 0);
         model.rotateY(5);
         scene.add(model);
         console.log("Modèle chargé");
@@ -85,6 +84,13 @@ loader.load(
     }
 );
 
+const objetLiens = [
+    { name: "ecranBoussole", objet: "boussole", scene: "sceneBoussole" },
+    { name: "ecranJournal", objet: "journal", scene: "sceneJournal" },
+    { name: "ecranBalle", objet: "balle", scene: "sceneBalle" },
+    { name: "ecranCosmos", objet: "cosmos", scene: "sceneCosmos" },
+    { name: "ecranBombe", objet: "bombe", scene: "sceneBombe" }
+];
 
 const raycaster = new THREE.Raycaster();
 
@@ -92,25 +98,22 @@ document.addEventListener('click', () => {
     raycaster.setFromCamera(mouse, camera);
     const intersects = raycaster.intersectObjects(scene.children, true);
     if (intersects.length > 0) {
-        console.log(intersects[0].object.name);
-
-        if (intersects[0].object.name === "boussoleEcran") {
-            window.location.href = "boussole.html";
-        }
-        if (intersects[0].object.name === "journalEcran") {
-            window.location.href = "journal.html";
-        }
-        if (intersects[0].object.name === "balleEcran") {
-            window.location.href = "balle.html";
-        }
-        if (intersects[0].object.name === "cosmologieEcran") {
-            window.location.href = "cosmos.html";
-        }
-        if (intersects[0].object.name === "bombe") {
-            window.location.href = "bombe.html";
+        const clickedObject = intersects[0].object.name;
+        
+        const objetSelectionne = objetLiens.find(obj => obj.name === clickedObject);
+        
+        if (objetSelectionne) {
+            // Stocker l’objet sélectionné dans localStorage
+            localStorage.setItem("objetSelectionne", objetSelectionne.objet);
+            localStorage.setItem("sceneSelectionnee", objetSelectionne.scene);
+            
+            // Rediriger vers la page qui affiche l'objet
+            window.location.href = "objet.html";
         }
     }
 });
+
+
 
 
 ///////////////////////////////////////////////////////////////////////

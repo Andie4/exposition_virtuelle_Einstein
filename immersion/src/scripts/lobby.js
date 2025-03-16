@@ -63,7 +63,7 @@ document.body.appendChild(renderer.domElement);
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.autorotate = true;
 
-//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 
 // Chargement du modèle 3D 
 const loader = new GLTFLoader();
@@ -85,11 +85,23 @@ loader.load(
 );
 
 const objetLiens = [
-    { name: "ecranBoussole", objet: "boussole", scene: "sceneBoussole" },
-    { name: "ecranJournal", objet: "journal", scene: "sceneJournal" },
-    { name: "ecranBalle", objet: "balle", scene: "sceneBalle" },
-    { name: "ecranCosmos", objet: "cosmos", scene: "sceneCosmos" },
-    { name: "ecranBombe", objet: "bombe", scene: "sceneBombe" }
+    { 
+        name: "ecranBoussole", 
+        objet: "boussole",  },
+    {
+        name: "ecranBalle",
+        objet: "balle"
+    },
+    {
+        name:"ecranJournal",
+        objet: "journal"},
+    {
+        name: "ecranBombe",
+        objet: "bombe"},
+    {
+        name: "ecranCosmos",
+        objet: "cosmos"
+    }
 ];
 
 const raycaster = new THREE.Raycaster();
@@ -97,23 +109,16 @@ const raycaster = new THREE.Raycaster();
 document.addEventListener('click', () => {
     raycaster.setFromCamera(mouse, camera);
     const intersects = raycaster.intersectObjects(scene.children, true);
+    
     if (intersects.length > 0) {
         const clickedObject = intersects[0].object.name;
-        
-        const objetSelectionne = objetLiens.find(obj => obj.name === clickedObject);
-        
-        if (objetSelectionne) {
-            // Stocker l’objet sélectionné dans localStorage
-            localStorage.setItem("objetSelectionne", objetSelectionne.objet);
-            localStorage.setItem("sceneSelectionnee", objetSelectionne.scene);
-            
-            // Rediriger vers la page qui affiche l'objet
-            window.location.href = "objet.html";
+        const foundObject = objetLiens.find(obj => obj.name === clickedObject);
+        if (foundObject) {
+            localStorage.setItem("objetSelectionne", foundObject.objet);
+            window.location.href = "objets.html"; 
         }
     }
 });
-
-
 
 
 ///////////////////////////////////////////////////////////////////////

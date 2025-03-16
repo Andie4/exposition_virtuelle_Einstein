@@ -6,6 +6,9 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 const mouse = new THREE.Vector2(1,1);
 document.addEventListener('mousemove', onMouseMove , false);
 
+
+const raycaster = new THREE.Raycaster();
+
 function onMouseMove(event) {
     event.preventDefault();
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -54,15 +57,20 @@ document.body.appendChild(renderer.domElement);
 //orbit control
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.autorotate = true;
-///////////////////////////////////////////////////////////////////////
-// appel de tous les objets 3D
+//////////////////////////////////////////////////////////////////////
+
+// appel d'un objet 3d en fonction de celui qui à été cliqué
+const objetSelectionne = localStorage.getItem("objetSelectionne");
+console.log(objetSelectionne);
+    if (!objetSelectionne) {
+        console.error("Aucun objet sélectionné");
+        window.location.href = "lobby.html";
+    }
+
 
 const loader = new GLTFLoader();
 loader.load(
-    'models/salleLobby.glb',
-    'models/bombe.glb',
-    'models/boussole.glb',
-    'models/balle.glb',
+    `models/${objetSelectionne}.glb`,
     (gltf) => {
         const model = gltf.scene;
         model.position.set(0, -0.0008, 0);
@@ -78,7 +86,28 @@ loader.load(
     }
 );
 
+//si l'objet est en svg
+    // Associe l'objet à l'image correspondante
+    const objetsSVG = {
+        "ecranCosmos": "images/cosmos.svg",
+        "ecranJournal": "images/journal.svg"
+    };
 
+    // Change l'image affichée
+    if (objetsSVG[objetSelectionne]) {
+        document.getElementById("imageSVG").src = objetsSVG[objetSelectionne];
+    }
+
+
+
+document.addEventListener('click', () => {
+    raycaster.setFromCamera(mouse, camera);
+    const intersects = raycaster.intersectObjects(scene.children, true);
+    
+    if (intersects.length > 0) {
+        window.location.href = `${objetSelectionne}.html`; 
+    }
+});
 
 
 

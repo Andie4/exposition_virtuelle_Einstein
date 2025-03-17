@@ -86,17 +86,16 @@ loader.load(
     }
 );
 
-//si l'objet est en svg
-    // Associe l'objet à l'image correspondante
-    const objetsSVG = {
-        "ecranCosmos": "images/cosmos.svg",
-        "ecranJournal": "images/journal.svg"
-    };
+// //si l'objet est en svg
+//     const objetsSVG = {
+//         "ecranCosmos": "images/cosmos.svg",
+//         "ecranJournal": "images/journal.svg"
+//     };
 
-    // Change l'image affichée
-    if (objetsSVG[objetSelectionne]) {
-        document.getElementById("imageSVG").src = objetsSVG[objetSelectionne];
-    }
+//     // adapte l'image a afficher
+//     if (objetsSVG[objetSelectionne]) {
+//         document.getElementById("imageSVG").src = objetsSVG[objetSelectionne];
+//     }
 
 
 

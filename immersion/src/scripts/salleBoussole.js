@@ -5,6 +5,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 const mouse = new THREE.Vector2(1,1);
 document.addEventListener('mousemove', onMouseMove , false);
+const raycaster = new THREE.Raycaster();
 
 function onMouseMove(event) {
     event.preventDefault();

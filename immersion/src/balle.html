@@ -6,23 +6,33 @@
     <title>balle</title>
     <link rel="stylesheet" href="styles/balle.css">
     <script defer type="module" src="scripts/salleBalle.js"></script>
+    <link rel="stylesheet" href="styles/balle.css">
+    <link rel="stylesheet" href="styles/style.css">
 
 </head>
 <body>
+    <div>
+        <button class="btnRetour"><a href="lobby.html">Retour au lobby</a></button>
+        <audio autoplay src="media/objets.MP3"></audio> 
+    </div>    
+
     <video id="background-video" autoplay loop muted>
         <source src="media/salleBalle.mp4" type="video/mp4">
     </video>
+
         
         <div class="content">
-            <h1>test de la video </h1>
-            <button id="btnVideo" >Pause II</button>
-            
-        </div>   
+            <p>test video</p>
+            <button id="btnVideo">Pause II</button>
+        </div>
 
-        <figure>
-            <figcaption></figcaption>
-            <audio autoplay src="media/balle.MP3"></audio> 
-        </figure>
+        <div>
+            <button id="btnSon" class="btnSon">couper le son</button>
+        </div>
+
+
+
+        
 
 </body>
 </html>

@@ -15,6 +15,8 @@
     top: 0;
     bottom: 0;
     z-index: -1;
+    opacity: 0.3;
+    
     }
     
     h1, h2, #btnVideo{
@@ -43,3 +45,33 @@
     margin-left: 50%;
     transform: translateX(-50%);
     }
+
+
+
+.btnSon{
+    background-color: #f1f1f1;
+    color: black;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    font-family: 'Roboto', sans-serif;
+    position: absolute;
+    top: 85%;
+    left: 10%;
+    transform: translate(-20%, 20%);
+
+}
+
+.btnSon:hover {
+    background-color: rgb(32, 32, 32);
+    color: white;
+}
+
+

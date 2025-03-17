@@ -38,7 +38,7 @@ window.addEventListener('resize', onResize);
 
 // Configuration de la caméra
 const aspect = window.innerWidth / window.innerHeight;
-const camera = new THREE.PerspectiveCamera(75, aspect, 1, 5000);
+const camera = new THREE.PerspectiveCamera(75, aspect, 0.5, 5000);
 camera.position.set(0, -0.5, 1.5);
 camera.lookAt(scene.position);
 

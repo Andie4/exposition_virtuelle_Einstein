@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Nav } from "../component/nav";
+import { Nav } from "../component/nav/index.js";
 import { CardTarif } from "../component/cardTarif/cardTarif.jsx";
 
 export function GestTarif() {

@@ -7,6 +7,7 @@ import { GestTarif } from './pages/gest_tarif'
 import { GestResa } from './pages/gest_resa'
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import './styles/App.css'
+import { useEffect } from 'react';
 
 
 
@@ -15,7 +16,26 @@ function PrivateRoute({ children }) {
   return isLoggedIn ? children : <Navigate to="/login" />;
 }
 
+
+
 function App() {
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const expirationTime = localStorage.getItem("tokenExpiration");
+
+    if (!token || Date.now() >= expirationTime) {
+        console.log("🚨 Token expiré ou inexistant, déconnexion...");
+        localStorage.removeItem("token");
+        localStorage.removeItem("tokenExpiration");
+        localStorage.removeItem("isLoggedIn");
+
+        if (window.location.pathname !== "/login") {
+            window.location.href = "/login";
+        }
+    }
+}, []);
+
+
   return (
     <>
       <Routes>

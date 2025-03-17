@@ -14,23 +14,43 @@ export function Login() {
     params.append("mdp", mdp);
 
     try {
-        const response = await fetch("http://localhost/exposition_virtuelle_Einstein/api/admin_login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-            },
-            body: params.toString(),
-        });
+        const response = await fetch("https://albert.xploria.fr/api/admin_login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: params.toString(),
+            });
 
         const text = await response.text();
 
-        const data = JSON.parse(text); // Convertir la réponse en JSON
+        const data = JSON.parse(text);
 
         if (data.success) {
             console.log("🎉 Connexion réussie !");
+            console.log(data);
+            const token = data.token;
+            const decodedToken = JSON.parse(atob(token.split(".")[1])); // Décode le JWT
+            const expirationTime = decodedToken.exp * 1000; // Convertit en millisecondes
+            const currentTime = Date.now();
+            const timeoutDuration = expirationTime - currentTime; // Temps restant avant expiration
+        
+            localStorage.setItem("token", token);
+            localStorage.setItem("tokenExpiration", expirationTime);
             localStorage.setItem("isLoggedIn", "true");
+        
+            // Planifie la déconnexion automatique
+            setTimeout(() => {
+                console.log("⏳ Token expiré, déconnexion...");
+                localStorage.removeItem("token");
+                localStorage.removeItem("tokenExpiration");
+                localStorage.removeItem("isLoggedIn");
+                window.location.href = "/login"; // Redirection vers la page de login
+            }, timeoutDuration);
+        
             window.location.href = "/home";
-        } else {
+        }
+         else {
             console.warn("⚠️ Identifiants incorrects !");
             setMessage(data.message || "Identifiants incorrects");
         }

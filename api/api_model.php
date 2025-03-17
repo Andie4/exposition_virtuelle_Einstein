@@ -5,27 +5,6 @@ $db = new PDO('mysql:host=localhost;dbname=expo_einstein', 'root', '');
 
 // ===============================================================  GET  ===================================================================
 
-// GET USER
-function getOneUser($id)
-{
-    global $db;
-    $requete = "SELECT * FROM user WHERE id_user=:id";
-    $stmt = $db->prepare($requete);
-    $stmt->bindParam(':id', $id, PDO::PARAM_STR);
-    $stmt->execute();
-    return $stmt->fetch(PDO::FETCH_ASSOC);
-}
-;
-
-function getAllUser()
-{
-    global $db;
-    $requete = "SELECT * FROM user";
-    $stmt = $db->query($requete);
-    return $result = $stmt->fetchall(PDO::FETCH_ASSOC);
-}
-;
-
 // GET RESA
 function getOneResa($id)
 {
@@ -111,44 +90,6 @@ function getAllAdmin()
 
 // ===============================================================  POST  ==================================================================
 
-// POST USER
-function postUser($tab)
-{
-    global $db;
-    try {
-        $requete = "INSERT INTO user VALUES (NULL, :mail, :nom, :prenom);";
-        $stmt = $db->prepare($requete);
-
-        $mail = isset($tab["mail"]) ? $tab["mail"] : NULL;
-
-        $stmt->bindParam(':mail', $mail, PDO::PARAM_STR);
-        $stmt->bindParam(':nom', $tab["nom"], PDO::PARAM_STR);
-        $stmt->bindParam(':prenom', $tab["prenom"], PDO::PARAM_STR);
-        $stmt->execute();
-
-        return ["success" => true, "message" => "Utilisateur ajouté", "id" => $db->lastInsertId()];
-    } catch (PDOException $e) {
-        return ["success" => false, "message" => $e->getMessage()];
-    }
-}
-
-// POST RESA
-function postResa($tab)
-{
-    global $db;
-    try {
-        $requete = "INSERT INTO resa VALUES (NULL, :date, :heure, :responsable);";
-        $stmt = $db->prepare($requete);
-        $stmt->bindParam(':date', $tab["date"], PDO::PARAM_STR);
-        $stmt->bindParam(':heure', $tab["heure"], PDO::PARAM_STR);
-        $stmt->bindParam(':responsable', $tab["responsable"], PDO::PARAM_STR);
-        $stmt->execute();
-
-        return ["success" => true, "message" => "Réservation ajoutée", "id" => $db->lastInsertId()];
-    } catch (PDOException $e) {
-        return ["success" => false, "message" => $e->getMessage()];
-    }
-}
 
 // POST BILLET
 function postBillet($tab)
@@ -167,6 +108,44 @@ function postBillet($tab)
     } catch (PDOException $e) {
         return ["success" => false, "message" => $e->getMessage()];
     }
+}
+
+//  =================  RESA COMP  ======================
+
+function postResaComplet($tab)
+{
+    global $db;
+    $requete = "INSERT INTO resa VALUES (NULL, :date, :heure, :mail, :nom, :prenom);";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':date', $tab["date"], PDO::PARAM_STR);
+    $stmt->bindParam(':heure', $tab["heure"], PDO::PARAM_STR);
+    $stmt->bindParam(':mail', $tab["mail"], PDO::PARAM_STR);
+    $stmt->bindParam(':nom', $tab["nom"], PDO::PARAM_STR);
+    $stmt->bindParam(':prenom', $tab["prenom"], PDO::PARAM_STR);
+    $stmt->execute();
+
+    $resaId = $db->lastInsertId();
+
+    if (!isset($tab["billets"]) || !is_array($tab["billets"]) || count($tab["billets"]) === 0) {
+        throw new Exception("Aucun billet fourni pour cette réservation.");
+    }
+
+    foreach ($tab["billets"] as $billet) {
+        $billetInfo = [
+            "nom" => $billet["nom"],
+            "prenom" => $billet["prenom"],
+            "resa" => $resaId,
+            "tarif" => $billet["tarif"]
+        ];
+        postBillet($billetInfo);
+    }
+
+    return [
+        "success" => true,
+        "message" => "Réservation et billets ajoutés avec succès.",
+        "reservation_id" => $resaId
+    ];
+
 }
 
 // POST TARIF
@@ -209,36 +188,20 @@ function postAdmin($tab)
 
 // ===============================================================  PUT  ===================================================================
 
-// PUT USER
-function putUser($_PUT)
-{
-    global $db;
-    try {
-        $requete = "UPDATE user SET mail_user = :mail, nom_user = :nom, prenom_user = :prenom WHERE id_user = :id_user";
-        $stmt = $db->prepare($requete);
-        $stmt->bindParam(':id_user', $_PUT["id_user"], PDO::PARAM_INT);
-        $stmt->bindParam(':mail', $_PUT["mail"], PDO::PARAM_STR);
-        $stmt->bindParam(':nom', $_PUT["nom"], PDO::PARAM_STR);
-        $stmt->bindParam(':prenom', $_PUT["prenom"], PDO::PARAM_STR);
-        $stmt->execute();
-
-        return ["success" => $stmt->rowCount() > 0, "message" => $stmt->rowCount() > 0 ? "Utilisateur mis à jour" : "Aucune modification"];
-    } catch (PDOException $e) {
-        return ["success" => false, "message" => $e->getMessage()];
-    }
-}
-
 // PUT RESA
 function putResa($_PUT)
 {
     global $db;
     try {
-        $requete = "UPDATE resa SET date_resa = :date, heure_resa = :heure, resp_resa = :resp WHERE id_resa = :id_resa";
+        $requete = "UPDATE resa SET date_resa = :date, heure_resa = :heure, mail_resa = :mail, nom_resa = :nom, prenom_resa = :prenom 
+        WHERE id_resa = :id_resa";
         $stmt = $db->prepare($requete);
         $stmt->bindParam(':id_resa', $_PUT["id_resa"], PDO::PARAM_INT);
-        $stmt->bindParam(':resp', $_PUT["responsable"], PDO::PARAM_INT);
         $stmt->bindParam(':date', $_PUT["date"], PDO::PARAM_STR);
         $stmt->bindParam(':heure', $_PUT["heure"], PDO::PARAM_STR);
+        $stmt->bindParam(':mail', $_PUT["mail"], PDO::PARAM_STR);
+        $stmt->bindParam(':nom', $_PUT["nom"], PDO::PARAM_STR);
+        $stmt->bindParam(':prenom', $_PUT["prenom"], PDO::PARAM_STR);
         $stmt->execute();
 
         return ["success" => $stmt->rowCount() > 0, "message" => $stmt->rowCount() > 0 ? "Réservation mise à jour" : "Aucune modification"];
@@ -294,7 +257,7 @@ function putAdmin($_PUT)
         $stmt = $db->prepare($requete);
         $stmt->bindParam(':id_admin', $_PUT["id_admin"], PDO::PARAM_INT);
         $stmt->bindParam(':login', $_PUT["login"], PDO::PARAM_STR);
-        
+
         $mdp_hash = password_hash($_PUT["mdp"], PASSWORD_DEFAULT);
         $stmt->bindParam(':mdp', $mdp_hash, PDO::PARAM_STR);
         $stmt->execute();
@@ -307,36 +270,22 @@ function putAdmin($_PUT)
 
 
 // ===============================================================  DELETE  ================================================================
-// DELETE USER
-function deleteUser($id)
-{
-    global $db;
-    try {
-        $requete = "DELETE FROM user WHERE id_user = :id";
-        $stmt = $db->prepare($requete);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-
-        return ["success" => $stmt->rowCount() > 0, "message" => $stmt->rowCount() > 0 ? "Utilisateur supprimé" : "Utilisateur introuvable"];
-    } catch (PDOException $e) {
-        return ["success" => false, "message" => $e->getMessage()];
-    }
-}
-
 // DELETE RESA
 function deleteResa($id)
 {
     global $db;
-    try {
-        $requete = "DELETE FROM resa WHERE id_resa = :id";
-        $stmt = $db->prepare($requete);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
 
-        return ["success" => $stmt->rowCount() > 0, "message" => $stmt->rowCount() > 0 ? "Réservation supprimée" : "Réservation introuvable"];
-    } catch (PDOException $e) {
-        return ["success" => false, "message" => $e->getMessage()];
-    }
+    $requete = "DELETE FROM billet WHERE resa = :id";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+
+    $requete = "DELETE FROM resa WHERE id_resa = :id";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+
+    return ["success" => true, "message" => "Réservation et billets supprimés avec succès."];
 }
 
 // DELETE BILLET
@@ -406,48 +355,6 @@ function checkAdmin($login, $mdp)
     return null;
 }
 
-//  =============================================================  RESA COMP  =============================================================
-
-function postResaComplet($tab)
-{
-    global $db;
-    // Insérer l'utilisateur responsable de la réservation
-    postUser($tab["responsable"]);
-    $respId = $db->lastInsertId();
-
-    // Insérer la réservation
-    $resaInfo = [
-        "date" => $tab["reservation"]["date"],
-        "heure" => $tab["reservation"]["heure"],
-        "responsable" => $respId
-    ];
-    var_dump($resaInfo);
-    postResa($resaInfo);
-    $resaId = $db->lastInsertId();
 
 
-    // Vérifier si des billets sont fournis
-    if (!isset($tab["billets"]) || !is_array($tab["billets"]) || count($tab["billets"]) === 0) {
-        throw new Exception("Aucun billet fourni pour cette réservation.");
-    }
 
-    // Insérer les billets liés à cette réservation
-    foreach ($tab["billets"] as $billet) {
-        // Insérer le billet avec la réservation liée
-        $billetInfo = [
-            "nom" => $billet["nom"],
-            "prenom" => $billet["prenom"],
-            "resa" => $resaId,
-            "tarif" => $billet["tarif"]
-        ];
-        postBillet($billetInfo);
-    }
-
-    return [
-        "success" => true,
-        "message" => "Réservation et billets ajoutés avec succès.",
-        "resp_id" => $respId,
-        "reservation_id" => $resaId
-    ];
-
-}

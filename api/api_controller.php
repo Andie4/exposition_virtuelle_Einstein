@@ -18,7 +18,7 @@ require_once 'auth.php';
 $request_method = $_SERVER['REQUEST_METHOD'];
 
 $public_routes = [
-    "POST" => ["admin_login", "resaComplet"]
+    "POST" => ["admin_login", "resa"]
 ];
 
 // Vérifier si la route est protégée
@@ -33,9 +33,6 @@ switch ($request_method) {
 
         if (!empty($_GET["type"])) {
             switch ($_GET["type"]) {
-                case "user":
-                    $result = !empty($_GET["id"]) ? getOneUser($_GET["id"]) : getAllUser();
-                    break;
                 case "resa":
                     $result = !empty($_GET["id"]) ? getOneResa($_GET["id"]) : getAllResa();
                     break;
@@ -72,14 +69,8 @@ switch ($request_method) {
                 }
                 header("Content-Type: application/json");
                 break;
-            case "resaComplet":
-                $result = postResaComplet($_POST);
-                break;
-            case "user":
-                $result = postUser($_POST);
-                break;
             case "resa":
-                $result = postResa($_POST);
+                $result = postResaComplet($_POST);
                 break;
             case "billet":
                 $result = postBillet($_POST);
@@ -109,9 +100,6 @@ switch ($request_method) {
         }
 
         switch ($_GET["type"]) {
-            case "user":
-                $result = putUser($putData);
-                break;
             case "resa":
                 $result = putResa($putData);
                 break;
@@ -134,11 +122,7 @@ switch ($request_method) {
             echo json_encode(["error" => "ID manquant pour la suppression"]);
             exit;
         }
-
         switch ($_GET["type"]) {
-            case "user":
-                $result = deleteUser($_GET["id"]);
-                break;
             case "resa":
                 $result = deleteResa($_GET["id"]);
                 break;

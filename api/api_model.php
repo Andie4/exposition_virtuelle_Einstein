@@ -3,7 +3,7 @@
 $db = new PDO('mysql:host=localhost;dbname=expo_einstein', 'root', '');
 
 
-// ===============================================================  GET  ===================================================================
+// ===============================================================  GET  ===============================================================
 
 // GET RESA
 function getOneResa($id)
@@ -37,6 +37,16 @@ function getOneBillet($id)
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 ;
+
+function getResaBillet($resaId)
+{
+    global $db;
+    $requete = "SELECT * FROM billet WHERE resa=:resaId";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':resaId', $resaId, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetchall(PDO::FETCH_ASSOC);
+}
 
 function getAllBillet()
 {
@@ -88,7 +98,7 @@ function getAllAdmin()
     return $result = $stmt->fetchall(PDO::FETCH_ASSOC);
 }
 
-// ===============================================================  POST  ==================================================================
+// ===============================================================  POST  ==============================================================
 
 
 // POST BILLET
@@ -170,10 +180,12 @@ function postAdmin($tab)
 {
     global $db;
     try {
-        $requete = "INSERT INTO admin (login, mdp) VALUES (:login, :mdp);";
+        $requete = "INSERT INTO admin VALUES (NULL, :nom, :prenom, :mail, :login, :mdp);";
         $stmt = $db->prepare($requete);
+        $stmt->bindParam(':nom', $tab["nom"], PDO::PARAM_STR);
+        $stmt->bindParam(':prenom', $tab["prenom"], PDO::PARAM_STR);
+        $stmt->bindParam(':mail', $tab["mail"], PDO::PARAM_STR);
         $stmt->bindParam(':login', $tab["login"], PDO::PARAM_STR);
-
         $mdp_hash = password_hash($tab["mdp"], PASSWORD_DEFAULT);
         $stmt->bindParam(':mdp', $mdp_hash, PDO::PARAM_STR);
         $stmt->execute();
@@ -186,7 +198,7 @@ function postAdmin($tab)
 
 
 
-// ===============================================================  PUT  ===================================================================
+// ===============================================================  PUT  ===============================================================
 
 // PUT RESA
 function putResa($_PUT)
@@ -253,11 +265,13 @@ function putAdmin($_PUT)
 {
     global $db;
     try {
-        $requete = "UPDATE admin SET login_admin = :login, mdp_admin = :mdp WHERE id_admin = :id_admin";
+        $requete = "UPDATE admin SET nom_admin=:nom, prenom_admin=:prenom, mail_admin=:mail,login_admin = :login, mdp_admin = :mdp WHERE id_admin = :id_admin";
         $stmt = $db->prepare($requete);
         $stmt->bindParam(':id_admin', $_PUT["id_admin"], PDO::PARAM_INT);
         $stmt->bindParam(':login', $_PUT["login"], PDO::PARAM_STR);
-
+        $stmt->bindParam(':nom', $_PUT["nom"], PDO::PARAM_STR);
+        $stmt->bindParam(':prenom', $_PUT["prenom"], PDO::PARAM_STR);
+        $stmt->bindParam(':mail', $_PUT["mail"], PDO::PARAM_STR);
         $mdp_hash = password_hash($_PUT["mdp"], PASSWORD_DEFAULT);
         $stmt->bindParam(':mdp', $mdp_hash, PDO::PARAM_STR);
         $stmt->execute();
@@ -269,7 +283,7 @@ function putAdmin($_PUT)
 }
 
 
-// ===============================================================  DELETE  ================================================================
+// ===============================================================  DELETE  ============================================================
 // DELETE RESA
 function deleteResa($id)
 {
@@ -337,7 +351,7 @@ function deleteAdmin($id)
 }
 
 
-//  =============================================================  CHECK  ==================================================================
+//  =============================================================  CHECK  ==============================================================
 
 function checkAdmin($login, $mdp)
 {

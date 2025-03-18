@@ -39,6 +39,9 @@ switch ($request_method) {
                 case "billet":
                     $result = !empty($_GET["id"]) ? getOneBillet($_GET["id"]) : getAllBillet();
                     break;
+                case "resa_billet":
+                    $result = !empty($_GET["id"]) ? getResaBillet($_GET["id"]) : "erreur : id de la réservation manquante";
+                    break;
                 case "tarif":
                     $result = !empty($_GET["id"]) ? getOneTarif($_GET["id"]) : getAllTarif();
                     break;

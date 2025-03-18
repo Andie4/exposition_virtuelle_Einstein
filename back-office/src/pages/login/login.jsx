@@ -14,7 +14,7 @@ export function Login() {
     params.append("mdp", mdp);
 
     try {
-        const response = await fetch("https://albert.xploria.fr/api/admin_login", {
+        const response = await fetch("http://localhost/exposition_virtuelle_Einstein/api/admin_login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -30,11 +30,12 @@ export function Login() {
             console.log("🎉 Connexion réussie !");
             console.log(data);
             const token = data.token;
-            const decodedToken = JSON.parse(atob(token.split(".")[1])); // Décode le JWT
-            const expirationTime = decodedToken.exp * 1000; // Convertit en millisecondes
+            const decodedToken = JSON.parse(atob(token.split(".")[1]));
+            const expirationTime = decodedToken.exp * 1000;
             const currentTime = Date.now();
-            const timeoutDuration = expirationTime - currentTime; // Temps restant avant expiration
-        
+            const timeoutDuration = expirationTime - currentTime;
+            
+            localStorage.setItem("id_admin", data.id_admin);
             localStorage.setItem("token", token);
             localStorage.setItem("tokenExpiration", expirationTime);
             localStorage.setItem("isLoggedIn", "true");
@@ -45,7 +46,7 @@ export function Login() {
                 localStorage.removeItem("token");
                 localStorage.removeItem("tokenExpiration");
                 localStorage.removeItem("isLoggedIn");
-                window.location.href = "/login"; // Redirection vers la page de login
+                window.location.href = "/login";
             }, timeoutDuration);
         
             window.location.href = "/home";

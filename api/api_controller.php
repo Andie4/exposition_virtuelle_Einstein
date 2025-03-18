@@ -2,7 +2,6 @@
 header("Access-Control-Allow-Origin: * ");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE");
 header("Access-Control-Allow-Headers: Authorization, Content-Type");
-header("Content-Type: application/json");
 
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     // Répondre aux requêtes OPTIONS
@@ -66,7 +65,7 @@ switch ($request_method) {
                 $user = checkAdmin($_POST['login'], $_POST['mdp']);
                 if ($user) {
                     $token = generateToken($user["id_admin"]);
-                    $result = ["success" => true, "message" => "Connexion réussie", "token" => $token];
+                    $result = ["success" => true, "message" => "Connexion réussie","id_admin" => $user["id_admin"] ,"token" => $token];
                 } else {
                     $result = ["success" => false, "message" => "Identifiants incorrects"];
                 }

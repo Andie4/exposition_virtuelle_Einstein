@@ -180,10 +180,12 @@ function postAdmin($tab)
 {
     global $db;
     try {
-        $requete = "INSERT INTO admin (login, mdp) VALUES (:login, :mdp);";
+        $requete = "INSERT INTO admin VALUES (NULL, :nom, :prenom, :mail, :login, :mdp);";
         $stmt = $db->prepare($requete);
+        $stmt->bindParam(':nom', $tab["nom"], PDO::PARAM_STR);
+        $stmt->bindParam(':prenom', $tab["prenom"], PDO::PARAM_STR);
+        $stmt->bindParam(':mail', $tab["mail"], PDO::PARAM_STR);
         $stmt->bindParam(':login', $tab["login"], PDO::PARAM_STR);
-
         $mdp_hash = password_hash($tab["mdp"], PASSWORD_DEFAULT);
         $stmt->bindParam(':mdp', $mdp_hash, PDO::PARAM_STR);
         $stmt->execute();
@@ -263,11 +265,13 @@ function putAdmin($_PUT)
 {
     global $db;
     try {
-        $requete = "UPDATE admin SET login_admin = :login, mdp_admin = :mdp WHERE id_admin = :id_admin";
+        $requete = "UPDATE admin SET nom_admin=:nom, prenom_admin=:prenom, mail_admin=:mail,login_admin = :login, mdp_admin = :mdp WHERE id_admin = :id_admin";
         $stmt = $db->prepare($requete);
         $stmt->bindParam(':id_admin', $_PUT["id_admin"], PDO::PARAM_INT);
         $stmt->bindParam(':login', $_PUT["login"], PDO::PARAM_STR);
-
+        $stmt->bindParam(':nom', $_PUT["nom"], PDO::PARAM_STR);
+        $stmt->bindParam(':prenom', $_PUT["prenom"], PDO::PARAM_STR);
+        $stmt->bindParam(':mail', $_PUT["mail"], PDO::PARAM_STR);
         $mdp_hash = password_hash($_PUT["mdp"], PASSWORD_DEFAULT);
         $stmt->bindParam(':mdp', $mdp_hash, PDO::PARAM_STR);
         $stmt->execute();

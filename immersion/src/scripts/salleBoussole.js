@@ -7,6 +7,7 @@ const mouse = new THREE.Vector2(1,1);
 document.addEventListener('mousemove', onMouseMove , false);
 const raycaster = new THREE.Raycaster();
 
+
 function onMouseMove(event) {
     event.preventDefault();
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -16,9 +17,10 @@ function onMouseMove(event) {
 
 // scene
 const scene = new THREE.Scene();
+scene.position.set(0,-0.3,1.3)
 
 // lumieres
-const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+const ambientLight = new THREE.AmbientLight(0xffffff, 6);
 scene.add(ambientLight);
 
 const light = new THREE.DirectionalLight(0xffffff, 1);
@@ -27,7 +29,6 @@ scene.add(light);
 
 
 // resize.js
-
  const onResize = ()=>{
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -39,7 +40,7 @@ window.addEventListener('resize', onResize);
 
 // Configuration de la caméra
 const aspect = window.innerWidth / window.innerHeight;
-const camera = new THREE.PerspectiveCamera(75, aspect, 0.5, 5000);
+const camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 5000);
 camera.position.set(0, -0.5, 1.5);
 camera.lookAt(scene.position);
 
@@ -54,7 +55,17 @@ document.body.appendChild(renderer.domElement);
 
 //orbit control
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.autorotate = true;
+const maxAzimuthAngle = Math.PI / 10;
+const minAzimuthAngle = -Math.PI / 8;
+controls.maxAzimuthAngle = maxAzimuthAngle;
+controls.minAzimuthAngle = minAzimuthAngle;
+
+const maxPolarAngle = Math.PI / 2;
+const minPolarAngle = Math.PI / 4;
+controls.maxPolarAngle = maxPolarAngle;
+controls.minPolarAngle = minPolarAngle;
+
+
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -78,16 +89,29 @@ loader.load(
 );
 
 
+var sidenav = document.getElementById("mySidenav");
+var openBtn = document.getElementById("openBtn");
+var closeBtn = document.getElementById("closeBtn");
 
+openBtn.onclick = openNav;
+closeBtn.onclick = closeNav;
+
+/* Set the width of the side navigation to 250px */
+function openNav() {
+  sidenav.classList.add("active");
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  sidenav.classList.remove("active");
+}
 
 
 ///////////////////////////////////////////////////////////////////////
 // Rendu de la scène
 function animate() {
     requestAnimationFrame(animate);
-
-
-
+    controls.update();
     renderer.render(scene, camera);
 }
 

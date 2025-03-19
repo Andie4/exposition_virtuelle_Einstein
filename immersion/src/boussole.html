@@ -5,27 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boussole</title>
     <script defer type="module" src="scripts/salleBoussole.js"></script>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/boussole.css">
+    <link rel="stylesheet" href="styles/styleExpo.css">
 
 </head>
 <body>
     <header>
+        <div><img src="media/logo.svg" class="logo" alt="" id="logo"></div>
         <nav>
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="./formulaire.php">Réserver un billet </a></li>
-                <li><a href="infos_pratiques.php" class="black">Infos pratiques</a></li>
-                <li><a href="formulaire.php" class="black border">Réserver un billet</a></li>
-                <li><button>AN</button></li>
-            </ul>
+            <div id="mySidenav" class="sidenav">
+                <a id="closeBtn" href="#" class="close">X</a>
+                <ul>
+                    <li><a href="index.php">Accueil</a></li>
+                    <li><a href="infos_pratique.php">Infos pratique</a></li>
+                    <li><a href="formulaire.php">Réserver un billet</a></li>
+                    <li><button>FR/AN</button></li>
+                </ul>
+            </div>
+            <a href="#" id="openBtn">
+                <span class="burger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>   
+                </span>
+            </a>
         </nav>
-    </header>
-    <div>
-        <button class="btnRetour"><a href="lobby.html">Retour au lobby</a></button>
-    </div>
-    <div>
-        <button id="btnSon" class="btnSon">couper le son</button>
         <audio autoplay src="media/boussole.MP3"></audio> 
+
+
+    </header>
+
+    <button class="btnSuite"><a href="objets.html">Suivant</a></button>
+    <div>
+        <button id="btnSon" class="btnSon"><img src="media/volume_off.svg" alt=""></button>
     </div>
 
 </body>

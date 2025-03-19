@@ -17,7 +17,7 @@ function onMouseMove(event) {
 const scene = new THREE.Scene();
 
 // lumieres
-const ambientLight = new THREE.AmbientLight(0xffffff, 10);
+const ambientLight = new THREE.AmbientLight(0xffffff, 20);
 scene.add(ambientLight);
 
 const light = new THREE.DirectionalLight(0xffffff, 1);

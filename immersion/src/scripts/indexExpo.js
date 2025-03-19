@@ -61,8 +61,6 @@ document.body.appendChild(renderer.domElement);
 //orbit control
 // const controls = new OrbitControls(camera, renderer.domElement);
 
-
-
 //////////////////////////////////////////////////////////
 
 // Chargement du modèle 3D 
@@ -110,6 +108,10 @@ if (tvButton) {
         }
     });
 }
+
+
+
+
 
 //--------------------------------------------------------------
 //le code suivant n'est pas encore fonctionnel car j'ai mis une image à la place de ma scène 3D(certain de mes éléments n'apparaissait pas)

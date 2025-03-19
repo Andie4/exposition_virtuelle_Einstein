@@ -15,9 +15,10 @@ function onMouseMove(event) {
 
 // scene
 const scene = new THREE.Scene();
+scene.rotation.set(0, 0.5, 0);
 
 // lumieres
-const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+const ambientLight = new THREE.AmbientLight(0xffffff, 2);
 scene.add(ambientLight);
 
 const light = new THREE.DirectionalLight(0xffffff, 1);
@@ -38,9 +39,11 @@ window.addEventListener('resize', onResize);
 
 // Configuration de la caméra
 const aspect = window.innerWidth / window.innerHeight;
-const camera = new THREE.PerspectiveCamera(75, aspect, 0.5, 5000);
-camera.position.set(0, -0.5, 1.5);
-camera.lookAt(scene.position);
+const camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 5000);
+camera.position.set(0, 2, 1.5);
+
+camera.lookAt(scene);
+scene.add(camera);
 
 
 // Configuration du renderer
@@ -53,7 +56,17 @@ document.body.appendChild(renderer.domElement);
 
 //orbit control
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.autorotate = true;
+// controls.autorotate = true;
+
+const maxAzimuthAngle = Math.PI -0.8;
+const minAzimuthAngle = -Math.PI -2.4;
+controls.maxAzimuthAngle = maxAzimuthAngle;
+controls.minAzimuthAngle = minAzimuthAngle;
+
+const maxPolarAngle = Math.PI / 2;
+const minPolarAngle = Math.PI / 2.5;
+controls.maxPolarAngle = maxPolarAngle;
+controls.minPolarAngle = minPolarAngle;
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -84,9 +97,7 @@ loader.load(
 // Rendu de la scène
 function animate() {
     requestAnimationFrame(animate);
-
-
-
+    controls.update();
     renderer.render(scene, camera);
 }
 

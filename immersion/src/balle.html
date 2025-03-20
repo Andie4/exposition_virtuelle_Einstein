@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>balle</title>
-    <link rel="stylesheet" href="styles/balle.css">
     <script defer type="module" src="scripts/salleBalle.js"></script>
     <link rel="stylesheet" href="styles/balle.css">
     <link rel="stylesheet" href="styles/styleExpo.css">
@@ -12,22 +11,24 @@
 </head>
 <body>
     <div>
-        <button class="btnRetour"><a href="lobby.html">Retour au lobby</a></button>
-        <audio autoplay src="media/objets.MP3"></audio> 
+        <audio autoplay loop id="audio" src="media/objets.MP3"></audio> 
     </div>    
 
-    <video id="background-video" autoplay loop muted>
+    <!-- <video id="background-video" autoplay loop muted>
         <source src="media/salleBalle.mp4" type="video/mp4">
-    </video>
+    </video> -->
+
+    <canvas id="canvas" class="canvas"></canvas>
 
         
-        <div class="content">
+        <!-- <div class="content">
             <p>test video</p>
             <button id="btnVideo">Pause II</button>
-        </div>
+        </div> -->
 
-        <div>
-            <button id="btnSon" class="btnSon">couper le son</button>
+        <div class="controls">
+            <button class="audioBtn" type="button" id="buttonMute"><img src="media/volume_off.svg" alt="mute"></button>
+            <button class="audioBtn" type="button" id="buttonDemute"><img src="media/volume_up.svg" alt="demute"></button>
         </div>
 
 

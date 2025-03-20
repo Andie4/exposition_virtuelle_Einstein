@@ -17,10 +17,11 @@ function onMouseMove(event) {
 const scene = new THREE.Scene();
 
 // lumieres
-const ambientLight = new THREE.AmbientLight(0xffffff, 20);
+const ambientLight = new THREE.AmbientLight(0xffffff, 2);
 scene.add(ambientLight);
 
-const light = new THREE.DirectionalLight(0xffffff, 1);
+const color = new THREE.Color().setRGB( 255, 200, 100);
+const light = new THREE.DirectionalLight(color, 0.2);
 light.position.set(1, -8, 1);
 scene.add(light);
 
@@ -77,15 +78,31 @@ loader.load(
 );
 
 
-
+// mettre le son sur pause 
+window.onload = function() {
+    const buttonMute = document.getElementById("buttonDemute");
+    const buttonDemute = document.getElementById("buttonMute");
+    
+    const audio = document.getElementById("audio");
+    buttonMute.onclick = function()
+		{
+			audio.muted=true;
+			buttonMute.style.display="none";
+			buttonDemute.style.display="inline-block";
+		};
+    buttonDemute.onclick = function()
+    	{
+    		audio.muted=false;
+			buttonMute.style.display="inline-block";
+			buttonDemute.style.display="none";
+    	};
+};
 
 
 ///////////////////////////////////////////////////////////////////////
 // Rendu de la scène
 function animate() {
     requestAnimationFrame(animate);
-
-
 
     renderer.render(scene, camera);
 }

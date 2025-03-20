@@ -77,16 +77,38 @@ loader.load(
 );
 
 
+// mettre le son sur pause 
+window.onload = function() {
+    const buttonMute = document.getElementById("buttonDemute");
+    const buttonDemute = document.getElementById("buttonMute");
+    
+    const audio = document.getElementById("audio");
+    buttonMute.onclick = function()
+		{
+			audio.muted=true;
+			buttonMute.style.display="none";
+			buttonDemute.style.display="inline-block";
+		};
+    buttonDemute.onclick = function()
+    	{
+    		audio.muted=false;
+			buttonMute.style.display="inline-block";
+			buttonDemute.style.display="none";
+    	};
+};
 
+const map = new THREE.TextureLoader().load( 'media/tv4_einstein_cosmologie.png' );
+const material = new THREE.SpriteMaterial( { map: map } );
 
+const sprite = new THREE.Sprite( material );
+sprite.position.set( 0, 6, 1);
+sprite.scale.set( 6, 6, 0 );
+scene.add( sprite );
 
 ///////////////////////////////////////////////////////////////////////
 // Rendu de la scène
 function animate() {
     requestAnimationFrame(animate);
-
-
-
     renderer.render(scene, camera);
 }
 

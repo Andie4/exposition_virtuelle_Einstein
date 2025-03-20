@@ -134,6 +134,25 @@ document.addEventListener('click', () => {
 });
 
 
+// mettre le son sur pause 
+window.onload = function() {
+    const buttonMute = document.getElementById("buttonDemute");
+    const buttonDemute = document.getElementById("buttonMute");
+    
+    const audio = document.getElementById("audio");
+    buttonMute.onclick = function()
+		{
+			audio.muted=true;
+			buttonMute.style.display="none";
+			buttonDemute.style.display="inline-block";
+		};
+    buttonDemute.onclick = function()
+    	{
+    		audio.muted=false;
+			buttonMute.style.display="inline-block";
+			buttonDemute.style.display="none";
+    	};
+};
 ///////////////////////////////////////////////////////////////////////
 // Rendu de la scène
 function animate() {

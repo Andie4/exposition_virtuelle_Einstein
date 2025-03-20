@@ -24,7 +24,7 @@ const ambientLight = new THREE.AmbientLight(0xffffff, 6);
 scene.add(ambientLight);
 
 const light = new THREE.DirectionalLight(0xffffff, 1);
-light.position.set(1, -8, 1);
+light.position.set(1, -16, 1);
 scene.add(light);
 
 
@@ -105,6 +105,50 @@ function openNav() {
 function closeNav() {
   sidenav.classList.remove("active");
 }
+
+
+// mettre le son sur pause 
+window.onload = function() {
+    const buttonMute = document.getElementById("buttonDemute");
+    const buttonDemute = document.getElementById("buttonMute");
+    
+    const audio = document.getElementById("audio");
+    buttonMute.onclick = function()
+		{
+			audio.muted=true;
+			buttonMute.style.display="none";
+			buttonDemute.style.display="inline-block";
+		};
+    buttonDemute.onclick = function()
+    	{
+    		audio.muted=false;
+			buttonMute.style.display="inline-block";
+			buttonDemute.style.display="none";
+    	};
+};
+
+
+const map = new THREE.TextureLoader().load( 'media/tv1_einstein_boussole.png' );
+const material = new THREE.SpriteMaterial( { map: map } );
+
+const sprite = new THREE.Sprite( material );
+sprite.position.set( -0.5, 0, -1);
+scene.add( sprite );
+
+
+
+// const EinsteinLoader = new THREE.TextureLoader();
+// var treetexture = loader.load( 'tv1_einstein_boussole.png');
+// treetexture.magFilter = THREE.NearestFilter;
+
+// var treematerial = new THREE.SpriteMaterial( { map: treetexture } );
+// var treesprite = new THREE.Sprite( treematerial );
+
+// treesprite.scale.set( 1, 2, 1);
+// treesprite.position.set(0, 1, 0);
+// scene.add(treesprite);
+
+
 
 
 ///////////////////////////////////////////////////////////////////////

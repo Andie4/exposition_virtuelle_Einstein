@@ -11,24 +11,20 @@
 
 </head>
 <body>
-    <nav class="navExpo">
-        <ul>
-            <li><a href="Accueil">Accueil</a></li>
-            <li><a href="">Infos pratiques</a></li>
-            <li><a href="">Réserver un billet</a></li>
-            <li><a href=""></a>Changer de langue</li>
-        </ul>
-    </nav>
+
 
     <div>
-        <audio autoplay src="media/objets.MP3"></audio> 
+        <audio autoplay loop src="media/objets.MP3" id="audio"></audio> 
     </div>
 
     <div class="flex align-center">
-        <button id="btnSon" class="btnSon"><img src="media/volume_off.svg" alt=""></button>
-         <!-- mettre des icons plus pratique pour la version mobile après  -->
         <p class="absolute indications">Appuyé sur l'objet</p>
     </div>
+
+    <div class="controls">
+		<button class="audioBtn" type="button" id="buttonMute"><img src="media/volume_off.svg" alt="mute"></button>
+		<button class="audioBtn" type="button" id="buttonDemute"><img src="media/volume_up.svg" alt="demute"></button>
+	</div>
     
 </body>
 </html>

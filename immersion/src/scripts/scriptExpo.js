@@ -5,6 +5,8 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 const mouse = new THREE.Vector2(1,1);
 document.addEventListener('mousemove', onMouseMove , false);
+const raycaster = new THREE.Raycaster();
+
 
 function onMouseMove(event) {
     event.preventDefault();
@@ -15,19 +17,18 @@ function onMouseMove(event) {
 
 // scene
 const scene = new THREE.Scene();
-scene.rotation.set(0, 0.5, 0);
+scene.position.set(0,1.05,2)
 
 // lumieres
-const ambientLight = new THREE.AmbientLight(0xffffff, 2);
+const ambientLight = new THREE.AmbientLight(0xffffff, 6);
 scene.add(ambientLight);
 
 const light = new THREE.DirectionalLight(0xffffff, 1);
-light.position.set(1, -8, 1);
+light.position.set(1, -16, 1);
 scene.add(light);
 
 
 // resize.js
-
  const onResize = ()=>{
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -40,10 +41,8 @@ window.addEventListener('resize', onResize);
 // Configuration de la caméra
 const aspect = window.innerWidth / window.innerHeight;
 const camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 5000);
-camera.position.set(0, 2, 1.5);
-
-camera.lookAt(scene);
-scene.add(camera);
+camera.position.set(0, 0,4);
+camera.lookAt(scene.position);
 
 
 // Configuration du renderer
@@ -56,24 +55,24 @@ document.body.appendChild(renderer.domElement);
 
 //orbit control
 const controls = new OrbitControls(camera, renderer.domElement);
-// controls.autorotate = true;
-
-const maxAzimuthAngle = Math.PI -0.8;
-const minAzimuthAngle = -Math.PI -2.4;
+const maxAzimuthAngle = Math.PI / 10;
+const minAzimuthAngle = -Math.PI / 8;
 controls.maxAzimuthAngle = maxAzimuthAngle;
 controls.minAzimuthAngle = minAzimuthAngle;
 
 const maxPolarAngle = Math.PI / 2;
-const minPolarAngle = Math.PI / 2.5;
+const minPolarAngle = Math.PI / 4;
 controls.maxPolarAngle = maxPolarAngle;
 controls.minPolarAngle = minPolarAngle;
+
+
 
 //////////////////////////////////////////////////////////////////////////
 
 // Chargement du modèle 3D 
 const loader = new GLTFLoader();
 loader.load(
-    'models/salleJournal.glb',
+    'models/intro-F.glb',
     (gltf) => {
         const model = gltf.scene;
         model.position.set(0, -0.0008, 0);
@@ -89,34 +88,24 @@ loader.load(
     }
 );
 
-const map = new THREE.TextureLoader().load( 'media/tv2_einstein_bureau.png' );
-const material = new THREE.SpriteMaterial( { map: map } );
-
-const sprite = new THREE.Sprite( material );
-sprite.position.set( -1, -0.5, 0);
-scene.add( sprite );
 
 
 
-// mettre le son sur pause 
-window.onload = function() {
-    const buttonMute = document.getElementById("buttonDemute");
-    const buttonDemute = document.getElementById("buttonMute");
-    
-    const audio = document.getElementById("audio");
-    buttonMute.onclick = function()
-		{
-			audio.muted=true;
-			buttonMute.style.display="none";
-			buttonDemute.style.display="inline-block";
-		};
-    buttonDemute.onclick = function()
-    	{
-    		audio.muted=false;
-			buttonMute.style.display="inline-block";
-			buttonDemute.style.display="none";
-    	};
-};
+
+
+
+// const EinsteinLoader = new THREE.TextureLoader();
+// var treetexture = loader.load( 'tv1_einstein_boussole.png');
+// treetexture.magFilter = THREE.NearestFilter;
+
+// var treematerial = new THREE.SpriteMaterial( { map: treetexture } );
+// var treesprite = new THREE.Sprite( treematerial );
+
+// treesprite.scale.set( 1, 2, 1);
+// treesprite.position.set(0, 1, 0);
+// scene.add(treesprite);
+
+
 
 
 ///////////////////////////////////////////////////////////////////////

@@ -15,7 +15,7 @@ function onMouseMove(event) {
 
 // scene
 const scene = new THREE.Scene();
-scene.rotation.set(0, 0.5, 0);
+scene.rotateY(1);
 
 // lumieres
 const ambientLight = new THREE.AmbientLight(0xffffff, 2);
@@ -40,7 +40,7 @@ window.addEventListener('resize', onResize);
 // Configuration de la caméra
 const aspect = window.innerWidth / window.innerHeight;
 const camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 5000);
-camera.position.set(0, 2, 1.5);
+camera.position.set(-0.8, 1, 0.01);
 
 camera.lookAt(scene);
 scene.add(camera);
@@ -58,12 +58,12 @@ document.body.appendChild(renderer.domElement);
 const controls = new OrbitControls(camera, renderer.domElement);
 // controls.autorotate = true;
 
-const maxAzimuthAngle = Math.PI -0.8;
-const minAzimuthAngle = -Math.PI -2.4;
+const maxAzimuthAngle = Math.PI + 10.4;
+const minAzimuthAngle = -Math.PI - 8.5;
 controls.maxAzimuthAngle = maxAzimuthAngle;
 controls.minAzimuthAngle = minAzimuthAngle;
 
-const maxPolarAngle = Math.PI / 2;
+const maxPolarAngle = Math.PI / 2.5;
 const minPolarAngle = Math.PI / 2.5;
 controls.maxPolarAngle = maxPolarAngle;
 controls.minPolarAngle = minPolarAngle;
@@ -77,7 +77,7 @@ loader.load(
     (gltf) => {
         const model = gltf.scene;
         model.position.set(0, -0.0008, 0);
-        model.rotateY(5);
+        model.rotateY(-3);
         scene.add(model);
         console.log("Modèle chargé");
     },
@@ -93,7 +93,7 @@ const map = new THREE.TextureLoader().load( 'media/tv2_einstein_bureau.png' );
 const material = new THREE.SpriteMaterial( { map: map } );
 
 const sprite = new THREE.Sprite( material );
-sprite.position.set( -1, -0.5, 0);
+sprite.position.set( 0., -0.49, -1);
 scene.add( sprite );
 
 

@@ -133,6 +133,7 @@ const material = new THREE.SpriteMaterial( { map: map } );
 
 const sprite = new THREE.Sprite( material );
 sprite.position.set( -0.5, 0, -1);
+sprite.scale.set( 0.6, 0.6, 0 );
 scene.add( sprite );
 
 

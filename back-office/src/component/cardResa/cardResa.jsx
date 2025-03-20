@@ -13,8 +13,9 @@ export function CardResa({resa, onDelete }){
             <p>{resa.mail_resa}</p>
             <p>{resa.date_resa}</p>
             <p>{resa.heure_resa}</p>
-            <Link to={`/formResa/${tarif.id_resa}`}>Modifier</Link>
+            <Link to={`/formResa/${resa.id_resa}`}>Modifier</Link>
             <ButtonDelete id={resa.id_resa} type="resa" token={localStorage.getItem("token")} onSuccess={onDelete}  />
+            <Link to={`/gest_billet/${resa.id_resa}`}>Billets</Link>
         </div>
         </>
     )

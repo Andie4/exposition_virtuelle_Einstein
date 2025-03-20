@@ -55,11 +55,10 @@ export function FormAdmin() {
                     <label htmlFor="login_admin">Login</label>
                     <input type="text" name="login_admin" id="login_admin" value={admin.login_admin} onChange={handleForm} required />
                     <label htmlFor="mdp_admin">Mot de passe</label>
-                    <input type="password" name="mdp_admin" id="mdp_admin" value={admin.mdp_admin} onChange={handleForm} required />
+                    <input type="password" name="mdp_admin" id="mdp_admin"  onChange={handleForm} required />
                
                     {id!=0 ? 
                     <ButtonUpdate id={id} type="admin" token={token} data={admin} /> :  
-                    // console.log("admin :  ", admin)
                     <ButtonAdd type="admin" token={token} data={admin} />
                     }
                    

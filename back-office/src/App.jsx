@@ -1,13 +1,15 @@
 import React from 'react'
 import { Home } from './pages/home'
 import { Profil } from './pages/profil'
-import { Login } from './pages/login/login'
+import { Login } from './pages/login'
 import { GestAdmin } from './pages/gest_admin'
 import { GestTarif } from './pages/gest_tarif'
 import { GestResa } from './pages/gest_resa'
 import { FormTarif } from './pages/formTarif'
+import { GestBillet } from './pages/gest_billet'
 import { FormAdmin } from './pages/formAdmin'
 import { FormResa } from './pages/formResa'
+import { FormBillet } from './pages/formBillet'
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import './styles/App.css'
 import { useEffect } from 'react';
@@ -49,9 +51,11 @@ function App() {
         <Route path="/gest_resa" element={ <PrivateRoute> <GestResa /> </PrivateRoute> } />
         <Route path="/gest_tarif" element={ <PrivateRoute> <GestTarif /> </PrivateRoute> } />
         <Route path="/gest_admin" element={ <PrivateRoute> <GestAdmin /> </PrivateRoute> } />
+        <Route path="/gest_billet/:id" element={ <PrivateRoute> <GestBillet /> </PrivateRoute> } />
         <Route path="/formTarif/:id" element={ <PrivateRoute> <FormTarif /> </PrivateRoute> } />
         <Route path="/formAdmin/:id" element={ <PrivateRoute> <FormAdmin /> </PrivateRoute> } />
         <Route path="/formResa/:id" element={ <PrivateRoute> <FormResa /> </PrivateRoute> } />
+        <Route path="/formBillet/:resa/:id" element={ <PrivateRoute> <FormBillet/> </PrivateRoute> } />
         <Route path="*" element={<Navigate to="/home" />} />
       </Routes>
 

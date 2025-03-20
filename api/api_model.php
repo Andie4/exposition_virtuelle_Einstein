@@ -1,5 +1,7 @@
 <?php
 
+use LDAP\Result;
+
 $db = new PDO('mysql:host=localhost;dbname=expo_einstein', 'root', '');
 
 
@@ -41,7 +43,7 @@ function getOneBillet($id)
 function getResaBillet($resaId)
 {
     global $db;
-    $requete = "SELECT * FROM billet WHERE resa=:resaId";
+    $requete = "SELECT * FROM billet WHERE resa_billet=:resaId";
     $stmt = $db->prepare($requete);
     $stmt->bindParam(':resaId', $resaId, PDO::PARAM_STR);
     $stmt->execute();
@@ -147,13 +149,14 @@ function postResaComplet($tab)
             "resa_billet" => $resaId,
             "tarif_billet" => $billet["tarif_billet"]
         ];
-        postBillet($billetInfo);
+        $result= postBillet($billetInfo);
     }
 
     return [
         "success" => true,
         "message" => "Réservation et billets ajoutés avec succès.",
-        "reservation_id" => $resaId
+        "reservation_id" => $resaId,
+        "billets" => $result
     ];
 
 }

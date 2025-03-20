@@ -32,7 +32,7 @@ export function GestResa() {
         <>
             <Nav />
             <h1>Gestion des réservations</h1>
-            <Link to="/formResa/0">Ajouter une réservation</Link>
+            <a href="https://albert.xploria.fr/reservation.php">Ajouter une réservation</a>
             {resas
                 .map((resa) => (
                     <CardResa key={resa.id_resa} resa={resa} onDelete={handleDelete} />

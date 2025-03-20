@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Nav } from "../component/nav";
 import PropTypes from "prop-types";
+import { ButtonUpdate } from "../component/buttonUpdate";
+
 
 export function Profil() {
     const [admin, setAdmin] = useState({
@@ -34,6 +36,27 @@ export function Profil() {
             ...admin,
             [e.target.name]: e.target.value, // Met à jour la valeur du champ correspondant
         });
+    };
+
+    const handleClick = () => {
+        console.log(`http://localhost/exposition_virtuelle_Einstein/api/admin/${id_admin}`);
+        // fetch(`http://localhost/exposition_virtuelle_Einstein/api/${type}/${id}`, {
+        //     method: "PUT",
+        //     headers: {
+        //         "Authorization": `Bearer ${token}`,
+        //         "Content-Type": "application/x-www-form-urlencoded",
+        //     },
+        //     body: {
+        //         "prenom_admin": admin.prenom_admin,
+        //         "nom_admin": admin.nom_admin,
+        //         "login_admin": admin.login_admin,
+        //         "mdp_admin": admin.mdp_admin,
+        //     }
+        // })
+        // .then((response) => response.json())
+        // .then((data) => {
+        //     console.log(data);
+        // });
     };
 
     return (
@@ -76,7 +99,8 @@ export function Profil() {
                         name="mdp_admin"
                     />
 
-                    <button type="submit">Enregistrer</button>
+                    <button onClick={handleClick}>Enregistrer</button>
+                    {/* <ButtonUpdate id={id_admin} token={token} type="admin" /> */}
                 </form>
             </main>
         </>

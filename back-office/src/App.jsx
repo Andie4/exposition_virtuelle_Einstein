@@ -5,6 +5,9 @@ import { Login } from './pages/login/login'
 import { GestAdmin } from './pages/gest_admin'
 import { GestTarif } from './pages/gest_tarif'
 import { GestResa } from './pages/gest_resa'
+import { FormTarif } from './pages/formTarif'
+import { FormAdmin } from './pages/formAdmin'
+import { FormResa } from './pages/formResa'
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import './styles/App.css'
 import { useEffect } from 'react';
@@ -36,6 +39,7 @@ function App() {
 }, []);
 
 
+
   return (
     <>
       <Routes>
@@ -45,6 +49,9 @@ function App() {
         <Route path="/gest_resa" element={ <PrivateRoute> <GestResa /> </PrivateRoute> } />
         <Route path="/gest_tarif" element={ <PrivateRoute> <GestTarif /> </PrivateRoute> } />
         <Route path="/gest_admin" element={ <PrivateRoute> <GestAdmin /> </PrivateRoute> } />
+        <Route path="/formTarif/:id" element={ <PrivateRoute> <FormTarif /> </PrivateRoute> } />
+        <Route path="/formAdmin/:id" element={ <PrivateRoute> <FormAdmin /> </PrivateRoute> } />
+        <Route path="/formResa/:id" element={ <PrivateRoute> <FormResa /> </PrivateRoute> } />
         <Route path="*" element={<Navigate to="/home" />} />
       </Routes>
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Nav } from "../component/nav/index.js";
 import { CardAdmin } from "../component/cardAdmin/cardAdmin.jsx";
 
@@ -22,13 +23,19 @@ export function GestAdmin() {
                 setAdmins(data);
             });
     }, []);
+
+    const handleDelete = (deletedId) => {
+        setAdmins(prevAdmins => prevAdmins.filter(admin => admin.id_admin !== deletedId));
+    };
+
     return (
         <>
             <Nav />
             <h1>Gestion des administrateurs</h1>
+            <Link to="/formAdmin/0">Ajouter un administrateur</Link>
             {admins
                 .map((admin) => (
-                    <CardAdmin key={admin.id_admin} admin={admin} />
+                    <CardAdmin key={admin.id_admin} admin={admin} onDelete={handleDelete} />
                 ))}
         </>
     );

@@ -108,10 +108,10 @@ function postBillet($tab)
     try {
         $requete = "INSERT INTO billet VALUES (NULL, :nom, :prenom, :resa, :tarif);";
         $stmt = $db->prepare($requete);
-        $stmt->bindParam(':nom', $tab["nom"], PDO::PARAM_STR);
-        $stmt->bindParam(':prenom', $tab["prenom"], PDO::PARAM_STR);
-        $stmt->bindParam(':resa', $tab["resa"], PDO::PARAM_INT);
-        $stmt->bindParam(':tarif', $tab["tarif"], PDO::PARAM_INT);
+        $stmt->bindParam(':nom', $tab["nom_billet"], PDO::PARAM_STR);
+        $stmt->bindParam(':prenom', $tab["prenom_billet"], PDO::PARAM_STR);
+        $stmt->bindParam(':resa', $tab["resa_billet"], PDO::PARAM_INT);
+        $stmt->bindParam(':tarif', $tab["tarif_billet"], PDO::PARAM_INT);
         $stmt->execute();
 
         return ["success" => true, "message" => "Billet ajouté", "id" => $db->lastInsertId()];
@@ -127,11 +127,11 @@ function postResaComplet($tab)
     global $db;
     $requete = "INSERT INTO resa VALUES (NULL, :date, :heure, :mail, :nom, :prenom);";
     $stmt = $db->prepare($requete);
-    $stmt->bindParam(':date', $tab["date"], PDO::PARAM_STR);
-    $stmt->bindParam(':heure', $tab["heure"], PDO::PARAM_STR);
-    $stmt->bindParam(':mail', $tab["mail"], PDO::PARAM_STR);
-    $stmt->bindParam(':nom', $tab["nom"], PDO::PARAM_STR);
-    $stmt->bindParam(':prenom', $tab["prenom"], PDO::PARAM_STR);
+    $stmt->bindParam(':date', $tab["date_resa"], PDO::PARAM_STR);
+    $stmt->bindParam(':heure', $tab["heure_resa"], PDO::PARAM_STR);
+    $stmt->bindParam(':mail', $tab["mail_resa"], PDO::PARAM_STR);
+    $stmt->bindParam(':nom', $tab["nom_resa"], PDO::PARAM_STR);
+    $stmt->bindParam(':prenom', $tab["prenom_resa"], PDO::PARAM_STR);
     $stmt->execute();
 
     $resaId = $db->lastInsertId();
@@ -142,10 +142,10 @@ function postResaComplet($tab)
 
     foreach ($tab["billets"] as $billet) {
         $billetInfo = [
-            "nom" => $billet["nom"],
-            "prenom" => $billet["prenom"],
-            "resa" => $resaId,
-            "tarif" => $billet["tarif"]
+            "nom_billet" => $billet["nom_billet"],
+            "prenom_billet" => $billet["prenom_billet"],
+            "resa_billet" => $resaId,
+            "tarif_billet" => $billet["tarif_billet"]
         ];
         postBillet($billetInfo);
     }
@@ -163,10 +163,10 @@ function postTarif($tab)
 {
     global $db;
     try {
-        $requete = "INSERT INTO tarif (nom_tarif, prix) VALUES (:nom_tarif, :prix);";
+        $requete = "INSERT INTO tarif (nom_tarif, prix_tarif) VALUES (:nom_tarif, :prix_tarif);";
         $stmt = $db->prepare($requete);
-        $stmt->bindParam(':nom_tarif', $tab["nom"], PDO::PARAM_STR);
-        $stmt->bindParam(':prix', $tab["prix"], PDO::PARAM_STR);
+        $stmt->bindParam(':nom_tarif', $tab["nom_tarif"], PDO::PARAM_STR);
+        $stmt->bindParam(':prix_tarif', $tab["prix_tarif"], PDO::PARAM_STR);
         $stmt->execute();
 
         return ["success" => true, "message" => "Tarif ajouté", "id" => $db->lastInsertId()];
@@ -182,11 +182,11 @@ function postAdmin($tab)
     try {
         $requete = "INSERT INTO admin VALUES (NULL, :nom, :prenom, :mail, :login, :mdp);";
         $stmt = $db->prepare($requete);
-        $stmt->bindParam(':nom', $tab["nom"], PDO::PARAM_STR);
-        $stmt->bindParam(':prenom', $tab["prenom"], PDO::PARAM_STR);
-        $stmt->bindParam(':mail', $tab["mail"], PDO::PARAM_STR);
-        $stmt->bindParam(':login', $tab["login"], PDO::PARAM_STR);
-        $mdp_hash = password_hash($tab["mdp"], PASSWORD_DEFAULT);
+        $stmt->bindParam(':nom', $tab["nom_admin"], PDO::PARAM_STR);
+        $stmt->bindParam(':prenom', $tab["prenom_admin"], PDO::PARAM_STR);
+        $stmt->bindParam(':mail', $tab["mail_admin"], PDO::PARAM_STR);
+        $stmt->bindParam(':login', $tab["login_admin"], PDO::PARAM_STR);
+        $mdp_hash = password_hash($tab["mdp_admin"], PASSWORD_DEFAULT);
         $stmt->bindParam(':mdp', $mdp_hash, PDO::PARAM_STR);
         $stmt->execute();
 
@@ -209,11 +209,11 @@ function putResa($_PUT)
         WHERE id_resa = :id_resa";
         $stmt = $db->prepare($requete);
         $stmt->bindParam(':id_resa', $_PUT["id_resa"], PDO::PARAM_INT);
-        $stmt->bindParam(':date', $_PUT["date"], PDO::PARAM_STR);
-        $stmt->bindParam(':heure', $_PUT["heure"], PDO::PARAM_STR);
-        $stmt->bindParam(':mail', $_PUT["mail"], PDO::PARAM_STR);
-        $stmt->bindParam(':nom', $_PUT["nom"], PDO::PARAM_STR);
-        $stmt->bindParam(':prenom', $_PUT["prenom"], PDO::PARAM_STR);
+        $stmt->bindParam(':date', $_PUT["date_resa"], PDO::PARAM_STR);
+        $stmt->bindParam(':heure', $_PUT["heure_resa"], PDO::PARAM_STR);
+        $stmt->bindParam(':mail', $_PUT["mail_resa"], PDO::PARAM_STR);
+        $stmt->bindParam(':nom', $_PUT["nom_resa"], PDO::PARAM_STR);
+        $stmt->bindParam(':prenom', $_PUT["prenom_resa"], PDO::PARAM_STR);
         $stmt->execute();
 
         return ["success" => $stmt->rowCount() > 0, "message" => $stmt->rowCount() > 0 ? "Réservation mise à jour" : "Aucune modification"];
@@ -227,13 +227,13 @@ function putBillet($_PUT)
 {
     global $db;
     try {
-        $requete = "UPDATE billet SET nom = :nom, prenom= :prenom, resa = :resa, tarif = :tarif WHERE id_billet = :id_billet";
+        $requete = "UPDATE billet SET nom_billet = :nom, prenom_billet= :prenom, resa_billet = :resa, tarif_billet = :tarif WHERE id_billet = :id_billet";
         $stmt = $db->prepare($requete);
         $stmt->bindParam(':id_billet', $_PUT["id_billet"], PDO::PARAM_INT);
-        $stmt->bindParam(':nom', $_PUT["nom"], PDO::PARAM_STR);
-        $stmt->bindParam(':prenom', $_PUT["prenom"], PDO::PARAM_STR);
-        $stmt->bindParam(':resa', $_PUT["resa"], PDO::PARAM_INT);
-        $stmt->bindParam(':tarif', $_PUT["tarif"], PDO::PARAM_INT);
+        $stmt->bindParam(':nom', $_PUT["nom_billet"], PDO::PARAM_STR);
+        $stmt->bindParam(':prenom', $_PUT["prenom_billet"], PDO::PARAM_STR);
+        $stmt->bindParam(':resa', $_PUT["resa_billet"], PDO::PARAM_INT);
+        $stmt->bindParam(':tarif', $_PUT["tarif_billet"], PDO::PARAM_INT);
         $stmt->execute();
 
         return ["success" => $stmt->rowCount() > 0, "message" => $stmt->rowCount() > 0 ? "Billet mis à jour" : "Aucune modification"];
@@ -247,11 +247,11 @@ function putTarif($_PUT)
 {
     global $db;
     try {
-        $requete = "UPDATE tarif SET nom_tarif = :nom, prix = :prix WHERE id_tarif = :id_tarif";
+        $requete = "UPDATE tarif SET nom_tarif = :nom, prix_tarif = :prix WHERE id_tarif = :id_tarif";
         $stmt = $db->prepare($requete);
         $stmt->bindParam(':id_tarif', $_PUT["id_tarif"], PDO::PARAM_INT);
-        $stmt->bindParam(':nom', $_PUT["nom"], PDO::PARAM_STR);
-        $stmt->bindParam(':prix', $_PUT["prix"], PDO::PARAM_STR);
+        $stmt->bindParam(':nom', $_PUT["nom_tarif"], PDO::PARAM_STR);
+        $stmt->bindParam(':prix', $_PUT["prix_tarif"], PDO::PARAM_STR);
         $stmt->execute();
 
         return ["success" => $stmt->rowCount() > 0, "message" => $stmt->rowCount() > 0 ? "Tarif mis à jour" : "Aucune modification"];
@@ -268,11 +268,11 @@ function putAdmin($_PUT)
         $requete = "UPDATE admin SET nom_admin=:nom, prenom_admin=:prenom, mail_admin=:mail,login_admin = :login, mdp_admin = :mdp WHERE id_admin = :id_admin";
         $stmt = $db->prepare($requete);
         $stmt->bindParam(':id_admin', $_PUT["id_admin"], PDO::PARAM_INT);
-        $stmt->bindParam(':login', $_PUT["login"], PDO::PARAM_STR);
-        $stmt->bindParam(':nom', $_PUT["nom"], PDO::PARAM_STR);
-        $stmt->bindParam(':prenom', $_PUT["prenom"], PDO::PARAM_STR);
-        $stmt->bindParam(':mail', $_PUT["mail"], PDO::PARAM_STR);
-        $mdp_hash = password_hash($_PUT["mdp"], PASSWORD_DEFAULT);
+        $stmt->bindParam(':login', $_PUT["login_admin"], PDO::PARAM_STR);
+        $stmt->bindParam(':nom', $_PUT["nom_admin"], PDO::PARAM_STR);
+        $stmt->bindParam(':prenom', $_PUT["prenom_admin"], PDO::PARAM_STR);
+        $stmt->bindParam(':mail', $_PUT["mail_admin"], PDO::PARAM_STR);
+        $mdp_hash = password_hash($_PUT["mdp_admin"], PASSWORD_DEFAULT);
         $stmt->bindParam(':mdp', $mdp_hash, PDO::PARAM_STR);
         $stmt->execute();
 

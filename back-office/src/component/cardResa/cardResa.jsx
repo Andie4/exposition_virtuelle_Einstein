@@ -1,22 +1,26 @@
 import PropTypes from 'prop-types';
+import { ButtonDelete } from '../buttonDelete';
+import { Link } from 'react-router-dom';
 
-export function CardResa({resa}){
+export function CardResa({resa, onDelete }){
 
     return(
         <>
         <div>
+            <p>ID n°{resa.id_resa}</p>
             <p>{resa.nom_resa}</p>
             <p>{resa.prenom_resa}</p>
             <p>{resa.mail_resa}</p>
-            <p>{resa.date}</p>
-            <p>{resa.heure}</p>
-            <button>Modifier</button>
-            <button>Supprimer</button>
+            <p>{resa.date_resa}</p>
+            <p>{resa.heure_resa}</p>
+            <Link to={`/formResa/${tarif.id_resa}`}>Modifier</Link>
+            <ButtonDelete id={resa.id_resa} type="resa" token={localStorage.getItem("token")} onSuccess={onDelete}  />
         </div>
         </>
     )
 }
 
 CardResa.propTypes = {
-    resa: PropTypes.object.isRequired
+    resa: PropTypes.object.isRequired,
+    onDelete: PropTypes.func.isRequired,
 }

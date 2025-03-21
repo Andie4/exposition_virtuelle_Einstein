@@ -17,7 +17,7 @@ function onMouseMove(event) {
 
 // scene
 const scene = new THREE.Scene();
-scene.position.set(0,1.05,2)
+scene.position.set(0,0,0);
 
 // lumieres
 const ambientLight = new THREE.AmbientLight(0xffffff, 6);
@@ -41,8 +41,7 @@ window.addEventListener('resize', onResize);
 // Configuration de la caméra
 const aspect = window.innerWidth / window.innerHeight;
 const camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 5000);
-camera.position.set(0, 0,4);
-camera.lookAt(scene.position);
+camera.position.set(0.9,0.5,0.1);
 
 
 // Configuration du renderer
@@ -55,15 +54,6 @@ document.body.appendChild(renderer.domElement);
 
 //orbit control
 const controls = new OrbitControls(camera, renderer.domElement);
-const maxAzimuthAngle = Math.PI / 10;
-const minAzimuthAngle = -Math.PI / 8;
-controls.maxAzimuthAngle = maxAzimuthAngle;
-controls.minAzimuthAngle = minAzimuthAngle;
-
-const maxPolarAngle = Math.PI / 2;
-const minPolarAngle = Math.PI / 4;
-controls.maxPolarAngle = maxPolarAngle;
-controls.minPolarAngle = minPolarAngle;
 
 
 
@@ -75,8 +65,6 @@ loader.load(
     'models/intro-F.glb',
     (gltf) => {
         const model = gltf.scene;
-        model.position.set(0, -0.0008, 0);
-        model.rotateY(5);
         scene.add(model);
         console.log("Modèle chargé");
     },

@@ -1,7 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect } from 'react';
-import './styles/App.css'
 
 import { Home } from './pages/home'
 import { Profil } from './pages/profil'

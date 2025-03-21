@@ -1,7 +1,10 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass.js';
 
 const mouse = new THREE.Vector2(1,1);
 document.addEventListener('mousemove', onMouseMove , false);
@@ -20,7 +23,7 @@ const scene = new THREE.Scene();
 scene.position.set(0,-0.3,1.3)
 
 // lumieres
-const ambientLight = new THREE.AmbientLight(0xffffff, 6);
+const ambientLight = new THREE.AmbientLight(0xffffff, 4);
 scene.add(ambientLight);
 
 const light = new THREE.DirectionalLight(0xffffff, 1);
@@ -51,6 +54,19 @@ const renderer = new THREE.WebGLRenderer({
 });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
+
+
+//composer / post processing
+const composer = new EffectComposer(renderer);
+
+//
+const renderPass = new RenderPass(scene, camera);
+composer.addPass(renderPass);
+//
+// const glitchPass = new GlitchPass(); //effet glitch
+// composer.addPass(glitchPass);
+
+composer.addPass(new FilmPass(1, false)); //grain
 
 
 //orbit control
@@ -132,6 +148,7 @@ const map = new THREE.TextureLoader().load( 'media/tv1_einstein_boussole.png' );
 const material = new THREE.SpriteMaterial( { map: map } );
 
 const sprite = new THREE.Sprite( material );
+
 sprite.position.set( -0.5, 0, -1);
 sprite.scale.set( 0.6, 0.6, 0 );
 scene.add( sprite );
@@ -157,7 +174,7 @@ scene.add( sprite );
 function animate() {
     requestAnimationFrame(animate);
     controls.update();
-    renderer.render(scene, camera);
+    composer.render();
 }
 
 animate();

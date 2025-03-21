@@ -135,6 +135,7 @@ document.addEventListener('click', () => {
 
 
 // mettre le son sur pause 
+// mettre le son sur pause 
 window.onload = function() {
     const buttonMute = document.getElementById("buttonDemute");
     const buttonDemute = document.getElementById("buttonMute");
@@ -153,6 +154,7 @@ window.onload = function() {
 			buttonDemute.style.display="none";
     	};
 };
+
 ///////////////////////////////////////////////////////////////////////
 // Rendu de la scène
 function animate() {

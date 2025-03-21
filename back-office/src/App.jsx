@@ -1,18 +1,21 @@
 import React from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { useEffect } from 'react';
+import './styles/App.css'
+
 import { Home } from './pages/home'
 import { Profil } from './pages/profil'
 import { Login } from './pages/login'
-import { GestAdmin } from './pages/gest_admin'
-import { GestTarif } from './pages/gest_tarif'
-import { GestResa } from './pages/gest_resa'
-import { FormTarif } from './pages/formTarif'
-import { GestBillet } from './pages/gest_billet'
-import { FormAdmin } from './pages/formAdmin'
-import { FormResa } from './pages/formResa'
-import { FormBillet } from './pages/formBillet'
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import './styles/App.css'
-import { useEffect } from 'react';
+
+import { GestAdmin } from './pages/gest/gest_admin'
+import { GestTarif } from './pages/gest/gest_tarif'
+import { GestResa } from './pages/gest/gest_resa'
+import { GestBillet } from './pages/gest/gest_billet'
+
+import { FormTarif } from './pages/form/formTarif'
+import { FormAdmin } from './pages/form/formAdmin'
+import { FormResa } from './pages/form/formResa'
+import { FormBillet } from './pages/form/formBillet'
 
 
 

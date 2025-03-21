@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Nav } from "../component/nav/index.js";
-import { CardResa } from "../component/cardResa/cardResa.jsx";
+import { Nav } from "../../component/nav/index.js";
+import { CardResa } from "../../component/card/cardResa.jsx";
 import { Link } from "react-router-dom";
 
 export function GestResa() {

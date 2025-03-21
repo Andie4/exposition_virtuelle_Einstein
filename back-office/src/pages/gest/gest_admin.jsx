@@ -1,8 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Nav } from "../component/nav/index.js";
-import { CardAdmin } from "../component/cardAdmin/cardAdmin.jsx";
+import { Nav } from "../../component/nav/index.js";
+import { CardAdmin } from "../../component/card/cardAdmin.jsx";
 
 export function GestAdmin() {
     const [admins, setAdmins] = useState([]);

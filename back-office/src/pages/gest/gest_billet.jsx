@@ -1,8 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Nav } from "../component/nav/index.js";
-import { CardBillet } from "../component/cardBillet/cardBillet.jsx";
+import { Nav } from "../../component/nav/index.js";
+import { CardBillet } from "../../component/card/cardBillet.jsx";
 
 export function GestBillet() {
     const [billets, setBillets] = useState([]);

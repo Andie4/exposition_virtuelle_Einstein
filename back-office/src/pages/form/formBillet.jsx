@@ -1,6 +1,6 @@
-import { ButtonAdd } from "../component/buttonAdd";
-import { ButtonUpdate } from "../component/buttonUpdate";
-import { Nav } from "../component/nav";
+import { ButtonAdd } from "../../component/buttonAdd";
+import { ButtonUpdate } from "../../component/buttonUpdate";
+import { Nav } from "../../component/nav";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";

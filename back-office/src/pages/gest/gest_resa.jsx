@@ -12,7 +12,6 @@ export function GestResa() {
         fetch("http://localhost/exposition_virtuelle_Einstein/api/resa",
             {
                 method: "GET",
-                mode: "cors",
                 headers: {
                     "Authorization": `Bearer ${token}`,
                     "Content-Type": "application/json"

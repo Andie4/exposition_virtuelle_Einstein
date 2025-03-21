@@ -1,7 +1,7 @@
 import { ButtonAdd } from "../component/buttonAdd";
 import { ButtonUpdate } from "../component/buttonUpdate";
 import { Nav } from "../component/nav";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export function FormResa() {
@@ -43,6 +43,8 @@ export function FormResa() {
         <>
             <Nav />
             <h1>Formulaire de réservation</h1>
+            <Link to="/gest_resa">Retour</Link>
+            <br />
             <form action="">
                 <fieldset>
                     <legend>{id!=0 ? "Modifier la réservation" : "Ajouter une réservation"}</legend>

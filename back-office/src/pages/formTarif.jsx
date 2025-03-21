@@ -1,7 +1,7 @@
 import { ButtonAdd } from "../component/buttonAdd";
 import { ButtonUpdate } from "../component/buttonUpdate";
 import { Nav } from "../component/nav";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export function FormTarif() {
@@ -40,6 +40,8 @@ export function FormTarif() {
         <>
             <Nav />
             <h1>Formulaire de tarif</h1>
+            <Link to="/gest_tarif">Retour</Link>
+            <br />
             <form action="">
                 <fieldset>
                     <legend>{id!=0 ? "Modifier le tarif" : "Ajouter un tarif"}</legend>

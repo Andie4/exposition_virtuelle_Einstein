@@ -1,7 +1,7 @@
 import { ButtonAdd } from "../component/buttonAdd";
 import { ButtonUpdate } from "../component/buttonUpdate";
 import { Nav } from "../component/nav";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export function FormAdmin() {
@@ -43,6 +43,8 @@ export function FormAdmin() {
         <>
             <Nav />
             <h1>Formulaire administrateur</h1>
+            <Link to="/gest_admin">Retour</Link>
+            <br />
             <form action="">
                 <fieldset>
                     <legend>{id!=0 ? "Modifier l'administrateur" : "Ajouter un administrateur"}</legend>

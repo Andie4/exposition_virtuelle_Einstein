@@ -2,6 +2,7 @@ import { ButtonAdd } from "../component/buttonAdd";
 import { ButtonUpdate } from "../component/buttonUpdate";
 import { Nav } from "../component/nav";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export function FormBillet() {
@@ -48,6 +49,8 @@ export function FormBillet() {
         <>
             <Nav />
             <h1>Formulaire de billet</h1>
+            <Link to={`/gest_billet/${resa}`} className="btn-back">Retour</Link>
+            <br />
             <form action="">
                 <fieldset>
                     <legend>{id!=0 ? "Modifier la réservation" : "Ajouter une réservation"}</legend>

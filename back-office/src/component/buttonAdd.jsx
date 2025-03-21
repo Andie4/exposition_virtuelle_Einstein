@@ -25,6 +25,7 @@ export function ButtonAdd({ type, token, data }) {
             .then((response) => response.json())
             .then((result) => {
                 console.log("Ajout réussi :", result);
+                window.location.href = `/gest_${type}`; 
             })
             .catch((error) => {
                 console.error("Erreur lors de l'ajout :", error);

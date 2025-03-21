@@ -32,6 +32,7 @@ export function GestBillet() {
         <>
             <Nav />
             <h1>Gestion des Billets</h1>
+            <Link to={`/gest_resa`}>Retour aux réservations</Link>
             <Link to={`/formBillet/${id}/0`}>Ajouter un billet</Link>
             {billets
                 .map((billet) => (

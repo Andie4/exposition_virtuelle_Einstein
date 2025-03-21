@@ -13,6 +13,7 @@ export function ButtonUpdate({ id, type, token, data}) {
         .then((response) => response.json())
         .then((result) => {
             console.log("Mise à jour réussie :", result);
+            window.location.href = `/gest_${type}`; 
         })
         .catch((error) => {
             console.error("Erreur lors de la mise à jour :", error);

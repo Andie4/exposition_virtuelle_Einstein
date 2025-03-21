@@ -292,7 +292,7 @@ function deleteResa($id)
 {
     global $db;
 
-    $requete = "DELETE FROM billet WHERE resa = :id";
+    $requete = "DELETE FROM billet WHERE resa_billet = :id";
     $stmt = $db->prepare($requete);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();

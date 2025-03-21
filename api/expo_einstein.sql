@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 18 mars 2025 à 09:01
+-- Généré le : ven. 21 mars 2025 à 21:26
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
@@ -36,14 +36,14 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `login_admin` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `mdp_admin` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_admin`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `admin`
 --
 
 INSERT INTO `admin` (`id_admin`, `nom_admin`, `prenom_admin`, `mail_admin`, `login_admin`, `mdp_admin`) VALUES
-(1, '', '', '', 'emilie_admin', '$2y$10$cOZA6G8i8g9TpFLldPuIBeaW5y6evr7FRxvpUbBUCZjkQRvZ40K/2');
+(1, 'Desgranges', 'Emilie', 'emilie.desgranges78@gmail.com', 'emilie_admin', '$2y$10$7KOy2dgEuRXIhmpRb6iIf.GAZNwG5eEb0vH0pe777Jx7pgyM.S1r6');
 
 -- --------------------------------------------------------
 
@@ -54,24 +54,22 @@ INSERT INTO `admin` (`id_admin`, `nom_admin`, `prenom_admin`, `mail_admin`, `log
 DROP TABLE IF EXISTS `billet`;
 CREATE TABLE IF NOT EXISTS `billet` (
   `id_billet` int NOT NULL AUTO_INCREMENT,
-  `nom` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `prenom` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `resa` int NOT NULL,
-  `tarif` int NOT NULL,
+  `nom_billet` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `prenom_billet` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `resa_billet` int NOT NULL,
+  `tarif_billet` int NOT NULL,
   PRIMARY KEY (`id_billet`),
-  KEY `resa` (`resa`),
-  KEY `tarif` (`tarif`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  KEY `resa` (`resa_billet`),
+  KEY `tarif` (`tarif_billet`)
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `billet`
 --
 
-INSERT INTO `billet` (`id_billet`, `nom`, `prenom`, `resa`, `tarif`) VALUES
-(44, 'Martin', 'Sophie', 14, 1),
-(45, 'Durand', 'Paul', 14, 2),
-(48, 'Martin', 'Sophie', 16, 1),
-(49, 'Durand', 'Paul', 16, 2);
+INSERT INTO `billet` (`id_billet`, `nom_billet`, `prenom_billet`, `resa_billet`, `tarif_billet`) VALUES
+(74, 'Duranda', 'Paul', 29, 3),
+(78, 'Lalala', 'gzgbhzoerbg', 29, 3);
 
 -- --------------------------------------------------------
 
@@ -88,16 +86,14 @@ CREATE TABLE IF NOT EXISTS `resa` (
   `nom_resa` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `prenom_resa` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_resa`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `resa`
 --
 
 INSERT INTO `resa` (`id_resa`, `date_resa`, `heure_resa`, `mail_resa`, `nom_resa`, `prenom_resa`) VALUES
-(13, '2025-12-05', '10:30:00', 'jean@gme.com', 'jean', 'lolo'),
-(14, '2025-10-25', '15:00:00', 'jean.dupont@email.com', 'Dupont', 'Jean'),
-(16, '2025-10-25', '15:00:00', 'jean.dupont@email.com', 'Dupont', 'Jean');
+(29, '2025-10-25', '15:00:00', 'jean.dupont@email.com', 'Dupont', 'Jean');
 
 -- --------------------------------------------------------
 
@@ -109,19 +105,19 @@ DROP TABLE IF EXISTS `tarif`;
 CREATE TABLE IF NOT EXISTS `tarif` (
   `id_tarif` int NOT NULL AUTO_INCREMENT,
   `nom_tarif` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `prix` int NOT NULL,
+  `prix_tarif` int NOT NULL,
   PRIMARY KEY (`id_tarif`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `tarif`
 --
 
-INSERT INTO `tarif` (`id_tarif`, `nom_tarif`, `prix`) VALUES
-(1, 'Plein Tarif', 10),
-(2, 'Enfant -16ans', 0),
-(3, 'Jeune -26ans', 0),
-(4, 'Senior +65ans', 0);
+INSERT INTO `tarif` (`id_tarif`, `nom_tarif`, `prix_tarif`) VALUES
+(3, 'Jeune -26ans', 10),
+(4, 'Senior +65ans', 0),
+(6, 'Premium', 12),
+(8, 'Banane', 50);
 
 --
 -- Contraintes pour les tables déchargées
@@ -131,8 +127,8 @@ INSERT INTO `tarif` (`id_tarif`, `nom_tarif`, `prix`) VALUES
 -- Contraintes pour la table `billet`
 --
 ALTER TABLE `billet`
-  ADD CONSTRAINT `billet_ibfk_1` FOREIGN KEY (`resa`) REFERENCES `resa` (`id_resa`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `billet_ibfk_2` FOREIGN KEY (`tarif`) REFERENCES `tarif` (`id_tarif`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `billet_ibfk_1` FOREIGN KEY (`resa_billet`) REFERENCES `resa` (`id_resa`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `billet_ibfk_2` FOREIGN KEY (`tarif_billet`) REFERENCES `tarif` (`id_tarif`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -6,21 +6,33 @@
     <title>Cosmos</title>
     <script defer type="module" src="scripts/salleCosmos.js"></script>
     <link rel="stylesheet" href="styles/styleExpo.css">
+    <link rel="stylesheet" href="styles/cosmos.css">
+
 
 </head>
 <body>
-
-
     <div>
         <audio loop autoplay src="media/cosmos.MP3"></audio> 
 
     </div>
 
-
     <div class="controls">
 		<button class="audioBtn" type="button" id="buttonMute"><img src="media/volume_off.svg" alt="mute"></button>
 		<button class="audioBtn" type="button" id="buttonDemute"><img src="media/volume_up.svg" alt="demute"></button>
 	</div>
+
+    <div class="blocIndications">
+        <p class="indications">Trouver l'étoile qui révèlera le texte</p>
+    </div>
+
+    <div class="blocText" id="blocText">
+        <p data-splitting id="txt1">En 1917, mes équations de la relativité générale me menèrent à une conclusion troublante… L’univers n’était pas statique, il était en mouvement. Mais cela allait à l’encontre de tout ce que l’on croyait. Ai-je fait une erreur ? Pour corriger ce paradoxe, j’introduisais la constante cosmologique, un terme qui équilibrerait les forces et figerait l’univers. <br><br>
+        
+        Cependant, en 1929, Hubble prouva que les galaxies s’éloignaient. L’univers était en expansion. Je réalisai alors que l’ajout de cette constante avait été une erreur. Peut-être la plus grande de ma vie. Pourtant, l’ironie voulait qu’aujourd’hui, elle soit réhabilitée pour expliquer un mystère plus grand encore : l’énergie noire. <br><br><br>
+        
+        Si ces erreurs m’ont appris une chose, c’est que la vérité scientifique évolue. Nous devons toujours rester prêts à revoir nos certitudes.</p>
+    </div>
+
     
 </body>
 </html>

@@ -1,17 +1,10 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import Splitting from 'splitting';
 
 
-const mouse = new THREE.Vector2(1,1);
-document.addEventListener('mousemove', onMouseMove , false);
 
-function onMouseMove(event) {
-    event.preventDefault();
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-    raycaster.setFromCamera(mouse, camera);
-};
 
 // scene
 const scene = new THREE.Scene();
@@ -104,6 +97,36 @@ const sprite = new THREE.Sprite( material );
 sprite.position.set( 0, 6, 1);
 sprite.scale.set( 6, 6, 0 );
 scene.add( sprite );
+
+
+// Effet avec le texte letrre par lettre 
+Splitting(5);
+
+
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+// cacher le texte par defaut
+document.getElementById("blocText").style.display = "none";
+
+
+document.addEventListener("mousedown", (event) => {
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+    raycaster.setFromCamera(mouse, camera);
+
+    const intersects = raycaster.intersectObjects(scene.children, true);
+    if (intersects.length > 0) {
+        let clickedObject = intersects[0].object;
+        console.log(`objets: ${clickedObject.name}`);
+
+
+        if (clickedObject.name === "Sphere001_335") {
+                // afficher le texte 
+                document.getElementById("blocText").style.display = "block";
+                
+        }
+    }
+});
 
 ///////////////////////////////////////////////////////////////////////
 // Rendu de la scène

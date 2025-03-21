@@ -36,8 +36,8 @@ function App() {
         localStorage.removeItem("tokenExpiration");
         localStorage.removeItem("isLoggedIn");
 
-        if (window.location.pathname !== "/login") {
-            window.location.href = "/login";
+        if (window.location.pathname !== "/back-office/login") {
+            window.location.href = "/back-office/login";
         }
     }
 }, []);

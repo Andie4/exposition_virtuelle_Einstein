@@ -46,10 +46,10 @@ export function Login() {
                 localStorage.removeItem("token");
                 localStorage.removeItem("tokenExpiration");
                 localStorage.removeItem("isLoggedIn");
-                window.location.href = "/login";
+                window.location.href = "/back-office/login";
             }, timeoutDuration);
         
-            window.location.href = "/home";
+            window.location.href = "/back-office/home";
         }
          else {
             console.warn("⚠️ Identifiants incorrects !");

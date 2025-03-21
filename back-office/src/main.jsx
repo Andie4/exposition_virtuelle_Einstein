@@ -6,7 +6,7 @@ import './styles/styles.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/back-office/">
     <App />
     </BrowserRouter>
   </StrictMode>,

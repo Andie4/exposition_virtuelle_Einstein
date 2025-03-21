@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { ButtonDelete } from '../buttonDelete';
+import { ButtonDelete } from '../button/buttonDelete';
 import { Link } from 'react-router-dom';
 
 export function CardBillet({resa, billet, onDelete }){

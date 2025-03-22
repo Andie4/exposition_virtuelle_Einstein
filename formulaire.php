@@ -92,14 +92,6 @@
                                 <button class="ajouter">+</button>
                             </div>
                         </div>
-                        <!-- <div class="details">
-                            <div class="person">
-                                <label class="tarif">Plein tarif 1</label>
-                                <input type="text" placeholder="Nom">
-                                <input type="text" placeholder="Prénom">
-                            </div>
-
-                        </div> -->
                     </div>
                     
                     <div class="ticket-category">

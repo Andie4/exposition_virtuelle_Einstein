@@ -1,0 +1,330 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  position: relative;
+  padding: 3rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  background-color: rgb(6, 6, 96);
+  height: 8vh;
+}
+
+.navbar .nav-links ul {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .nav-links ul li {
+  display: flex;
+  list-style: none;
+  margin: 0 1rem;
+}
+
+.menu-burger {
+  width: 3rem;
+  display: none;
+}
+
+.close {
+  width: 3rem;
+  display: none;
+}
+
+.langues {
+  background-color: #fff;
+  color: black;
+  border-radius: 100%;
+  padding: 1rem;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.border {
+  border: 1px solid rgb(255, 255, 255);
+  padding: 0.5rem 1rem;
+}
+
+.border:hover {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  color: black;
+}
+
+.black {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.logo {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    padding: 0;
+  }
+  .navbar.logo {
+    position: absolute !important;
+    top: 50px !important;
+    left: 10rem !important;
+  }
+  .nav-links {
+    top: 0;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.2431372549);
+    backdrop-filter: blur(5px);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -100%;
+    transition: all 0.5s ease;
+  }
+  .mobile-menu {
+    margin-left: 0;
+  }
+  .nav-links ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .menu-burger {
+    width: 3rem;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .navbar .nav-links ul li {
+    margin: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    /* color: rgb(0, 0, 0) !important;  */
+  }
+  .black {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .menu-burger,
+  .close {
+    width: 3rem;
+    transition: opacity 0.3s ease;
+  }
+  .menu-burger.active {
+    display: none;
+  }
+  .close.active {
+    position: absolute;
+    display: block;
+    top: 1rem;
+    right: 1rem;
+  }
+}
+/* mobile  */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 0.8rem;
+  }
+  .center {
+    display: block;
+    margin: auto;
+  }
+  .blocInfos {
+    display: block;
+    padding: 5px;
+    font-size: 0.8rem;
+    margin-bottom: 20rem;
+    max-width: 300px;
+    margin: auto;
+  }
+  .dataSite {
+    display: grid;
+    justify-content: center;
+    margin-top: 1rem;
+    width: 9rem;
+    padding: 0.2rem 1rem;
+    height: 7rem;
+    margin: 0.5rem;
+  }
+  .linkSite {
+    display: grid;
+    justify-content: center;
+    margin-top: 1rem;
+    width: 9rem;
+    padding: 0.2rem 1rem;
+    margin: 0.5rem;
+  }
+  .colR2 {
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .grid {
+    display: grid;
+    gap: 0px 0px;
+    grid-template-areas: "colR1 colL1" "colR2 colL2";
+    width: 1rem;
+  }
+  .colR {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .colL {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+/* tablette */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  body {
+    font-size: 1rem;
+  }
+  .center {
+    display: block;
+    margin: auto;
+  }
+  .chart {
+    width: 30rem;
+    margin: auto;
+  }
+  .blocInfos {
+    display: block;
+    padding: 5px;
+    font-size: 0.8rem;
+    margin-bottom: 20rem;
+    max-width: 300px;
+    margin: auto;
+  }
+  .dataSite {
+    display: grid;
+    justify-content: center;
+    margin-top: 1rem;
+    width: 9rem;
+    padding: 0.2rem 1rem;
+    height: 8rem;
+    margin: 0.5rem;
+  }
+  .linkSite {
+    display: grid;
+    justify-content: center;
+    margin-top: 1rem;
+    width: 9rem;
+    padding: 0.2rem 0.8rem;
+    margin: 0.5rem;
+  }
+  .colR2 {
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .grid {
+    display: grid;
+    gap: 0px 0px;
+    grid-template-areas: "colR1 colL1" "colR2 colL2";
+    width: 1rem;
+  }
+  .colR {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .colL {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+/* desktop */
+@media screen and (min-width: 1024px) {
+  .grand {
+    font-size: 2rem;
+    margin: auto;
+  }
+  .center {
+    display: block;
+    margin: auto;
+  }
+  .grid {
+    display: flex;
+    gap: 0px 0px;
+  }
+  .chart {
+    width: 30rem;
+    margin: auto;
+    /* background-color: #ffffff66; */
+    color: var(--white);
+  }
+  .blocInfos {
+    display: block;
+    padding: 5px;
+    font-size: 0.8rem;
+    margin-bottom: 20rem;
+    margin: auto;
+    max-width: 50rem;
+  }
+  .dataSite {
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    width: 9rem;
+    padding: 0.2rem 1rem;
+    height: 8rem;
+    margin: auto;
+  }
+  .linkSite {
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    width: 9rem;
+    padding: 0.2rem 1rem;
+    margin: 1.5rem;
+    height: 3.4rem;
+  }
+  .multiColumn {
+    display: grid;
+    gap: 0px 0px;
+    grid-template-columns: repeat(3, 3fr);
+    grid-template-areas: "blocInfos myChart1 myChart3" "myChart2 myChart4";
+    width: 70rem;
+  }
+  .myChart1 {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 1rem;
+    padding: 2rem;
+  }
+  .myChart2 {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .myChart3 {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .myChart4 {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

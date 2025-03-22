@@ -24,7 +24,7 @@ export function FormBillet() {
 
     useEffect(() => {
         if (id != 0) {
-            fetch(`http://localhost/exposition_virtuelle_Einstein/api/billet/${id}`, {
+            fetch(`https://albert.xploria.fr/api/billet/${id}`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${token}`,

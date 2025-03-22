@@ -14,7 +14,7 @@ export function ChartJour() {
     };
 
     useEffect(() => {
-        fetch("http://localhost/exposition_virtuelle_Einstein/api/resa", {
+        fetch("https://albert.xploria.fr/api/resa", {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,

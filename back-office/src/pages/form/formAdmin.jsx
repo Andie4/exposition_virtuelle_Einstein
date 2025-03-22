@@ -18,7 +18,7 @@ export function FormAdmin() {
 
     useEffect(() => {
         if (id != 0) {
-            fetch(`http://localhost/exposition_virtuelle_Einstein/api/admin/${id}`, {
+            fetch(`https://albert.xploria.fr/api/admin/${id}`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${token}`,

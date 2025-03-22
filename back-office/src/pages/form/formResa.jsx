@@ -18,7 +18,7 @@ export function FormResa() {
 
     useEffect(() => {
         if (id != 0) {
-            fetch(`http://localhost/exposition_virtuelle_Einstein/api/resa/${id}`, {
+            fetch(`https://albert.xploria.fr/api/resa/${id}`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${token}`,

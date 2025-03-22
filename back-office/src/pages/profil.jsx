@@ -16,7 +16,7 @@ export function Profil() {
     const id_admin = localStorage.getItem("id_admin");
 
     useEffect(() => {
-        fetch(`http://localhost/exposition_virtuelle_Einstein/api/admin/${id_admin}`, {
+        fetch(`https://albert.xploria.fr/api/admin/${id_admin}`, {
             method: "GET",
             mode: "cors",
             headers: {

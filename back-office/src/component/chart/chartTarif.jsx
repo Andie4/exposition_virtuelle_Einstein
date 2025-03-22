@@ -10,7 +10,7 @@ export function ChartTarif() {
 
     // Récupérer les billets
     useEffect(() => {
-        fetch(`http://localhost/exposition_virtuelle_Einstein/api/billet`, {
+        fetch(`https://albert.xploria.fr/api/billet`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -25,7 +25,7 @@ export function ChartTarif() {
 
     // Récupérer les tarifs
     useEffect(() => {
-        fetch("http://localhost/exposition_virtuelle_Einstein/api/tarif", {
+        fetch("https://albert.xploria.fr/api/tarif", {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,

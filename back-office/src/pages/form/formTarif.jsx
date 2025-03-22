@@ -15,7 +15,7 @@ export function FormTarif() {
 
     useEffect(() => {
         if (id != 0) {
-            fetch(`http://localhost/exposition_virtuelle_Einstein/api/tarif/${id}`, {
+            fetch(`https://albert.xploria.fr/api/tarif/${id}`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${token}`,

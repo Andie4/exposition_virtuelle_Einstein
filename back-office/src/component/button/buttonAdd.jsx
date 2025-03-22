@@ -14,7 +14,7 @@ export function ButtonAdd({ type, token, data }) {
 
         console.log("formData :", formData);
 
-        fetch(`http://localhost/exposition_virtuelle_Einstein/api/${type}`, {
+        fetch(`https://albert.xploria.fr/api/${type}`, {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${token}`,

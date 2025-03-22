@@ -9,7 +9,7 @@ export function GestAdmin() {
     const token = localStorage.getItem("token");
 
     useEffect(() => {
-        fetch("http://localhost/exposition_virtuelle_Einstein/api/admin",
+        fetch("https://albert.xploria.fr/api/admin",
             {
                 method: "GET",
                 mode: "cors",

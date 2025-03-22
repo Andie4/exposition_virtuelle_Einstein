@@ -2,7 +2,7 @@ import React from "react";
 
 export function ButtonUpdate({ id, type, token, data}) {
     const handleUpdate = () => {
-        fetch(`http://localhost/exposition_virtuelle_Einstein/api/${type}/${id}`, {
+        fetch(`https://albert.xploria.fr/api/${type}/${id}`, {
             method: "PUT",
             headers: {
                 "Authorization": `Bearer ${token}`,

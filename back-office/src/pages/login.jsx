@@ -14,7 +14,7 @@ export function Login() {
     params.append("mdp", mdp);
 
     try {
-        const response = await fetch("http://localhost/exposition_virtuelle_Einstein/api/admin_login", {
+        const response = await fetch("https://albert.xploria.fr/api/admin_login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",

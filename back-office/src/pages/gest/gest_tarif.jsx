@@ -9,7 +9,7 @@ export function GestTarif() {
     const token = localStorage.getItem("token");
 
     useEffect(() => {
-        fetch("http://localhost/exposition_virtuelle_Einstein/api/tarif",
+        fetch("https://albert.xploria.fr/api/tarif",
             {
                 method: "GET",
                 headers: {

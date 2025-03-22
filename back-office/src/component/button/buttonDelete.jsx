@@ -3,7 +3,7 @@ import React from "react";
 export function ButtonDelete({ id, type, token, onSuccess}) {
     const handleDelete = () => {
         if (window.confirm("Voulez-vous vraiment supprimer cet élément ?")) {
-            fetch(`http://localhost/exposition_virtuelle_Einstein/api/${type}/${id}`, {
+            fetch(`https://albert.xploria.fr/api/${type}/${id}`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${token}`,

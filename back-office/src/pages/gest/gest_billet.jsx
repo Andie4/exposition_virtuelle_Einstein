@@ -10,7 +10,7 @@ export function GestBillet() {
     let { id } = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost/exposition_virtuelle_Einstein/api/resa_billet/${id}`,
+        fetch(`https://albert.xploria.fr/api/resa_billet/${id}`,
             {
                 method: "GET",
                 headers: {

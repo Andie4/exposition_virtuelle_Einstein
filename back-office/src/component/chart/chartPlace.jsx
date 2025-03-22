@@ -9,7 +9,7 @@ export function ChartPlace() {
 
     // Récupérer les réservations
     useEffect(() => {
-        fetch("http://localhost/exposition_virtuelle_Einstein/api/resa", {
+        fetch("https://albert.xploria.fr/api/resa", {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -27,7 +27,7 @@ export function ChartPlace() {
         const fetchBillets = async () => {
             const allBillets = [];
             for (let resa of resas) {
-                const response = await fetch(`http://localhost/exposition_virtuelle_Einstein/api/resa_billet/${resa.id_resa}`, {
+                const response = await fetch(`https://albert.xploria.fr/api/resa_billet/${resa.id_resa}`, {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${token}`,

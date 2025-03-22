@@ -1,10 +1,8 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import Splitting from 'splitting';
 
-
-const mouse = new THREE.Vector2(1,1);
-document.addEventListener('mousemove', onMouseMove , false);
 
 function onMouseMove(event) {
     event.preventDefault();
@@ -118,6 +116,33 @@ window.onload = function() {
     	};
 };
 
+// Effet avec le texte letrre par lettre 
+Splitting(5);
+
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+// cacher le texte par defaut
+document.getElementById("blocText").style.display = "none";
+
+
+document.addEventListener("mousedown", (event) => {
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+    raycaster.setFromCamera(mouse, camera);
+
+    const intersects = raycaster.intersectObjects(scene.children, true);
+    if (intersects.length > 0) {
+        let clickedObject = intersects[0].object;
+        console.log(`objets: ${clickedObject.name}`);
+
+
+        if (clickedObject.name === "Cube112") {
+                // afficher le texte 
+                document.getElementById("blocText").style.display = "block";
+                
+        }
+    }
+});
 
 ///////////////////////////////////////////////////////////////////////
 // Rendu de la scène

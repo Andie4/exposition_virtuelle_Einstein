@@ -5,10 +5,8 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass.js';
+import Splitting from 'splitting';
 
-const mouse = new THREE.Vector2(1,1);
-document.addEventListener('mousemove', onMouseMove , false);
-const raycaster = new THREE.Raycaster();
 
 
 function onMouseMove(event) {
@@ -63,8 +61,8 @@ const composer = new EffectComposer(renderer);
 const renderPass = new RenderPass(scene, camera);
 composer.addPass(renderPass);
 //
-// const glitchPass = new GlitchPass(); //effet glitch
-// composer.addPass(glitchPass);
+const glitchPass = new GlitchPass(); //effet glitch
+composer.addPass(glitchPass);
 
 composer.addPass(new FilmPass(1, false)); //grain
 
@@ -109,8 +107,8 @@ var sidenav = document.getElementById("mySidenav");
 var openBtn = document.getElementById("openBtn");
 var closeBtn = document.getElementById("closeBtn");
 
-openBtn.onclick = openNav;
-closeBtn.onclick = closeNav;
+// openBtn.onclick = openNav;
+// closeBtn.onclick = closeNav;
 
 /* Set the width of the side navigation to 250px */
 function openNav() {
@@ -154,6 +152,31 @@ sprite.scale.set( 0.6, 0.6, 0 );
 scene.add( sprite );
 
 
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+// cacher le texte par defaut
+document.getElementById("blocText").style.display = "none";
+
+
+document.addEventListener("mousedown", (event) => {
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+    raycaster.setFromCamera(mouse, camera);
+
+    const intersects = raycaster.intersectObjects(scene.children, true);
+    if (intersects.length > 0) {
+        let clickedObject = intersects[0].object;
+        console.log(`objets: ${clickedObject.name}`);
+
+
+        if (clickedObject.name === "Pintura_Plane_3") {
+                // afficher le texte 
+                document.getElementById("blocText").style.display = "block";
+                
+        }
+    }
+});
+
 
 // const EinsteinLoader = new THREE.TextureLoader();
 // var treetexture = loader.load( 'tv1_einstein_boussole.png');
@@ -166,8 +189,8 @@ scene.add( sprite );
 // treesprite.position.set(0, 1, 0);
 // scene.add(treesprite);
 
-
-
+//effet typewritter
+Splitting();
 
 ///////////////////////////////////////////////////////////////////////
 // Rendu de la scène

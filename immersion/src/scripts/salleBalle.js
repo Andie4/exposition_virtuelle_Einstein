@@ -1,6 +1,9 @@
 import { gsap } from "gsap";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import Splitting from "splitting";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";	
+
 
 // scene
 const scene = new THREE.Scene();
@@ -32,6 +35,7 @@ document.body.appendChild(renderer.domElement);
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.autorotate = true;
 
+///////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -59,13 +63,26 @@ controls.autorotate = true;
 // }
 
 
-const map = new THREE.TextureLoader().load( 'media/tv4_einstein_cosmologie.png' );
-const material = new THREE.SpriteMaterial( { map: map } );
+// Effet avec le texte letrre par lettre 
 
-const sprite = new THREE.Sprite( material );
-sprite.position.set( 0, 6, 1);
-sprite.scale.set( 6, 6, 0 );
-scene.add( sprite );
+// Effet avec le texte letrre par lettre 
+Splitting(2);
+
+
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+// cacher le texte par defaut
+document.getElementById("blocText").style.display = "none";
+
+// fonction pour afficher le texte
+function showText() {
+	document.getElementById("blocText").style.display = "block";
+
+}
+// afficher le texte après 10 secondes 
+setTimeout(showText, 10);
+                
+
 
 
 // mettre le son sur pause 
@@ -88,7 +105,8 @@ window.onload = function() {
     	};
 };
 
+////////////////////////////////////////
+function animate() {
 
-
-
+}
 animate();

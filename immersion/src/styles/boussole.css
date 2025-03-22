@@ -3,3 +3,62 @@
 *::before {
     box-sizing: border-box;
 }
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+.blocText{
+    position: absolute;
+}
+.text{
+    position: absolute;
+}
+
+.splitting .char {
+  animation: slide-in 1s cubic-bezier(.5, 0, .5, 1) both;
+  animation-delay: calc(6ms * var(--char-index));
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-1em)  scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* mobile */
+@media (max-width: 768px) {
+    .text {
+        font-size: 1.5rem;
+    }
+}
+
+
+/* tablet */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .text {
+        font-size: 2rem;
+    }
+}
+
+/* desktop */
+@media (min-width: 1024px) {
+    .blocText{
+        width: 30rem;
+        background-color: #9d9d9d27 ;
+        top:20%;
+        right: 4%;
+        border-radius: 15px;
+        padding: 2rem 1rem ;
+        backdrop-filter: blur(5px);
+    }
+    p {
+        font-size: 1.1rem;
+        color: azure;
+    }
+    
+}

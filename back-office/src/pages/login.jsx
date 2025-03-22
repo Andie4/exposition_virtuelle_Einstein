@@ -65,25 +65,29 @@ export function Login() {
 
     return (
         <div>
-            <h2>Connexion</h2>
             <form onSubmit={handleLogin}>
-                <label htmlFor="login">Identifiant</label>
-                <input
-                    type="text"
-                    placeholder="Identifiant"
-                    value={login}
-                    onChange={(e) => setLogin(e.target.value)}
-                    required
-                />
-                <label htmlFor="password">Mot de passe</label>
-                <input
-                    type="password"
-                    placeholder="Mot de passe"
-                    value={mdp}
-                    onChange={(e) => setMdp(e.target.value)}
-                    required
-                />
-                <button type="submit">Se connecter</button>
+                <fieldset>
+                    <legend>Connexion</legend>
+                    <label htmlFor="login">Identifiant</label>
+                    <input
+                        type="text"
+                        placeholder="Identifiant"
+                        id="login"
+                        value={login}
+                        onChange={(e) => setLogin(e.target.value)}
+                        required
+                    />
+                    <label htmlFor="password">Mot de passe</label>
+                    <input
+                        type="password"
+                        placeholder="Mot de passe"
+                        id="password"
+                        value={mdp}
+                        onChange={(e) => setMdp(e.target.value)}
+                        required
+                    />
+                    <button type="submit">Se connecter</button>
+                </fieldset>
             </form>
             {message && <p>{message}</p>}
         </div>

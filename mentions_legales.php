@@ -12,7 +12,7 @@
 
 
     <section>
-        <h1>Mentions Légales</h1>
+        <h1 id="content">Mentions Légales</h1>
         <div class="bigMarginBottom">
             <h2>Éditrices : </h2>
             <p>Emilie Desgranges, Mélissa Cumur, Andréa Caneval, Alyssa Karahan, Emilie Guerrier, Konan-Hoël Lesault</p>

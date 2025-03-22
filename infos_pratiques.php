@@ -11,7 +11,7 @@
     <?php include 'nav.php'; ?>
 
     <section>
-        <h1>Informations pratiques</h1>
+        <h1 id="content">Informations pratiques</h1>
        <div class="spaceBetweenText box bigMarginBottom">
             <img src="images/img_planSalles.png" alt="">
             <div class="bigMarginBottom marginLeft">

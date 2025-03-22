@@ -14,7 +14,7 @@
 
         <section>
         <div>
-            <h1>Acheter un billet</h1>
+            <h1 id="content">Acheter un billet</h1>
             <!-- <div class="filAriane">
                 <button>Dates & horaires ></button>
                 <button>Nombre de billets ></button>

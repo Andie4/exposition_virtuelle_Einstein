@@ -49,11 +49,11 @@ export function FormAdmin() {
                 <fieldset>
                     <legend>{id!=0 ? "Modifier l'administrateur" : "Ajouter un administrateur"}</legend>
                     <label htmlFor="nom_admin">Nom</label>
-                    <input type="text" name="nom_admin" id="nom_admin" value={admin.nom_admin} onChange={handleForm} required />
+                    <input type="text" name="nom_admin" id="nom_admin" value={admin.nom_admin} onChange={handleForm}/>
                     <label htmlFor="prenom_admin">Prénom</label>
-                    <input type="text" name="prenom_admin" id="prenom_admin" value={admin.prenom_admin} onChange={handleForm} required />
+                    <input type="text" name="prenom_admin" id="prenom_admin" value={admin.prenom_admin} onChange={handleForm} />
                     <label htmlFor="mail_admin">Mail</label>
-                    <input type="email" name="mail_admin" id="mail_admin" value={admin.mail_admin} onChange={handleForm} required />
+                    <input type="email" name="mail_admin" id="mail_admin" value={admin.mail_admin} onChange={handleForm} />
                     <label htmlFor="login_admin">Login</label>
                     <input type="text" name="login_admin" id="login_admin" value={admin.login_admin} onChange={handleForm} required />
                     <label htmlFor="mdp_admin">Mot de passe</label>

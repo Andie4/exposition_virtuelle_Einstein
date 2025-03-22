@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/mentions_legales.css">
-    <title>Réservation exposition</title>
+    <title>Mention Légales - Albert, ayez sa vision</title>
 </head>
 <body>
 <?php include 'nav.php'; ?>

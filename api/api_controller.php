@@ -16,8 +16,25 @@ require_once 'auth.php';
 
 $request_method = $_SERVER['REQUEST_METHOD'];
 
+$type = isset($_GET["type"]) ? $_GET["type"] : null;
+
+if ($type === "doc" && $request_method === "GET") {
+    $file_path = __DIR__ . "/documentation.pdf"; // Assurez-vous que le fichier existe
+    if (file_exists($file_path)) {
+        header("Content-Type: application/pdf");
+        header("Content-Disposition: inline; filename=\"documentation.pdf\"");
+        readfile($file_path);
+    } else {
+        header("HTTP/1.1 404 Not Found");
+        echo json_encode(["error" => "Fichier non trouvé"]);
+    }
+    exit;
+}
+
+
 $public_routes = [
-    "POST" => ["admin_login", "resa"]
+    "POST" => ["admin_login", "resa"],
+    "GET" => ["tarif"],
 ];
 
 // Vérifier si la route est protégée

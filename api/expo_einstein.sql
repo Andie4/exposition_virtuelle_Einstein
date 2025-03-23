@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 21 mars 2025 à 21:26
+-- Généré le : dim. 23 mars 2025 à 16:56
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
@@ -30,9 +30,9 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
   `id_admin` int NOT NULL AUTO_INCREMENT,
-  `nom_admin` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `prenom_admin` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `mail_admin` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `nom_admin` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `prenom_admin` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `mail_admin` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `login_admin` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `mdp_admin` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_admin`)
@@ -105,19 +105,19 @@ DROP TABLE IF EXISTS `tarif`;
 CREATE TABLE IF NOT EXISTS `tarif` (
   `id_tarif` int NOT NULL AUTO_INCREMENT,
   `nom_tarif` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `prix_tarif` int NOT NULL,
   PRIMARY KEY (`id_tarif`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `tarif`
 --
 
-INSERT INTO `tarif` (`id_tarif`, `nom_tarif`, `prix_tarif`) VALUES
-(3, 'Jeune -26ans', 10),
-(4, 'Senior +65ans', 0),
-(6, 'Premium', 12),
-(8, 'Banane', 50);
+INSERT INTO `tarif` (`id_tarif`, `nom_tarif`) VALUES
+(3, 'Jeune -26ans'),
+(4, 'Senior +65ans'),
+(6, 'Premium'),
+(9, 'Plein Tarif'),
+(10, 'Enfant -16 ans');
 
 --
 -- Contraintes pour les tables déchargées

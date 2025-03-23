@@ -125,8 +125,6 @@
                 <div class="pointilles">
                     <img src="images/img_ticket.jpg" alt="" class="ticketImg">
                     <div class="ticketInfos">
-                        <p>Lorem ipsum dolor sit</p>
-                        <p>Mode d'obtention : e-ticket (gratuit)</p>
                     </div>
                 </div>
             </div>

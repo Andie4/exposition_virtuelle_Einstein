@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         try {
-            const response = await fetch("http://localhost/exposition_virtuelle_Einstein/api/resa", {
+            const response = await fetch("https://albert.xploria.fr/api/resa", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             alert("Réservation réussie !");
+            window.location.href = "remerciement.php";
         } catch (error) {
             console.error("Erreur lors de l'envoi :", error);
             alert("Une erreur est survenue lors de l'envoi du formulaire.");

@@ -187,7 +187,7 @@ function decaleDroite() {
 
 async function fetchTarifs() {
     try {
-        const response = await fetch('http://localhost/exposition_virtuelle_Einstein/api/tarif');
+        const response = await fetch('https://albert.xploria.fr/api/tarif');
         const data = await response.json();
 
         generateTarifs(data);

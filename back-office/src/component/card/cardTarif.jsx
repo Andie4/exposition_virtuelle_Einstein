@@ -8,7 +8,7 @@ export function CardTarif({tarif, onDelete}){
         <>
         <div>
             <p>{tarif.nom_tarif}</p>
-            <p>{tarif.prix_tarif}€</p>
+            <p>Anglais : {tarif.name_tarif}</p>
             <Link to={`/formTarif/${tarif.id_tarif}`}>Modifier</Link>
             <ButtonDelete id={tarif.id_tarif} type="tarif" token={localStorage.getItem("token")} onSuccess={onDelete} />
         </div>

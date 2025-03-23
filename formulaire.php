@@ -43,7 +43,8 @@
 
                             <div class="bigMarginBottom">
                                 <label for="date">Choisissez une date <span class="red">*</span></label><br>
-                                <input type="date" id="date" class="date" min="<?= date('Y-m-d') ?>" name="date_resa" required><br>
+                                <input type="date" id="date" class="date" min="<?= date('Y-m-d') ?>" name="date_resa"
+                                    required><br>
                             </div>
 
                             <div class="bigMarginBottom">
@@ -65,71 +66,20 @@
                         </fieldset>
 
 
-
-
-
-                        <!-- Nombre de billets -->
                         <fieldset class="container">
                             <div class="bigMarginBottom">
                                 <h2 class="tinyMarginBottom">Nombre de billets</h2>
                                 <p class="minuscule tinyMarginTop">Les champs suivis d'un <span class="red">*</span>
-                                    sont
-                                    obligatoires.</p>
-                            </div>
-                            <div class="">
-                                <div class="ticket-category">
-                                    <div class="flex">
-                                        <label class="tarif">Plein tarif</label>
-                                        <div class="counter">
-                                            <button class="supprimer">-</button>
-                                            <span>0</span>
-                                            <button class="ajouter">+</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="ticket-category">
-                                    <div class="flex">
-                                        <label class="tarif">Enfant -16 ans</label>
-                                        <div class="counter">
-                                            <button class="supprimer">-</button>
-                                            <span>0</span>
-                                            <button class="ajouter">+</button>
-                                        </div>
-                                    </div>
-
-                                </div>
-
+                                    sont obligatoires.</p>
                             </div>
 
-                            <div class="ticket-category">
-                                <div class="flex">
-                                    <label class="tarif">Jeune -26 ans</label>
-                                    <div class="counter">
-                                        <button class="supprimer">-</button>
-                                        <span>0</span>
-                                        <button class="ajouter">+</button>
-                                    </div>
-                                </div>
-
+                            <div class="tarif-container">
+                                
                             </div>
 
-                            <div class="ticket-category">
-                                <div class="flex">
-                                    <label class="tarif">Sénior +65 ans</label>
-                                    <div class="counter">
-                                        <button class="supprimer">-</button>
-                                        <span>0</span>
-                                        <button class="ajouter">+</button>
-                                    </div>
-                                </div>
-
-                            </div>
                             <input type="button" class="button-before" value="Précédent">
                             <input type="button" class="validate button-next billetsButton" value="Suivant">
                         </fieldset>
-
-
 
 
 
@@ -159,7 +109,7 @@
                                 </div>
                             </div>
 
-                           
+
 
                             <input type="button" class="button-before" value="Précédent">
                             <input type="submit" class="validate userButton" value="Réserver">

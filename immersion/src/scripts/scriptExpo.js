@@ -172,7 +172,7 @@ video.addEventListener('ended', () => {
 
 // Fonction pour zoomer sur l'écran
 function zoomOnScreen() {
-    const targetPosition = new THREE.Vector3(0, 0, -5);
+    const targetPosition = new THREE.Vector3(0, 0, 0);
     const zoomSpeed = 0.02;
 
     function animateZoom() {
@@ -180,7 +180,7 @@ function zoomOnScreen() {
         controls.update();
         renderer.render(scene, camera);
 
-        if (camera.position.distanceTo(targetPosition) > 0.01) {
+        if (camera.position.distanceTo(targetPosition) > 0) {
             requestAnimationFrame(animateZoom);
         }
     }

@@ -81,9 +81,65 @@ video {
 
 /* mobile */
 @media (max-width: 768px) {
+    .logo{
+        width: 4rem;
+    }
     .text {
-        font-size: 1.5rem;
-        color: whitesmoke;
+        font-size: 1.2rem;
+        color: white    ;
+    }
+    .center{
+        display: flex;
+        text-align: center;
+    }
+    img{
+        position: absolute;
+    }
+    .einstein{
+        width: 5rem;
+        position: absolute;
+        left: 12%;
+        right: 15%;
+    }
+    #btnVideo{
+        color: rgb(255, 255, 255);
+        position: absolute;
+
+    }
+    .mover {
+        offset-rotate: 0deg;
+        offset-rotate: auto;
+      }
+      
+      
+      .mover {
+        offset-path: path("M18.45,58.46s52.87-70.07,101.25-.75,101.75-6.23,101.75-6.23S246.38,5.59,165.33,9.08s-15,71.57-94.51,74.56S18.45,58.46,18.45,58.46Z");
+        animation: move 15s linear infinite;
+      }
+      @keyframes move {
+        to { 
+          offset-distance: 100%;
+        }
+      }
+      .mover {
+        width: 71px;
+        height: 54px;
+        position: absolute;
+        left: 30%;
+        top: 100px;
+      }
+      .blocText{
+        width: 22rem;
+        background-color: #9d9d9d4d ;
+        top:20%;
+        right: 4%;
+        border-radius: 15px;
+        padding: 2rem 1rem ;
+        backdrop-filter: blur(5px);
+    }
+    .text{
+        color: white;
+        font-size: 1.2rem;
     }
 }
 
@@ -128,7 +184,6 @@ video {
         }
       }
       
-      
       .mover {
         width: 71px;
         height: 54px;
@@ -136,6 +191,22 @@ video {
         left: 30%;
         top: 100px;
       }
+      .blocText{
+        width: 30rem;
+        background-color: #9d9d9d4d ;
+        top:20%;
+        right: 4%;
+        border-radius: 15px;
+        padding: 2rem 1rem ;
+        backdrop-filter: blur(5px);
+    }
+    .text{
+        color: white;
+        font-size: 1.2rem;
+    }
+    .logo{
+        width: 6rem;
+    }
 }
 
 /* desktop */

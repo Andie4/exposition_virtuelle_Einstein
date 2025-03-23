@@ -74,6 +74,9 @@ window.onload = function() {
 let textureVideo = null;
 const video = document.getElementById('video');
 video.muted = true;
+video.loop = true;
+video.play();
+
 
 textureVideo = new THREE.VideoTexture(video);
 textureVideo.minFilter = THREE.LinearFilter;    
@@ -105,27 +108,6 @@ loader.load(
     (error) => console.error("Erreur affiche du model :", error)
 );
 
-//lancer la video
-const raycaster = new THREE.Raycaster();
-const mouse = new THREE.Vector2();
-
-document.addEventListener("mousedown", (event) => {
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-    raycaster.setFromCamera(mouse, camera);
-
-    const intersects = raycaster.intersectObjects(scene.children, true);
-    if (intersects.length > 0) {
-        let clickedObject = intersects[0].object;
-        console.log(`objets: ${clickedObject.name}`);
-
-        if (clickedObject.name === "ecranTV") {
-                video.play();
-                console.log("video en cours");
-                
-        }
-    }
-});
 
 // afficher le texte 
 // cacher le texte par defaut

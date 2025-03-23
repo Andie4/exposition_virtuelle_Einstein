@@ -579,9 +579,9 @@ header{
     }
 
     .chapterProgress{
-      top: 10%;
-      left: 50%;
-      position: absolute;
+      position: relative;
+      display: grid;
+      top: 30%;
     }
 
 

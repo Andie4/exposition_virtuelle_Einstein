@@ -1,6 +1,20 @@
 "use strict"
 
 //-----------------------------------------------------
+// Vider le localStorage au chargement de la page
+document.addEventListener("DOMContentLoaded", function () {
+    clearLocalStorage(); // Effacer localStorage au chargement
+    updateRecap(); // Mettre à jour le récapitulatif (si nécessaire)
+});
+
+//-----------------------------------------------------
+// Fonction pour vider le localStorage
+function clearLocalStorage() {
+    localStorage.clear(); // Efface toutes les données stockées dans le localStorage
+}
+
+
+//-----------------------------------------------------
 // ! Boutons horaires
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -37,6 +51,7 @@ boutonResa.addEventListener("click", function () {
     } else {
         pageValide = 'True';
     }
+    updateRecap(); // Mettre à jour le récapitulatif après la sélection de la date et de l'heure
 });
 
 // ! Billets
@@ -86,7 +101,53 @@ boutonBillets.addEventListener("click", function () {
     }
 
     pageValide = 'True';
+    updateRecap(); // Mettre à jour le récapitulatif après la sélection des billets
 });
+
+//-----------------------------------------------------
+// Fonction pour mettre à jour le récapitulatif
+function updateRecap() {
+    const recapDiv = document.querySelector('.ticket .ticketInfos');
+
+    // Récupérer les informations depuis localStorage
+    const date = localStorage.getItem('date');
+    const horaire = localStorage.getItem('horaire');
+    const billets = getBilletsCount();
+    const responsable = getResponsableInfos();
+
+    // Mettre à jour le récapitulatif
+    recapDiv.innerHTML = `
+        <p>Date de réservation : ${date || "Non spécifiée"}</p>
+        <p>Horaire : ${horaire || "Non spécifié"}</p>
+        <p>Nombre de billets : ${billets || "0"}</p>
+        <p>Responsable de réservation : ${responsable || "Non spécifié"}</p>
+    `;
+}
+
+// Fonction pour obtenir le nombre total de billets
+function getBilletsCount() {
+    let totalBillets = 0;
+    document.querySelectorAll('.counter span').forEach(span => {
+        totalBillets += parseInt(span.textContent);
+    });
+    return totalBillets;
+}
+
+// Fonction pour obtenir les informations du responsable
+function getResponsableInfos() {
+    const nomResponsable = document.querySelector('#nom') ? document.querySelector('#nom').value : '';
+    const prenomResponsable = document.querySelector('#prenom') ? document.querySelector('#prenom').value : '';
+    const emailResponsable = document.querySelector('#email') ? document.querySelector('#email').value : '';
+    
+    if (nomResponsable && prenomResponsable && emailResponsable) {
+        return `${nomResponsable} ${prenomResponsable} (${emailResponsable})`;
+    }
+    return '';
+}
+
+// Mettre à jour le récapitulatif au chargement initial de la page
+document.addEventListener("DOMContentLoaded", updateRecap);
+
 
 //-----------------------------------------------------
 //! Slider

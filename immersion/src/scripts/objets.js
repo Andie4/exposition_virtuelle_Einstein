@@ -58,6 +58,24 @@ document.body.appendChild(renderer.domElement);
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.autorotate = true;
 //////////////////////////////////////////////////////////////////////
+// nav burger sur toutes les tailles de navigateur
+var sidenav = document.getElementById("mySidenav");
+var openBtn = document.getElementById("openBtn");
+var closeBtn = document.getElementById("closeBtn");
+
+openBtn.onclick = openNav;
+closeBtn.onclick = closeNav;
+
+/* Set the width of the side navigation to 250px */
+function openNav() {
+  sidenav.classList.add("active");
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  sidenav.classList.remove("active");
+}
+
 
 // appel d'un objet 3d en fonction de celui qui à été cliqué
 const objetSelectionne = localStorage.getItem("objetSelectionne");

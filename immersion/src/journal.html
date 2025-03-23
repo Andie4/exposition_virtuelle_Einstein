@@ -4,13 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Journal</title>
+    <link rel="icon" href="media/favicon.svg" />
     <script defer type="module" src="scripts/salleJournal.js"></script>
     <link rel="stylesheet" href="styles/styleExpo.css">
     <link rel="stylesheet" href="styles/journal.css">
 
 </head>
 <body>
+    <header>
+        <div >
+            <a href="index.php"><img src="media/logo.svg" class="logo"></a>   
+        </div>
+    
+        <div id="mySidenav" class="sidenav">
+            <a id="closeBtn" href="#" class="close">×</a>
+            <ul>
+                <li><a href="index.php" data-translate-key="acceuil">Accueil</a></li>
+                <li><a href="infos_pratique.php" data-translate-key="lienInfosPratiques">Infos pratique</a></li>
+                <li><a href="formulaire.php" data-translate-key="btnResa">Réserver un billet</a></li>
+                <li>
+                    <select id="language-selector">
+                        <option value="fr">Français</option>
+                        <option value="en">English</option>
+                    </select>
+                </li>
+    
+            </ul>
+          </div>
+          
+          <a href="#" id="openBtn" class="openBtn">
+            <span class="burger-icon">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </a>
+    </header>
     <div>
+        <button id="boutonRetour"><a class="boutonRetour" href="lobby.html">Retourner au lobby</a></button>
         <audio id="audio" autoplay loop src="media/journal.MP3"></audio> 
     </div>
 
@@ -21,11 +52,11 @@
     </div>
 
     <div class="blocIndications">
-        <p class="indications">Avez-vous vu l'effaceur ?</p>
+        <p class="indications" data-translate-key="journal">Avez-vous vu l'effaceur ?</p>
     </div>
 
     <div class="blocText" id="blocText">
-        <p data-splitting id="txt1">Je n’ai jamais été un élève modèle. L’école m’ennuyait, son enseignement rigide m’était insupportable. Apprendre sans comprendre ? Impensable.<br><br>
+        <p data-splitting data-translate-key="texteJournal">Je n’ai jamais été un élève modèle. L’école m’ennuyait, son enseignement rigide m’était insupportable. Apprendre sans comprendre ? Impensable.<br><br>
 
         En 1900, j’obtins enfin mon diplôme de l’École polytechnique de Zurich, mais sans emploi, je me retrouvai au Bureau des brevets de Berne. Un travail monotone, mais un luxe inattendu : du temps pour penser. Entre deux dossiers, mes idées prenaient forme. <br> <br>
             

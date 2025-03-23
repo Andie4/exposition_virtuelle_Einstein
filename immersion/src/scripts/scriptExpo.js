@@ -54,6 +54,26 @@ const controls = new OrbitControls(camera, renderer.domElement);
 
 
 //////////////////////////////////////////////////////////////////////////
+// nav burger sur toutes les tailles de navigateur
+var sidenav = document.getElementById("mySidenav");
+var openBtn = document.getElementById("openBtn");
+var closeBtn = document.getElementById("closeBtn");
+
+openBtn.onclick = openNav;
+closeBtn.onclick = closeNav;
+
+/* Set the width of the side navigation to 250px */
+function openNav() {
+  sidenav.classList.add("active");
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  sidenav.classList.remove("active");
+}
+
+
+
 let textureVideo = null;
 const video = document.getElementById('videoIntro');
 video.muted = true;
@@ -101,7 +121,7 @@ const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
 const gresillement = new Audio('media/tv-noise.mp3');
-gresillement.loop = true; // Répète le son en boucle
+gresillement.loop = true;
 gresillement.volume = 0.5;
 
 document.addEventListener("mousedown", (event) => {
@@ -139,7 +159,7 @@ videoAspiration.muted = true;
 video.addEventListener('ended', () => {
     console.log("Première vidéo terminée, lancement de la deuxième...");
     
-    //lancement de la deuxième vi
+    //lancement de la deuxième video
     const tvScreen = scene.getObjectByName("ecranTv");
     if (tvScreen) {
         tvScreen.material.map = new THREE.VideoTexture(videoAspiration);
@@ -173,6 +193,9 @@ videoAspiration.addEventListener('ended', () => {
     console.log("Deuxième vidéo terminée, redirection...");
     window.location.href = "lobby.html"; 
 });
+
+
+
 
 
 ///////////////////////////////////////////////////////////////////////

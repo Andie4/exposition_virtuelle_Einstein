@@ -4,12 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boussole</title>
+    <link rel="icon" href="media/favicon.svg" />
     <script defer type="module" src="scripts/salleBoussole.js"></script>
     <link rel="stylesheet" href="styles/boussole.css">
     <link rel="stylesheet" href="styles/styleExpo.css">
 
 </head>
 <body>
+    <header>
+        <div >
+            <a href="index.php"><img src="media/logo.svg" class="logo"></a>   
+        </div>
+    
+        <div id="mySidenav" class="sidenav">
+            <a id="closeBtn" href="#" class="close">x</a>
+            <ul>
+                <li><a href="index.php" data-translate-key="acceuil">Accueil</a></li>
+                <li><a href="infos_pratique.php">Infos pratique</a></li>
+                <li><a href="formulaire.php">Réserver un billet</a></li>
+                <li>
+                    <select id="language-selector">
+                        <option value="fr">Français</option>
+                        <option value="en">English</option>
+                    </select>
+                </li>
+    
+            </ul>
+          </div>
+          
+          <a href="#" id="openBtn" class="openBtn">
+            <span class="burger-icon">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </a>
+    </header>
 
 
     <audio autoplay loop src="media/boussole.MP3" id="audio"></audio> 
@@ -17,7 +47,6 @@
 
     <img src="media/tv1_einstein_boussole.svg" alt="" class="imgEinstein">
 
-    <!-- <button class="btnSuite"><a href="objets.html">Suivant</a></button> -->
 
     <div class="controls">
 		<button class="audioBtn" type="button" id="buttonMute"><img src="media/volume_off.svg" alt="mute"></button>
@@ -25,11 +54,13 @@
 	</div>
 
     <div class="blocIndications">
-        <p class="indications">Trouver le tableau</p>
+        <p class="indications" data-translate-key="boussole">Trouver le tableau</p>
     </div>
 
+    <button id="boutonRetour" ><a class="boutonRetour" href="lobby.html" data-translate-key="lobby">Retourner au lobby</a></button>
+
     <div class="blocText" id="blocText">
-        <p data-splitting >À 4 ans, mon père me montra pour la première fois une boussole. L'aiguille pointait toujours vers le nord, sans raison apparente. Ce petit objet me confronta à l'invisible, éveillant en moi une curiosité insatiable. Je compris qu'il existait un univers bien plus grand, un mystère éternel qui nous entourait, mais que nous pouvions tenter de comprendre. <br> <br>
+        <p  data-translate-key="texteBoussole" data-splitting>À 4 ans, mon père me montra pour la première fois une boussole. L'aiguille pointait toujours vers le nord, sans raison apparente. Ce petit objet me confronta à l'invisible, éveillant en moi une curiosité insatiable. Je compris qu'il existait un univers bien plus grand, un mystère éternel qui nous entourait, mais que nous pouvions tenter de comprendre. <br> <br>
 
         Je me souviens que cette expérience marqua le début de ma quête. Le monde me fascinait profondément, et cette fascination ne m’a jamais quitté. <br><br>
 

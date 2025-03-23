@@ -4,15 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cosmos</title>
+    <link rel="icon" href="media/favicon.svg" />
     <script defer type="module" src="scripts/salleCosmos.js"></script>
+    <script src="scripts/trad.js"></script>
     <link rel="stylesheet" href="styles/styleExpo.css">
     <link rel="stylesheet" href="styles/cosmos.css">
 
 
 </head>
 <body>
+    <header>
+        <div >
+            <a href="index.php"><img src="media/logo.svg" class="logo"></a>   
+        </div>
+    
+        <div id="mySidenav" class="sidenav">
+            <a id="closeBtn" href="#" class="close">×</a>
+            <ul>
+                <li><a href="index.php" data-translate-key="accueil">Accueil</a></li>
+                <li><a href="infos_pratique.php" data-translate-key="lienInfosPratiques">Infos pratique</a></li>
+                <li><a href="formulaire.php" data-translate-key="btnResa">Réserver un billet</a></li>
+                <li>
+                    <select id="language-selector">
+                        <option value="fr">Français</option>
+                        <option value="en">English</option>
+                    </select>
+                </li>
+    
+            </ul>
+          </div>
+          
+          <a href="#" id="openBtn" class="openBtn">
+            <span class="burger-icon">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </a>
+    </header>
     <div>
         <audio loop autoplay src="media/cosmos.MP3"></audio> 
+        <button id="boutonRetour" ><a class="boutonRetour" href="lobby.html" data-translate-key="lobby">Retourner au lobby</a></button>
 
     </div>
 
@@ -22,11 +54,11 @@
 	</div>
 
     <div class="blocIndications">
-        <p class="indications">Trouver l'étoile qui révèlera le texte</p>
+        <p class="indications" data-translate-key="cosmos" >Trouver l'étoile qui révèlera le texte</p>
     </div>
 
     <div class="blocText" id="blocText">
-        <p data-splitting >En 1917, mes équations de la relativité générale me menèrent à une conclusion troublante… L’univers n’était pas statique, il était en mouvement. Mais cela allait à l’encontre de tout ce que l’on croyait. Ai-je fait une erreur ? Pour corriger ce paradoxe, j’introduisais la constante cosmologique, un terme qui équilibrerait les forces et figerait l’univers. <br><br>
+        <p data-splitting data-translate-key="texteCosmos">En 1917, mes équations de la relativité générale me menèrent à une conclusion troublante… L’univers n’était pas statique, il était en mouvement. Mais cela allait à l’encontre de tout ce que l’on croyait. Ai-je fait une erreur ? Pour corriger ce paradoxe, j’introduisais la constante cosmologique, un terme qui équilibrerait les forces et figerait l’univers. <br><br>
         
         Cependant, en 1929, Hubble prouva que les galaxies s’éloignaient. L’univers était en expansion. Je réalisai alors que l’ajout de cette constante avait été une erreur. Peut-être la plus grande de ma vie. Pourtant, l’ironie voulait qu’aujourd’hui, elle soit réhabilitée pour expliquer un mystère plus grand encore : l’énergie noire. <br><br><br>
         

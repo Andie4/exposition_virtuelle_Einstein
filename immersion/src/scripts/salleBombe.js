@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-
+import Splitting from 'splitting';
 // scene
 const scene = new THREE.Scene();
 scene.position.set(0,1.3,1.8)
@@ -30,6 +30,46 @@ document.body.appendChild(renderer.domElement);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 ///////////////////////////////////////////////////////////////////////
+// nav burger sur toutes les tailles de navigateur
+var sidenav = document.getElementById("mySidenav");
+var openBtn = document.getElementById("openBtn");
+var closeBtn = document.getElementById("closeBtn");
+
+openBtn.onclick = openNav;
+closeBtn.onclick = closeNav;
+
+/* Set the width of the side navigation to 250px */
+function openNav() {
+  sidenav.classList.add("active");
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  sidenav.classList.remove("active");
+}
+
+
+// mettre le son sur pause 
+window.onload = function() {
+    const buttonMute = document.getElementById("buttonDemute");
+    const buttonDemute = document.getElementById("buttonMute");
+    
+    const audio = document.getElementById("audio");
+    buttonMute.onclick = function()
+		{
+			audio.muted=true;
+			buttonMute.style.display="none";
+			buttonDemute.style.display="inline-block";
+		};
+    buttonDemute.onclick = function()
+    	{
+    		audio.muted=false;
+			buttonMute.style.display="inline-block";
+			buttonDemute.style.display="none";
+    	};
+};
+
+
 
 let textureVideo = null;
 const video = document.getElementById('video');
@@ -65,6 +105,7 @@ loader.load(
     (error) => console.error("Erreur affiche du model :", error)
 );
 
+//lancer la video
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
@@ -85,7 +126,109 @@ document.addEventListener("mousedown", (event) => {
         }
     }
 });
+
+// afficher le texte 
+// cacher le texte par defaut
+document.getElementById("blocText").style.display = "none";
+
+
+document.addEventListener("mousedown", (event) => {
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+    raycaster.setFromCamera(mouse, camera);
+
+    const intersects = raycaster.intersectObjects(scene.children, true);
+    if (intersects.length > 0) {
+        let clickedObject = intersects[0].object;
+        console.log(`objets: ${clickedObject.name}`);
+
+
+        if (clickedObject.name === "Pencil_Цилиндр004") {
+                // afficher le texte 
+                document.getElementById("blocText").style.display = "block";
+                
+        }
+    }
+});
  
+//effet typewritter
+//cette partie à été faite avec l'aide de chatGPT car il y avais un conflit entre mon data-translate-key="texteBoussole" et data-splitting
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLanguage = localStorage.getItem('language') || 'fr';
+
+    fetch(`trad/${savedLanguage}.json`)
+        .then(response => response.json())
+        .then(translations => {
+            document.querySelectorAll('[data-translate-key]').forEach(element => {
+                const key = element.getAttribute('data-translate-key');
+                if (translations[key]) {
+                    element.innerHTML = translations[key];
+                }
+            });
+
+            setTimeout(() => {
+                Splitting();
+            }, 100);
+        })
+        .catch(error => console.error("Erreur de chargement de la langue :", error));
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    if (!window.location.href.includes("lobby.html")) {
+        const boutonRetour = document.getElementById('boutonRetour');
+        if (boutonRetour) {
+            console.log("Bouton retour trouvé !");
+
+            boutonRetour.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                console.log("Bouton retour cliqué !");
+
+                incrementChapterCount();
+
+                setTimeout(() => {
+                    window.location.href = "lobby.html";
+                }, 200);
+            });
+        } else {
+            console.log("Bouton retour introuvable !");
+        }
+    }
+    if (window.location.href.includes("lobby.html")) {
+        updateLobby();
+    }
+});
+
+function getCompletedChaptersCount() {
+    const count = localStorage.getItem("completedChaptersCount");
+    console.log("Chapitre(s) complété(s) récupéré(s) :", count);
+
+    return parseInt(count || "0");  
+}
+
+function incrementChapterCount() {
+    let completedCount = getCompletedChaptersCount();
+    completedCount++; 
+    console.log("Incrémentation du compteur, nouveau compte :", completedCount);
+
+    localStorage.setItem("completedChaptersCount", completedCount);
+    updateLobby();  
+}
+
+function updateLobby() {
+    const completedCount = getCompletedChaptersCount();
+    console.log("Mise à jour du lobby, chapitres complétés :", completedCount);
+
+    const progressElement = document.getElementById("chapterProgress");
+
+    if (progressElement) {
+        progressElement.innerText = `${completedCount} chapitre(s) sur 5 complétés`;
+    }
+}
+
+
 
 ///////////////////////////////////////////////////////////////////////
 function animate() {

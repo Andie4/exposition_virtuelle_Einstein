@@ -49,6 +49,25 @@ const controls = new OrbitControls(camera, renderer.domElement);
 controls.autorotate = true;
 
 //////////////////////////////////////////////////////////////////////////
+// nav burger sur toutes les tailles de navigateur
+var sidenav = document.getElementById("mySidenav");
+var openBtn = document.getElementById("openBtn");
+var closeBtn = document.getElementById("closeBtn");
+
+openBtn.onclick = openNav;
+closeBtn.onclick = closeNav;
+
+/* Set the width of the side navigation to 250px */
+function openNav() {
+  sidenav.classList.add("active");
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  sidenav.classList.remove("active");
+}
+
+
 
 // Chargement du modèle 3D 
 const loader = new GLTFLoader();
@@ -99,10 +118,6 @@ sprite.scale.set( 6, 6, 0 );
 scene.add( sprite );
 
 
-// Effet avec le texte letrre par lettre 
-Splitting(5);
-
-
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 // cacher le texte par defaut
@@ -128,6 +143,81 @@ document.addEventListener("mousedown", (event) => {
     }
 });
 
+//cette partie à été faite avec l'aide de chatGPT car il y avais un conflit entre mon data-translate-key="texteBoussole" et data-splitting
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLanguage = localStorage.getItem('language') || 'fr';
+
+    fetch(`trad/${savedLanguage}.json`)
+        .then(response => response.json())
+        .then(translations => {
+            document.querySelectorAll('[data-translate-key]').forEach(element => {
+                const key = element.getAttribute('data-translate-key');
+                if (translations[key]) {
+                    element.innerHTML = translations[key];
+                }
+            });
+
+            setTimeout(() => {
+                Splitting();
+            }, 100);
+        })
+        .catch(error => console.error("Erreur de chargement de la langue :", error));
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    if (!window.location.href.includes("lobby.html")) {
+        const boutonRetour = document.getElementById('boutonRetour');
+        if (boutonRetour) {
+            console.log("Bouton retour trouvé !");
+
+            boutonRetour.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                console.log("Bouton retour cliqué !");
+
+                incrementChapterCount();
+
+                setTimeout(() => {
+                    window.location.href = "lobby.html";
+                }, 200);
+            });
+        } else {
+            console.log("Bouton retour introuvable !");
+        }
+    }
+    if (window.location.href.includes("lobby.html")) {
+        updateLobby();
+    }
+});
+
+function getCompletedChaptersCount() {
+    const count = localStorage.getItem("completedChaptersCount");
+    console.log("Chapitre(s) complété(s) récupéré(s) :", count);
+
+    return parseInt(count || "0");  
+}
+
+function incrementChapterCount() {
+    let completedCount = getCompletedChaptersCount();
+    completedCount++; 
+    console.log("Incrémentation du compteur, nouveau compte :", completedCount);
+
+    localStorage.setItem("completedChaptersCount", completedCount);
+    updateLobby();  
+}
+
+function updateLobby() {
+    const completedCount = getCompletedChaptersCount();
+    console.log("Mise à jour du lobby, chapitres complétés :", completedCount);
+
+    const progressElement = document.getElementById("chapterProgress");
+
+    if (progressElement) {
+        progressElement.innerText = `${completedCount} chapitre(s) sur 5 complétés`;
+    }
+}
 ///////////////////////////////////////////////////////////////////////
 // Rendu de la scène
 function animate() {

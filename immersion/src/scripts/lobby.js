@@ -26,12 +26,6 @@ light.position.set(1, -8, 1);
 scene.add(light);
 
 
-// //point central du code 
-// const center = new THREE.Mesh(
-//     new THREE.BoxGeometry(0.1, 0.1, 0.1),
-//     new THREE.MeshBasicMaterial({ color: 0xff0000 })
-// )
-// scene.add(center);
 
 
 // resize.js
@@ -76,6 +70,25 @@ controls.minPolarAngle = minPolarAngle;
 // controls.autorotate = true;
 
 //////////////////////////////////////////////////////////////////////
+// nav burger sur toutes les tailles de navigateur
+var sidenav = document.getElementById("mySidenav");
+var openBtn = document.getElementById("openBtn");
+var closeBtn = document.getElementById("closeBtn");
+
+openBtn.onclick = openNav;
+closeBtn.onclick = closeNav;
+
+/* Set the width of the side navigation to 250px */
+function openNav() {
+  sidenav.classList.add("active");
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  sidenav.classList.remove("active");
+}
+
+
 
 // Chargement du modèle 3D 
 const loader = new GLTFLoader();
@@ -133,8 +146,6 @@ document.addEventListener('click', () => {
     }
 });
 
-
-// mettre le son sur pause 
 // mettre le son sur pause 
 window.onload = function() {
     const buttonMute = document.getElementById("buttonDemute");
@@ -155,6 +166,70 @@ window.onload = function() {
     	};
 };
 
+
+// progression et pop-up pour la resa ou pour refaire 
+document.addEventListener('DOMContentLoaded', function () {
+    if (window.location.href.includes("lobby.html")) {
+        updateLobby();
+    }
+});
+
+// nombre de chapitres complétés
+function getCompletedChaptersCount() {
+    const count = localStorage.getItem("completedChaptersCount");
+    console.log("Chapitre(s) complété(s) récupéré(s) :", count);
+    return parseInt(count || "0");  
+}
+
+// Fonction pour mettre à jour la progression du lobby
+function updateLobby() {
+    const completedCount = getCompletedChaptersCount();
+    console.log("chapitres faits :", completedCount);
+
+    const progressElement = document.getElementById("chapterProgress");
+    if (progressElement) {
+        progressElement.innerHTML = `<p class="chapterProgress">${completedCount} chapitre(s) sur 5 complétés </p>`;
+    }
+
+    // Si le compteur atteint 5, afficher le pop-up
+    if (completedCount === 5) {
+        showCompletionPopup();
+    }
+}
+
+// pop-up
+function showCompletionPopup() {
+    console.log("les 5 chapitres sont faits");
+
+    const popup = document.createElement("div");
+    popup.innerHTML = `
+        <div class="popup-container">
+            <h1 class="title">Félicitations ! Vous avez terminé tous les chapitres.</h1>
+            <button class="buttonPopup" id="reserveButton">Réserver une place pour l'expo physique</button>
+            <button class="buttonPopup" id="restartButton">Recommencer l'expo virtuelle</button>
+        </div>
+    `;
+    document.body.appendChild(popup);
+
+    // redirection
+    document.getElementById("reserveButton").addEventListener("click", () => {
+        window.location.href = "reservation.php"; 
+    });
+    document.getElementById("restartButton").addEventListener("click", () => {
+        resetChapters(); 
+        document.body.removeChild(popup);
+        window.location.href = "index.html"; 
+    });
+}
+
+//réinitialiser les chapitres
+function resetChapters() {
+    console.log("Réinitialisation du compteur");
+    localStorage.setItem("completedChaptersCount", 0);
+    updateLobby(); 
+}
+
+
 ///////////////////////////////////////////////////////////////////////
 // Rendu de la scène
 function animate() {
@@ -164,3 +239,6 @@ function animate() {
 }
 
 animate();
+
+
+// localStorage.clear();

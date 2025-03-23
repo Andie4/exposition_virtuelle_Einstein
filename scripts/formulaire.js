@@ -149,6 +149,7 @@ function generateTarifs(tarifs) {
     tarifs.forEach(tarif => {
         const ticketCategoryDiv = document.createElement('div');
         ticketCategoryDiv.classList.add('ticket-category');
+        ticketCategoryDiv.setAttribute('data-id', tarif.id_tarif); // Associer l'id du tarif
 
         ticketCategoryDiv.innerHTML = `
             <div class="flex">
@@ -167,6 +168,7 @@ function generateTarifs(tarifs) {
     addEventListeners();
 }
 
+
 // Appeler la fonction fetchTarifs pour récupérer et afficher les tarifs
 fetchTarifs();
 
@@ -179,38 +181,51 @@ function addEventListeners() {
     addBillet.forEach((button) => {
         button.addEventListener('click', function (event) {
             event.preventDefault();
-
-            let counterSpan = this.parentElement.querySelector('span');
-            let count = parseInt(counterSpan.textContent);
-            counterSpan.textContent = count + 1;
-
-            const ticketCategory = this.closest('.ticket-category');
-            let detailsDiv = ticketCategory.querySelector('.details');
-
-            if (!detailsDiv) {
-                detailsDiv = document.createElement('div');
-                detailsDiv.classList.add('details');
-                ticketCategory.appendChild(detailsDiv);
+    
+            // Calculer le total des billets avant l'ajout
+            let totalBillets = 0;
+            document.querySelectorAll('.counter span').forEach(span => {
+                totalBillets += parseInt(span.textContent);
+            });
+    
+            // Si le total est inférieur à 10, ajouter un billet
+            if (totalBillets < 10) {
+                let counterSpan = this.parentElement.querySelector('span');
+                let count = parseInt(counterSpan.textContent);
+                counterSpan.textContent = count + 1;
+    
+                const ticketCategory = this.closest('.ticket-category');
+                const tarifId = ticketCategory.getAttribute('data-id');  // Récupérer l'id du tarif
+                let detailsDiv = ticketCategory.querySelector('.details');
+    
+                if (!detailsDiv) {
+                    detailsDiv = document.createElement('div');
+                    detailsDiv.classList.add('details');
+                    ticketCategory.appendChild(detailsDiv);
+                }
+    
+                const newBillet = document.createElement('div');
+                newBillet.classList.add('person');
+                newBillet.innerHTML = `
+                    <p class="tarif">Billet ${count + 1}</p>
+                    <div class="blocInfosBillet">
+                        <div class="groupeInfosBillet">
+                            <label for="nom" class="padding">Nom</label>
+                            <input type="text" required class="infosBillet"><br>
+                        </div>
+                        <div class="groupeInfosBillet">
+                            <label for="prenom" class="padding">Prénom</label>
+                            <input type="text" required class="infosBillet">
+                        </div>
+                    </div>
+                `;
+                detailsDiv.appendChild(newBillet);
+            } else {
+                alert('Le nombre maximum de billets par réservation est de 10.');
             }
-
-            const newBillet = document.createElement('div');
-            newBillet.classList.add('person');
-            newBillet.innerHTML = `
-                <p class="tarif">Billet ${count + 1}</p>
-                <div class="blocInfosBillet">
-                    <div class="groupeInfosBillet">
-                        <label for="nom" class="padding">Nom</label>
-                        <input type="text" required class="infosBillet"><br>
-                    </div>
-                    <div class="groupeInfosBillet">
-                        <label for="prenom" class="padding">Prénom</label>
-                        <input type="text" required class="infosBillet">
-                    </div>
-                </div>
-            `;
-            detailsDiv.appendChild(newBillet);
         });
     });
+    
 
     deleteBillet.forEach((button) => {
         button.addEventListener('click', function (event) {

@@ -20,6 +20,7 @@ button {
     background-color: white;
     border: 1px solid var(--white);
     color: var(--black);
+    cursor: pointer;
 }
 
 h1 {

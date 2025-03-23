@@ -1,8 +1,4 @@
-*,
-*::after,
-*::before {
-    box-sizing: border-box;
-}
+
 
 a{
     text-decoration: none;
@@ -14,6 +10,10 @@ a{
 .grid{
     display: grid;
 
+}
+
+.logoFooter img{
+    margin: 10px 0 0 0;
 }
 
 
@@ -28,6 +28,13 @@ a{
     }
     .flex{
         display:grid;
+    }
+    .albertLogo img{
+        width: 120px;
+    }
+    
+    .xploriaLogo img{
+        width: 150px;
     }
 
 }
@@ -45,6 +52,13 @@ a{
     .flex{
         display:grid;
     }
+    .albertLogo img{
+        width: 130px;
+    }
+    
+    .xploriaLogo img{
+        width: 170px;
+    }
 }
 
 /* desktop */
@@ -58,5 +72,14 @@ a{
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+    .albertLogo img{
+        width: 8vw;
+        min-width: 120px;
+    }
+    
+    .xploriaLogo img{
+        width: 10vw;
+        min-width: 150px;
     }
 }

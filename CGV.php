@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/CGV.css">
     <title>Conditions Générales de Ventes</title>
 </head>
@@ -10,7 +11,7 @@
     <?php include 'nav.php'; ?>
 
     <section>
-        <h1>Conditions Générales de Ventes</h1>
+        <h1 id="content">Conditions Générales de Ventes</h1>
         <div  class="bigMarginBottom ">
             <h2 class="tinyMarginBottom">Gratuité des billets : </h2>
             <p>Les billets pour l'exposition de science sont gratuits. Ils ne peuvent donc être vendus. Cependant, ils peuvent être réservés en ligne ou obtenus sur place dans la limite des places disponibles.</p>

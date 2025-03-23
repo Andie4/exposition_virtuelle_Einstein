@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 23 mars 2025 à 16:56
+-- Généré le : dim. 23 mars 2025 à 18:28
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
@@ -105,6 +105,7 @@ DROP TABLE IF EXISTS `tarif`;
 CREATE TABLE IF NOT EXISTS `tarif` (
   `id_tarif` int NOT NULL AUTO_INCREMENT,
   `nom_tarif` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `name_tarif` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_tarif`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -112,12 +113,12 @@ CREATE TABLE IF NOT EXISTS `tarif` (
 -- Déchargement des données de la table `tarif`
 --
 
-INSERT INTO `tarif` (`id_tarif`, `nom_tarif`) VALUES
-(3, 'Jeune -26ans'),
-(4, 'Senior +65ans'),
-(6, 'Premium'),
-(9, 'Plein Tarif'),
-(10, 'Enfant -16 ans');
+INSERT INTO `tarif` (`id_tarif`, `nom_tarif`, `name_tarif`) VALUES
+(3, 'Jeune -26ans', ''),
+(4, 'Senior +65ans', ''),
+(6, 'Premium', ''),
+(9, 'Plein Tarif', ''),
+(10, 'Enfant -16 ans', '');
 
 --
 -- Contraintes pour les tables déchargées

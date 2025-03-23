@@ -58,6 +58,8 @@ boutonResa.addEventListener("click", function () {
 const boutonBillets = document.querySelector(".billetsButton");
 
 boutonBillets.addEventListener("click", function () {
+    saveBilletsToLocalStorage(); // Sauvegarde les billets au clic sur "Suivant"
+
     let totalBillets = 0;
     let billetsValides = true;
 
@@ -104,6 +106,7 @@ boutonBillets.addEventListener("click", function () {
     updateRecap(); // Mettre à jour le récapitulatif après la sélection des billets
 });
 
+
 //-----------------------------------------------------
 // Fonction pour mettre à jour le récapitulatif
 function updateRecap() {
@@ -138,7 +141,7 @@ function getResponsableInfos() {
     const nomResponsable = document.querySelector('#nom') ? document.querySelector('#nom').value : '';
     const prenomResponsable = document.querySelector('#prenom') ? document.querySelector('#prenom').value : '';
     const emailResponsable = document.querySelector('#email') ? document.querySelector('#email').value : '';
-    
+
     if (nomResponsable && prenomResponsable && emailResponsable) {
         return `${nomResponsable} ${prenomResponsable} (${emailResponsable})`;
     }
@@ -184,6 +187,44 @@ function decaleDroite() {
 };
 
 //-----------------------------------------------------
+function loadBilletsFromLocalStorage() {
+    let billets = JSON.parse(localStorage.getItem("billets")) || [];
+
+    billets.forEach(({ tarif, personnes }) => {
+        const ticketCategory = document.querySelector(`.ticket-category[data-id="${tarif}"]`);
+
+        if (ticketCategory) {
+            const counterSpan = ticketCategory.querySelector('.counter span');
+            counterSpan.textContent = personnes.length; // Mise à jour du compteur
+
+            let detailsDiv = ticketCategory.querySelector('.details');
+            if (!detailsDiv) {
+                detailsDiv = document.createElement('div');
+                detailsDiv.classList.add('details');
+                ticketCategory.appendChild(detailsDiv);
+            }
+
+            personnes.forEach(({ nom, prenom }, index) => {
+                const newBillet = document.createElement('div');
+                newBillet.classList.add('person');
+                newBillet.innerHTML = `
+                    <p class="tarif">Billet ${index + 1}</p>
+                    <div class="blocInfosBillet">
+                        <div class="groupeInfosBillet">
+                            <label for="nom" class="padding">Nom</label>
+                            <input type="text" required class="infosBillet" value="${nom}"><br>
+                        </div>
+                        <div class="groupeInfosBillet">
+                            <label for="prenom" class="padding">Prénom</label>
+                            <input type="text" required class="infosBillet" value="${prenom}">
+                        </div>
+                    </div>
+                `;
+                detailsDiv.appendChild(newBillet);
+            });
+        }
+    });
+}
 
 async function fetchTarifs() {
     try {
@@ -191,10 +232,15 @@ async function fetchTarifs() {
         const data = await response.json();
 
         generateTarifs(data);
+
+        // Recharge les billets une fois les tarifs affichés
+        loadBilletsFromLocalStorage();
     } catch (error) {
         console.error('Erreur lors du chargement des tarifs:', error);
     }
 }
+
+
 
 function generateTarifs(tarifs) {
     const container = document.querySelector('.tarif-container');
@@ -233,38 +279,53 @@ function generateTarifs(tarifs) {
 // Appeler la fonction fetchTarifs pour récupérer et afficher les tarifs
 fetchTarifs();
 
+function saveBilletsToLocalStorage() {
+    let billets = [];
 
-// Ajouter des écouteurs d'événements pour les boutons + et -
+    document.querySelectorAll(".ticket-category").forEach((ticket) => {
+        const tarifBillet = ticket.getAttribute("data-id");
+        const billetsData = [];
+
+        ticket.querySelectorAll(".details .person").forEach((billet) => {
+            const nomBillet = billet.querySelector(".groupeInfosBillet:nth-of-type(1) .infosBillet")?.value.trim() || "";
+            const prenomBillet = billet.querySelector(".groupeInfosBillet:nth-of-type(2) .infosBillet")?.value.trim() || "";
+
+            billetsData.push({ nom: nomBillet, prenom: prenomBillet });
+        });
+
+        if (billetsData.length > 0) {
+            billets.push({ tarif: tarifBillet, personnes: billetsData });
+        }
+    });
+
+    localStorage.setItem("billets", JSON.stringify(billets));
+}
+
 function addEventListeners() {
     const addBillet = document.querySelectorAll('.ajouter');
     const deleteBillet = document.querySelectorAll('.supprimer');
 
+
+
     addBillet.forEach((button) => {
         button.addEventListener('click', function (event) {
             event.preventDefault();
-    
-            // Calculer le total des billets avant l'ajout
-            let totalBillets = 0;
-            document.querySelectorAll('.counter span').forEach(span => {
-                totalBillets += parseInt(span.textContent);
-            });
-    
-            // Si le total est inférieur à 10, ajouter un billet
-            if (totalBillets < 10) {
-                let counterSpan = this.parentElement.querySelector('span');
-                let count = parseInt(counterSpan.textContent);
+
+            let counterSpan = this.parentElement.querySelector('span');
+            let count = parseInt(counterSpan.textContent);
+
+            if (count < 10) {
                 counterSpan.textContent = count + 1;
-    
+
                 const ticketCategory = this.closest('.ticket-category');
-                const tarifId = ticketCategory.getAttribute('data-id');  // Récupérer l'id du tarif
                 let detailsDiv = ticketCategory.querySelector('.details');
-    
+
                 if (!detailsDiv) {
                     detailsDiv = document.createElement('div');
                     detailsDiv.classList.add('details');
                     ticketCategory.appendChild(detailsDiv);
                 }
-    
+
                 const newBillet = document.createElement('div');
                 newBillet.classList.add('person');
                 newBillet.innerHTML = `
@@ -284,9 +345,10 @@ function addEventListeners() {
             } else {
                 alert('Le nombre maximum de billets par réservation est de 10.');
             }
+
+            saveBilletsToLocalStorage(); // Sauvegarde dans le localStorage
         });
     });
-    
 
     deleteBillet.forEach((button) => {
         button.addEventListener('click', function (event) {
@@ -311,6 +373,8 @@ function addEventListeners() {
                     }
                 }
             }
+
+            saveBilletsToLocalStorage(); // Mise à jour du localStorage
         });
     });
 }

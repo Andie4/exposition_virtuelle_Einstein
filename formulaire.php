@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/formulaire.css">
     <script src="scripts/formulaire.js" defer></script>
+    <script src="scripts/envoiResa.js" defer></script>
     <title>Réservation - Albert, ayez sa vision</title>
 </head>
 
@@ -14,7 +15,7 @@
     <?php include 'nav.php'; ?>
 
 
-    <section>
+    <main>
         <div>
             <h1 id="content">Acheter un billet</h1>
             <!-- <div class="filAriane">
@@ -132,7 +133,7 @@
 
 
 
-    </section>
+    </main>
 
     <?php require_once('footer.php'); ?>
 

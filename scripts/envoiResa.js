@@ -29,9 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
         
-        
-
-        console.log("Envoi de la réservation :", formData.toString());
         try {
             const response = await fetch("https://albert.xploria.fr/api/resa", {
                 method: "POST",
@@ -42,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             alert("Réservation réussie !");
-            // window.location.href = "remerciement.php";
+            window.location.href = "remerciement.php";
         } catch (error) {
             console.error("Erreur lors de l'envoi :", error);
             alert("Une erreur est survenue lors de l'envoi du formulaire.");

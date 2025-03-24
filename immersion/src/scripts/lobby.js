@@ -218,7 +218,10 @@ function showCompletionPopup() {
     document.getElementById("restartButton").addEventListener("click", () => {
         resetChapters(); 
         document.body.removeChild(popup);
+        localStorage.clear();
         window.location.href = "index.html"; 
+        localStorage.clear();
+
     });
 }
 

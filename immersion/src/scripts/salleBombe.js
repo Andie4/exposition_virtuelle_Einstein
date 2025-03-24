@@ -8,7 +8,7 @@ scene.position.set(0,1.3,1.8)
 scene.rotateY(11);
 
 // lumieres
-const ambientLight = new THREE.AmbientLight(0xffffff, 20);
+const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 scene.add(ambientLight);
 
 const light = new THREE.DirectionalLight(0xffffff, 19);
@@ -28,6 +28,10 @@ document.body.appendChild(renderer.domElement);
 
 //orbit control
 const controls = new OrbitControls(camera, renderer.domElement);
+const maxAzimuthAngle = Math.PI / 10;
+const minAzimuthAngle = -Math.PI / 8;
+controls.maxAzimuthAngle = maxAzimuthAngle;
+controls.minAzimuthAngle = minAzimuthAngle;
 
 ///////////////////////////////////////////////////////////////////////
 // nav burger sur toutes les tailles de navigateur
@@ -47,6 +51,7 @@ function openNav() {
 function closeNav() {
   sidenav.classList.remove("active");
 }
+
 
 
 // mettre le son sur pause 
@@ -112,6 +117,8 @@ loader.load(
 // afficher le texte 
 // cacher le texte par defaut
 document.getElementById("blocText").style.display = "none";
+const mouse = new THREE.Vector2();
+const raycaster = new THREE.Raycaster();
 
 
 document.addEventListener("mousedown", (event) => {

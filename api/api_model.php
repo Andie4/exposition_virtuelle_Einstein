@@ -166,10 +166,10 @@ function postTarif($tab)
 {
     global $db;
     try {
-        $requete = "INSERT INTO tarif (nom_tarif, prix_tarif) VALUES (:nom_tarif, :prix_tarif);";
+        $requete = "INSERT INTO tarif (nom_tarif, name_tarif) VALUES (:nom_tarif, :name_tarif);";
         $stmt = $db->prepare($requete);
         $stmt->bindParam(':nom_tarif', $tab["nom_tarif"], PDO::PARAM_STR);
-        $stmt->bindParam(':prix_tarif', $tab["prix_tarif"], PDO::PARAM_STR);
+        $stmt->bindParam(':name_tarif', $tab["name_tarif"], PDO::PARAM_STR);
         $stmt->execute();
 
         return ["success" => true, "message" => "Tarif ajouté", "id" => $db->lastInsertId()];
@@ -250,11 +250,11 @@ function putTarif($_PUT)
 {
     global $db;
     try {
-        $requete = "UPDATE tarif SET nom_tarif = :nom, prix_tarif = :prix WHERE id_tarif = :id_tarif";
+        $requete = "UPDATE tarif SET nom_tarif = :nom, name_tarif=:name WHERE id_tarif = :id_tarif";
         $stmt = $db->prepare($requete);
         $stmt->bindParam(':id_tarif', $_PUT["id_tarif"], PDO::PARAM_INT);
         $stmt->bindParam(':nom', $_PUT["nom_tarif"], PDO::PARAM_STR);
-        $stmt->bindParam(':prix', $_PUT["prix_tarif"], PDO::PARAM_STR);
+        $stmt->bindParam(':name', $_PUT["name_tarif"], PDO::PARAM_STR);
         $stmt->execute();
 
         return ["success" => $stmt->rowCount() > 0, "message" => $stmt->rowCount() > 0 ? "Tarif mis à jour" : "Aucune modification"];

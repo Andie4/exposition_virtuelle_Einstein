@@ -10,7 +10,7 @@ export function FormTarif() {
     const [tarif, setTarif] = useState({
         "id_tarif": 0,
         "nom_tarif": "",
-        "prix_tarif": 0
+        "name_tarif": ""
     });
 
     useEffect(() => {
@@ -40,15 +40,21 @@ export function FormTarif() {
         <>
             <Nav />
             <h1>Formulaire de tarif</h1>
-            <Link to="/gest_tarif">Retour</Link>
+           
+            <Link to="/gest_tarif" className="return-button">Retour</Link>
             <br />
-            <form action="">
+            <form className="form">
                 <fieldset>
                     <legend>{id!=0 ? "Modifier le tarif" : "Ajouter un tarif"}</legend>
-                    <label htmlFor="nom_tarif">Nom du tarif</label>
-                    <input type="text" name="nom_tarif" id="nom_tarif" value={tarif.nom_tarif} onChange={handleForm} required />
-                    <label htmlFor="prix_tarif">Prix</label>
-                    <input type="number" name="prix_tarif" id="prix_tarif" value={tarif.prix_tarif} onChange={handleForm} required />
+                    <p className="mini">Les champs suivis d'un <span>*</span> sont obligatoires.</p>
+                    <div>
+                        <label htmlFor="nom_tarif">Nom du tarif<span>*</span></label>
+                        <input type="text" name="nom_tarif" id="nom_tarif" value={tarif.nom_tarif} onChange={handleForm} required />
+                    </div>
+                    <div>
+                        <label htmlFor="name_tarif">Nom du tarif en anglais<span>*</span></label>
+                        <input type="text" name="name_tarif" id="name_tarif" value={tarif.name_tarif} onChange={handleForm} required />
+                    </div>
                     {id!=0 ? 
                     <ButtonUpdate id={id} type="tarif" token={token} data={tarif} /> :  
                     <ButtonAdd type="tarif" token={token} data={tarif} />

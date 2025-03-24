@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 import { Home } from './pages/home'
 import { Profil } from './pages/profil'
-import { Login } from './pages/login'
+import { Login } from './pages/login/login'
 
 import { GestAdmin } from './pages/gest/gest_admin'
 import { GestTarif } from './pages/gest/gest_tarif'

@@ -52,27 +52,36 @@ export function FormBillet() {
         <>
             <Nav />
             <h1>Formulaire de billet</h1>
-            <Link to={`/gest_billet/${resa}`} className="btn-back">Retour</Link>
+            <Link to={`/gest_billet/${resa}`} className="btn-back return-button">Retour</Link>
             <br />
-            <form>
+            <form className="form">
                 <fieldset>
                     <legend>{id !== "0" ? "Modifier la réservation" : "Ajouter une réservation"}</legend>
-                    <label htmlFor="nom_billet">Nom</label>
-                    <input type="text" id="nom_billet" value={billet.nom_billet} onChange={handleForm} required />
+                    <p className="mini">Les champs suivis d'un <span>*</span> sont obligatoires.</p>
+                    <div>
+                        <label htmlFor="nom_billet">Nom<span>*</span></label>
+                        <input type="text" id="nom_billet" value={billet.nom_billet} onChange={handleForm} required />
+                    </div>
                     
-                    <label htmlFor="prenom_billet">Prénom</label>
-                    <input type="text" id="prenom_billet" value={billet.prenom_billet} onChange={handleForm} required />
+                    <div>
+                        <label htmlFor="prenom_billet">Prénom<span>*</span></label>
+                        <input type="text" id="prenom_billet" value={billet.prenom_billet} onChange={handleForm} required />
+                    </div>
                     
-                    <label htmlFor="resa_billet">N°ID Réservation</label>
-                    <input type="text" id="resa_billet" value={billet.resa_billet} onChange={handleForm} required />
+                    <div>
+                        <label htmlFor="resa_billet">N°ID Réservation<span>*</span></label>
+                        <input type="text" id="resa_billet" value={billet.resa_billet} onChange={handleForm} required />
+                    </div>
                     
-                    <label htmlFor="tarif_billet">Tarif</label>
-                    <select id="tarif_billet" value={billet.tarif_billet} onChange={handleForm} required>
-                        <option value="">Sélectionnez un tarif</option>
-                        {tarifs.map((tarif) => (
-                            <option key={tarif.id_tarif} value={tarif.id_tarif}>{tarif.nom_tarif}</option>
-                        ))}
-                    </select>
+                    <div>
+                        <label htmlFor="tarif_billet">Tarif<span>*</span></label>
+                        <select id="tarif_billet" value={billet.tarif_billet} onChange={handleForm} required>
+                            <option value="">Sélectionnez un tarif</option>
+                            {tarifs.map((tarif) => (
+                                <option key={tarif.id_tarif} value={tarif.id_tarif}>{tarif.nom_tarif}</option>
+                            ))}
+                        </select>
+                    </div>
                     
                     {id !== "0" ? 
                         <ButtonUpdate id={id} type="billet" token={token} data={billet} /> :  

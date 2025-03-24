@@ -153,12 +153,6 @@ form {
     cursor: pointer;
 }
 
-.buttons button.selected {
-    background-color: var(--darkRed);
-    color: white;
-    border-color: var(--darkRed);
-}
-
 
 .nom,
 .prenom,
@@ -185,6 +179,13 @@ form {
     padding: 8px;
     font-size: 1rem;
     cursor: pointer;
+}
+
+
+.buttons button.selected {
+    background-color: var(--darkRed);
+    color: white;
+    border-color: var(--darkRed);
 }
 
 .buttons button:hover {

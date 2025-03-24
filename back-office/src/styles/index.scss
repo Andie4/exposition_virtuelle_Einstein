@@ -10,6 +10,63 @@ body{
     padding: 0;
 }
 
-h1{
+h1, h2{
     text-align: center;
+}
+
+
+.return-button{
+    display: block;
+    margin-left: 5vw;
+    text-align: center;
+    width: 80px;
+    padding: 12px;
+    text-decoration: none;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.return-resa{
+    width: 220px;
+}
+
+.return-button:hover{
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #333;
+}
+
+.add-link, .modif-profil{
+    display: block;
+    margin: 5vh auto;
+    text-align: center;
+    width: 250px;
+    padding: 12px;
+    text-decoration: none;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.add-link:hover, .modif-profil:hover{
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #333;
+}
+
+.add-resa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-resa:hover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

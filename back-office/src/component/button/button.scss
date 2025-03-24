@@ -1,0 +1,33 @@
+
+.btn-update, .btn-delete, .link-update {
+    padding: 5px;
+    display: inline-block;
+    border-radius: 10px;
+    border: 1px solid #333;
+    background-color: #333;
+    color: #fff;
+    margin: 0 auto;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+.btn-update:hover, .btn-delete:hover, .link-update:hover {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #333;
+}
+
+
+.btn-delete{
+    color: white ;
+    background-color: darkred;
+}
+
+
+.link-update{
+    color: white ;
+    background-color: darkgreen;
+}

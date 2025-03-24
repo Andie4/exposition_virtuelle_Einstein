@@ -19,7 +19,7 @@ $request_method = $_SERVER['REQUEST_METHOD'];
 $type = isset($_GET["type"]) ? $_GET["type"] : null;
 
 if ($type === "doc" && $request_method === "GET") {
-    $file_path = __DIR__ . "/documentation.pdf"; // Assurez-vous que le fichier existe
+    $file_path = __DIR__ . "/documentationAPI.pdf"; 
     if (file_exists($file_path)) {
         header("Content-Type: application/pdf");
         header("Content-Disposition: inline; filename=\"documentation.pdf\"");

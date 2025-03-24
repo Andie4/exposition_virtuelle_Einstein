@@ -10,6 +10,66 @@ body {
   padding: 0;
 }
 
+h1, h2 {
+  text-align: center;
+}
+
+.return-button {
+  display: block;
+  margin-left: 5vw;
+  text-align: center;
+  width: 80px;
+  padding: 12px;
+  text-decoration: none;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.return-resa {
+  width: 220px;
+}
+
+.return-button:hover {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #333;
+}
+
+.add-link, .modif-profil {
+  display: block;
+  margin: 5vh auto;
+  text-align: center;
+  width: 250px;
+  padding: 12px;
+  text-decoration: none;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.add-link:hover, .modif-profil:hover {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #333;
+}
+
+.add-resa {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-resa:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .navbar {
   position: relative;
   padding: 3rem;
@@ -324,6 +384,201 @@ body {
   .myChart4 {
     grid-column: 2;
     grid-row: 2;
+  }
+}
+.btn-update, .btn-delete, .link-update {
+  padding: 5px;
+  display: inline-block;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background-color: #333;
+  color: #fff;
+  margin: 0 auto;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-update:hover, .btn-delete:hover, .link-update:hover {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #333;
+}
+
+.btn-delete {
+  color: white;
+  background-color: darkred;
+}
+
+.link-update {
+  color: white;
+  background-color: darkgreen;
+}
+
+.table {
+  width: 80vw;
+  max-width: 1500px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.1294117647);
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f4f4f4;
+}
+
+.form {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: auto;
+  padding-top: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1568627451);
+  border-radius: 5px;
+  box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.4980392157);
+}
+
+.form fieldset {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 20px;
+  margin: auto;
+  border: none;
+}
+
+.form legend {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin: 0 1vw;
+}
+
+.form fieldset div {
+  display: flex;
+  flex-direction: column;
+  margin: 0 1vw;
+}
+
+.form fieldset div label {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.form fieldset div input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  height: 40px;
+}
+
+.form span {
+  color: red;
+  font-size: 0.8rem;
+  margin: 0 0.2vw;
+}
+
+@media (max-width: 550px) {
+  .form {
+    width: 90vw;
+  }
+  .form fieldset {
+    width: 90vw;
+  }
+}
+.mini {
+  text-align: center;
+}
+
+.login {
+  background-image: url("../img/grid.png");
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form {
+  background-color: rgba(255, 255, 255, 0.7098039216);
+  border-radius: 15px;
+  box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.2901960784);
+  padding-top: 20px;
+}
+
+.login-form fieldset {
+  width: 500px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: auto auto;
+  border: none;
+}
+
+.login-form legend {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin: 0 1vw;
+}
+
+.login-form fieldset div {
+  display: flex;
+  flex-direction: column;
+  margin: 0 1vw;
+}
+
+.login-form fieldset div label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.login-form fieldset div input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  height: 40px;
+}
+
+.login-form fieldset button[type=submit] {
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background-color: #333;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  width: 10vw;
+  min-width: 150px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.login-form fieldset button[type=submit]:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+@media (max-width: 550px) {
+  .login-form fieldset {
+    width: 90vw;
   }
 }
 

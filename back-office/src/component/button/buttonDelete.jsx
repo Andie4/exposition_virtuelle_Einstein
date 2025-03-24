@@ -27,7 +27,7 @@ export function ButtonDelete({ id, type, token, onSuccess}) {
     
 
     return (
-        <button onClick={handleDelete} className="btn-delete">
+        <button onClick={handleDelete} className="btn-delete"  >
             Supprimer
         </button>
     );

@@ -5,10 +5,10 @@
     <header>
         <a href="#content" class="skip-link">Aller au contenu</a>
         <nav class="navbar">
-            <a href="index.php" class="logo"><img src="images/albert_logo.svg" alt="retour accueil"></a>
+            <a href="index.html" class="logo"><img src="images/albert_logo.svg" alt="retour accueil"></a>
             <div class="nav-links">
                 <ul>
-                    <li><a href="index.php" class="black">Accueil</a></li>
+                    <li><a href="index.html" class="black">Accueil</a></li>
                     <li><a href="infos_pratiques.php" class="black">Infos pratiques</a></li>
                     <li><a href="formulaire.php" class="black border">Réserver un billet</a></li>
                     <li><a href="#" class="black langues">Fr/En</a></li>

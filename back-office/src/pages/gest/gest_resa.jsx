@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Nav } from "../../component/nav/index.js";
 import { CardResa } from "../../component/card/cardResa.jsx";
 import { Link } from "react-router-dom";
+import targetBlank from "../../img/targetBlank.svg";
 
 export function GestResa() {
     const [resas, setResas] = useState([]);
@@ -29,7 +30,7 @@ export function GestResa() {
         <>
             <Nav />
             <h1>Gestion des réservations</h1>
-            <a href="https://albert.xploria.fr/reservation.php">Ajouter une réservation</a>
+            <a href="https://albert.xploria.fr/formulaire.php" target="_blank"  className="add-link add-resa">Ajouter une réservation <span><img src={targetBlank} alt="" /></span></a>
             <table className="table">
                 <thead>
                     <tr>

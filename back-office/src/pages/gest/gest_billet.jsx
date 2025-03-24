@@ -50,8 +50,8 @@ export function GestBillet() {
             <Nav />
             <h1>Gestion des Billets</h1>
             <h2>Réservation n°{id}</h2>
-            <Link to={`/gest_resa`}>Retour aux réservations</Link>
-            <Link to={`/formBillet/${id}/0`}>Ajouter un billet</Link>
+            <Link to={`/gest_resa`} className="return-button return-resa">Retour aux réservations</Link>
+            <Link to={`/formBillet/${id}/0`} className="add-link">Ajouter un billet</Link>
             <table className="table">
                 <thead>
                     <tr>

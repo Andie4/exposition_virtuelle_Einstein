@@ -57,6 +57,7 @@ export function FormBillet() {
             <form className="form">
                 <fieldset>
                     <legend>{id !== "0" ? "Modifier la réservation" : "Ajouter une réservation"}</legend>
+                    <p className="mini">Les champs suivis d'un <span>*</span> sont obligatoires.</p>
                     <div>
                         <label htmlFor="nom_billet">Nom<span>*</span></label>
                         <input type="text" id="nom_billet" value={billet.nom_billet} onChange={handleForm} required />

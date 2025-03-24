@@ -29,7 +29,7 @@ export function GestTarif() {
         <>
             <Nav />
             <h1>Gestion des tarifs</h1>
-            <Link to="/formTarif/0">Ajouter un tarif</Link>
+            <Link to="/formTarif/0" className="add-link">Ajouter un tarif</Link>
             <table className="table">
                 <thead>
                     <tr>

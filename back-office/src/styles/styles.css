@@ -10,7 +10,7 @@ body {
   padding: 0;
 }
 
-h1 {
+h1, h2 {
   text-align: center;
 }
 
@@ -28,10 +28,46 @@ h1 {
   cursor: pointer;
 }
 
+.return-resa {
+  width: 220px;
+}
+
 .return-button:hover {
   background-color: #fff;
   color: #333;
   border: 1px solid #333;
+}
+
+.add-link, .modif-profil {
+  display: block;
+  margin: 5vh auto;
+  text-align: center;
+  width: 250px;
+  padding: 12px;
+  text-decoration: none;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.add-link:hover, .modif-profil:hover {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #333;
+}
+
+.add-resa {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-resa:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .navbar {
@@ -350,23 +386,34 @@ h1 {
     grid-row: 2;
   }
 }
-.btn-update, .add-link {
+.btn-update, .btn-delete, .link-update {
   padding: 5px;
+  display: inline-block;
   border-radius: 10px;
   border: 1px solid #333;
   background-color: #333;
   color: #fff;
-  font-weight: bold;
-  font-size: 1.1rem;
-  width: 10vw;
-  min-width: 150px;
   margin: 0 auto;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-update:hover, .btn-delete:hover, .link-update:hover {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #333;
 }
 
 .btn-delete {
-  background-color: transparent;
-  border: none;
+  color: white;
+  background-color: darkred;
+}
+
+.link-update {
+  color: white;
+  background-color: darkgreen;
 }
 
 .table {
@@ -387,16 +434,6 @@ h1 {
 
 .table th {
   background-color: #f4f4f4;
-}
-
-.link-update {
-  margin-right: 10px;
-  text-decoration: none;
-  color: blue;
-}
-
-.link-update:hover {
-  text-decoration: underline;
 }
 
 .form {
@@ -451,7 +488,7 @@ h1 {
 .form span {
   color: red;
   font-size: 0.8rem;
-  margin: 0 1vw;
+  margin: 0 0.2vw;
 }
 
 @media (max-width: 550px) {
@@ -462,6 +499,10 @@ h1 {
     width: 90vw;
   }
 }
+.mini {
+  text-align: center;
+}
+
 .login {
   background-image: url("../img/grid.png");
   background-size: cover;

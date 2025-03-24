@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import { useEffect } from 'react';
 
 import { Home } from './pages/home'
-import { Profil } from './pages/profil/profil'
+import { Profil } from './pages/profil'
 import { Login } from './pages/login/login'
 
 import { GestAdmin } from './pages/gest/gest_admin'

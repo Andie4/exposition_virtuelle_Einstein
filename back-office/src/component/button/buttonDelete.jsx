@@ -1,5 +1,4 @@
 import React from "react";
-import deleteIcon from '../../img/delete.svg';
 
 export function ButtonDelete({ id, type, token, onSuccess}) {
     const handleDelete = () => {
@@ -28,8 +27,8 @@ export function ButtonDelete({ id, type, token, onSuccess}) {
     
 
     return (
-        <button onClick={handleDelete} className="btn-delete">
-            <img src={deleteIcon} alt="Bouton supprimer" />
+        <button onClick={handleDelete} className="btn-delete"  >
+            Supprimer
         </button>
     );
 }

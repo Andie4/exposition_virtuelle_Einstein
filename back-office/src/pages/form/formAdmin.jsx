@@ -48,6 +48,7 @@ export function FormAdmin() {
             <form className="form">
                 <fieldset>
                     <legend>{id!=0 ? "Modifier l'administrateur" : "Ajouter un administrateur"}</legend>
+                    <p className="mini">Les champs suivis d'un <span>*</span> sont obligatoires.</p>
                     <div>
                         <label htmlFor="nom_admin">Nom</label>
                         <input type="text" name="nom_admin" id="nom_admin" value={admin.nom_admin} onChange={handleForm}/>

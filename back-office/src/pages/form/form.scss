@@ -54,7 +54,7 @@
 .form span{
     color: red;
     font-size: 0.8rem;
-    margin: 0 1vw;
+    margin: 0 0.2vw;
 }   
 
 
@@ -65,4 +65,8 @@
     .form fieldset{
         width: 90vw;
     }
+}
+
+.mini{
+    text-align: center;
 }

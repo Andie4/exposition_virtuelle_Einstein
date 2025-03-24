@@ -40,11 +40,13 @@ export function FormTarif() {
         <>
             <Nav />
             <h1>Formulaire de tarif</h1>
+           
             <Link to="/gest_tarif" className="return-button">Retour</Link>
             <br />
             <form className="form">
                 <fieldset>
                     <legend>{id!=0 ? "Modifier le tarif" : "Ajouter un tarif"}</legend>
+                    <p className="mini">Les champs suivis d'un <span>*</span> sont obligatoires.</p>
                     <div>
                         <label htmlFor="nom_tarif">Nom du tarif<span>*</span></label>
                         <input type="text" name="nom_tarif" id="nom_tarif" value={tarif.nom_tarif} onChange={handleForm} required />

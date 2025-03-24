@@ -49,6 +49,7 @@ export function FormResa() {
             <form className="form">
                 <fieldset>
                     <legend>{id != 0 ? "Modifier la réservation" : "Ajouter une réservation"}</legend>
+                    <p className="mini">Les champs suivis d'un <span>*</span> sont obligatoires.</p>
                     <div>
                         <label htmlFor="date_resa">Date<span>*</span></label>
                         <input type="date" name="date_resa" id="date_resa" value={resa.date_resa} onChange={handleForm} required />

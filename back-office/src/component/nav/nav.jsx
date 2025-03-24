@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
-
+import logout from "../../img/logout.svg";
 
 
 export function Nav() {
@@ -23,9 +23,7 @@ export function Nav() {
                     <li><Link to="/profil" className="black">Profil</Link></li>
                 </ul>
             </div>
-            <img src="./img/menu.svg" alt="menu hamburger" className="menu-burger"/>
-            <img src="./img/close.svg" alt="close" className="close"/>
-            <button onClick={handleLogout}>Se déconnecter</button>
+            <button className="logout" onClick={handleLogout}><img src={logout} alt="se déconnecter" /></button>
         </nav>
         
         </>

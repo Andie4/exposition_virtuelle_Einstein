@@ -1,73 +1,7 @@
 
-/* mobile  */
-@media screen and (max-width: 768px) {
-    body {
-        font-size: 0.8rem;
-    }
-    .center{
-        display: block;
-        margin : auto;
-    }
-    
-
-    .blocInfos {
-        display: block;
-        padding: 5px;
-        font-size: 0.8rem;
-        margin-bottom: 20rem;
-        max-width: 300px;
-        margin: auto;
-    }
-
-    .dataSite{
-        display: grid;
-        justify-content: center;
-        margin-top: 1rem;
-        width: 9rem;
-        padding: 0.2rem 1rem;
-        height: 7rem;
-        margin: 0.5rem;
-    }
-    .linkSite{
-        display: grid;
-        justify-content: center;
-        margin-top: 1rem;
-        width: 9rem;
-        padding: 0.2rem 1rem;
-        margin: 0.5rem
-
-    }
-    .colR2{
-        display : block;
-        margin-top : auto;
-        margin-bottom: auto;
-    }
-    .grid{
-        display: grid;
-        gap: 0px 0px;
-        grid-template-areas:
-            "colR1 colL1"
-            "colR2 colL2";
-        width: 1rem;
-    }
-
-    .colR{
-        grid-column: 1;
-        grid-row: 1;
-    }
-    .colL{
-        grid-column: 2;
-        grid-row: 1;
-    }
-
-
-
-
-
-}
 
 /* tablette */
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (min-width: 560px) and (max-width: 1024px) {
     body {
         font-size: 1rem;
     }

@@ -18,8 +18,6 @@ export function Home() {
                     <ChartPlace />
                     <ChartTarif />
                 </div>
-                <a href="">Site de l'exposition</a>
-                <a href="">Site de l'agence</a>
             </main>
         </>
     );

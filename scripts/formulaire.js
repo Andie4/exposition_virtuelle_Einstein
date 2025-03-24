@@ -159,18 +159,36 @@ const boutonsNext = document.querySelectorAll(".button-next");
 const boutonsBefore = document.querySelectorAll(".button-before");
 const fieldsets = document.querySelector(".slider-content");
 var position = 0;
+var step = 600;  // Valeur initiale de `step`, à ajuster si nécessaire.
 var image = 0;
 
+// Fonction pour obtenir la largeur du slider
+function getSliderWidth() {
+    const slider = document.querySelector(".slider");
+    return parseInt(window.getComputedStyle(slider).width);  // Renvoie la largeur sans les unités
+}
+
+// Mettre à jour `step` lorsque la fenêtre est redimensionnée
+window.addEventListener("resize", function() {
+    step = getSliderWidth();
+});
+
+// Initialiser la valeur de `step`
+step = getSliderWidth();
+
+// Ajouter des écouteurs d'événements pour les boutons
 boutonsNext.forEach(function (bouton) {
     bouton.addEventListener("click", decaleGauche);
-})
+});
+
 boutonsBefore.forEach(function (bouton) {
     bouton.addEventListener("click", decaleDroite);
-})
+});
 
+// Fonction pour avancer le slider
 function decaleGauche() {
     if (pageValide == 'True') {
-        position -= 800;
+        position -= step;
         image += 1;
         fieldsets.style.left = position + "px";
 
@@ -178,13 +196,17 @@ function decaleGauche() {
             fetchTarifs();
         }
     }
-};
+}
 
+// Fonction pour reculer le slider
 function decaleDroite() {
-    position += 800;
-    image -= 1;
-    fieldsets.style.left = position + "px";
-};
+    if (pageValide == 'True') {
+        position += step;
+        image -= 1;
+        fieldsets.style.left = position + "px";
+    }
+}
+
 
 //-----------------------------------------------------
 function loadBilletsFromLocalStorage() {

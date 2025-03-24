@@ -15,7 +15,7 @@
     <?php include 'nav.php'; ?>
 
 
-    <section>
+    <main>
         <div>
             <h1 id="content">Acheter un billet</h1>
             <!-- <div class="filAriane">
@@ -133,7 +133,7 @@
 
 
 
-    </section>
+    </main>
 
     <?php require_once('footer.php'); ?>
 

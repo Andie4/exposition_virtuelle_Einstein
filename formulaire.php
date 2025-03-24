@@ -124,7 +124,7 @@
 
             <div class="ticket">
                 <div class="pointilles">
-                    <img src="images/img_ticket.jpg" alt="" class="ticketImg">
+                    <img src="images/img_ticket.png" alt="" class="ticketImg">
                     <div class="ticketInfos">
                     </div>
                 </div>

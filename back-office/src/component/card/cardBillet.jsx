@@ -6,7 +6,7 @@ export function CardBillet({resa, billet, tarif, onDelete }){
 
     return(
         <>
-        <div>
+        <div className="card">
             <p>Billet ID{billet.id_billet}</p>
             <p>{billet.nom_billet} {billet.prenom_billet}</p>
             <p>Tarif : {tarif.nom_tarif}</p>

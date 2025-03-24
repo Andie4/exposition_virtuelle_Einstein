@@ -64,33 +64,38 @@ export function Login() {
 
 
     return (
-        <div>
-            <form onSubmit={handleLogin}>
+        <main className="login">
+            <form onSubmit={handleLogin} className="login-form">
                 <fieldset>
                     <legend>Connexion</legend>
-                    <label htmlFor="login">Identifiant</label>
-                    <input
-                        type="text"
-                        placeholder="Identifiant"
-                        id="login"
-                        value={login}
-                        onChange={(e) => setLogin(e.target.value)}
-                        required
-                    />
-                    <label htmlFor="password">Mot de passe</label>
-                    <input
-                        type="password"
-                        placeholder="Mot de passe"
-                        id="password"
-                        value={mdp}
-                        onChange={(e) => setMdp(e.target.value)}
-                        required
-                    />
+                    <div>
+                        <label htmlFor="login">Identifiant</label>
+                        <input
+                            type="text"
+                            placeholder="Identifiant"
+                            id="login"
+                            value={login}
+                            onChange={(e) => setLogin(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="password">Mot de passe</label>
+                        <input
+                            type="password"
+                            placeholder="Mot de passe"
+                            id="password"
+                            value={mdp}
+                            onChange={(e) => setMdp(e.target.value)}
+                            required
+                        />
+                    </div>
                     <button type="submit">Se connecter</button>
                 </fieldset>
             </form>
             {message && <p>{message}</p>}
-        </div>
+            
+        </main>
     );
 }
 

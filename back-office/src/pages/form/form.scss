@@ -1,0 +1,61 @@
+
+.form{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: auto;
+    border : 1px solid #333;
+    border-radius: 5px;
+}
+
+
+.form fieldset{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 20px;
+    margin: auto ;
+    border: none;
+    
+}
+
+.form legend{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin: 0 1vw;
+}
+
+.form fieldset div{
+    display: flex;
+    flex-direction: column;
+    margin: 0 1vw;
+}
+
+.form fieldset div label{
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form fieldset div input, .form fieldset div select{
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+
+
+.login-form fieldset button[type="submit"]:hover{
+    background-color: #fff;
+    color: #333;
+}
+
+
+@media (max-width: 550px){
+    .form fieldset{
+        width: 90vw;
+    }
+}

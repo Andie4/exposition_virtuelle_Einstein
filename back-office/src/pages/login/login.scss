@@ -1,0 +1,82 @@
+
+.login{
+    background-image: url('../img/grid.png');
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form{
+    background-color: #ffffffb5 ;
+    border-radius: 15px;
+    box-shadow: 0 10px 15px 0 #0000004a;
+    padding-top: 20px;
+}
+
+.login-form fieldset{
+    width: 500px;
+    height: 30vh;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: auto auto;
+    border: none;
+    
+}
+
+.login-form legend{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin: 0 1vw;
+}
+
+.login-form fieldset div{
+    display: flex;
+    flex-direction: column;
+    margin: 0 1vw;
+}
+
+.login-form fieldset div label{
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.login-form fieldset div input{
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+
+.login-form fieldset button[type="submit"]{
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    background-color: #333;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    width: 10vw;
+    min-width: 150px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.login-form fieldset button[type="submit"]:hover{
+    background-color: #fff;
+    color: #333;
+}
+
+
+@media (max-width: 550px){
+    .login-form fieldset{
+        width: 90vw;
+    }
+}

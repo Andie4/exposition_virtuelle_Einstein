@@ -42,13 +42,17 @@ export function FormTarif() {
             <h1>Formulaire de tarif</h1>
             <Link to="/gest_tarif">Retour</Link>
             <br />
-            <form action="">
+            <form className="form">
                 <fieldset>
                     <legend>{id!=0 ? "Modifier le tarif" : "Ajouter un tarif"}</legend>
-                    <label htmlFor="nom_tarif">Nom du tarif</label>
-                    <input type="text" name="nom_tarif" id="nom_tarif" value={tarif.nom_tarif} onChange={handleForm} required />
-                    <label htmlFor="name_tarif">Nom du tarif en anglais</label>
-                    <input type="text" name="name_tarif" id="name_tarif" value={tarif.name_tarif} onChange={handleForm} required />
+                    <div>
+                        <label htmlFor="nom_tarif">Nom du tarif</label>
+                        <input type="text" name="nom_tarif" id="nom_tarif" value={tarif.nom_tarif} onChange={handleForm} required />
+                    </div>
+                    <div>
+                        <label htmlFor="name_tarif">Nom du tarif en anglais</label>
+                        <input type="text" name="name_tarif" id="name_tarif" value={tarif.name_tarif} onChange={handleForm} required />
+                    </div>
                     {id!=0 ? 
                     <ButtonUpdate id={id} type="tarif" token={token} data={tarif} /> :  
                     <ButtonAdd type="tarif" token={token} data={tarif} />

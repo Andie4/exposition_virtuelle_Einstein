@@ -6,7 +6,7 @@ export function CardResa({resa, onDelete }){
 
     return(
         <>
-        <div>
+        <div className="card">
             <p>ID n°{resa.id_resa}</p>
             <p>{resa.nom_resa}</p>
             <p>{resa.prenom_resa}</p>

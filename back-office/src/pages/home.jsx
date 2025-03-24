@@ -10,8 +10,8 @@ export function Home() {
     return (
         <>
             <Nav />
-            <div>
-                <h2>Bienvenue sur le back-office !</h2>
+            <main>
+                <h1>Bienvenue sur le back-office !</h1>
                 <div className="multiColumn center">
                     <ChartHoraire />
                     <ChartJour />
@@ -20,7 +20,7 @@ export function Home() {
                 </div>
                 <a href="">Site de l'exposition</a>
                 <a href="">Site de l'agence</a>
-            </div>
+            </main>
         </>
     );
 }

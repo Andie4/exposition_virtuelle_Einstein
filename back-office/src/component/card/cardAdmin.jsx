@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export function CardAdmin({ admin, onDelete }) {
     return (
-        <div>
+        <div className="card">
             <p>{admin.nom_admin}</p>
             <p>{admin.prenom_admin}</p>
             <p>{admin.mail_admin}</p>

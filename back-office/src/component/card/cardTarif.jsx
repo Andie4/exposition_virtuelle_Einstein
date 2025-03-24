@@ -6,7 +6,7 @@ export function CardTarif({tarif, onDelete}){
 
     return(
         <>
-        <div>
+        <div className="card">
             <p>{tarif.nom_tarif}</p>
             <p>Anglais : {tarif.name_tarif}</p>
             <Link to={`/formTarif/${tarif.id_tarif}`}>Modifier</Link>

@@ -43,7 +43,7 @@ export function FormAdmin() {
         <>
             <Nav />
             <h1>Formulaire administrateur</h1>
-            <Link to="/gest_admin">Retour</Link>
+            <Link to="/gest_admin" className="return-button">Retour</Link>
             <br />
             <form className="form">
                 <fieldset>
@@ -61,11 +61,11 @@ export function FormAdmin() {
                         <input type="email" name="mail_admin" id="mail_admin" value={admin.mail_admin} onChange={handleForm} />
                     </div>
                     <div>
-                        <label htmlFor="login_admin">Login</label>
+                        <label htmlFor="login_admin">Login<span>*</span></label>
                         <input type="text" name="login_admin" id="login_admin" value={admin.login_admin} onChange={handleForm} required />
                     </div>
                     <div>
-                        <label htmlFor="mdp_admin">Mot de passe</label>
+                        <label htmlFor="mdp_admin">Mot de passe<span>*</span></label>
                         <input type="password" name="mdp_admin" id="mdp_admin"  onChange={handleForm} required />
                     </div>
                

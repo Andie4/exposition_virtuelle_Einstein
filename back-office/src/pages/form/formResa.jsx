@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 export function FormResa() {
     let { id } = useParams();
-    const token=localStorage.getItem("token");
+    const token = localStorage.getItem("token");
     const [resa, setResa] = useState({
         "id_resa": 0,
         "date_resa": "",
@@ -35,7 +35,8 @@ export function FormResa() {
         , [id]);
 
     const handleForm = (e) => {
-        setResa({ ...resa, [e.target.id]: e.target.value
+        setResa({
+            ...resa, [e.target.id]: e.target.value
         });
     }
 
@@ -43,36 +44,36 @@ export function FormResa() {
         <>
             <Nav />
             <h1>Formulaire de réservation</h1>
-            <Link to="/gest_resa">Retour</Link>
+            <Link to="/gest_resa" className="return-button">Retour</Link>
             <br />
             <form className="form">
                 <fieldset>
-                    <legend>{id!=0 ? "Modifier la réservation" : "Ajouter une réservation"}</legend>
+                    <legend>{id != 0 ? "Modifier la réservation" : "Ajouter une réservation"}</legend>
                     <div>
-                        <label htmlFor="date_resa">Date</label>
+                        <label htmlFor="date_resa">Date<span>*</span></label>
                         <input type="date" name="date_resa" id="date_resa" value={resa.date_resa} onChange={handleForm} required />
                     </div>
                     <div>
-                        <label htmlFor="heure_resa">Heure</label>
+                        <label htmlFor="heure_resa" >Heure<span>*</span></label>
                         <input type="time" name="heure_resa" id="heure_resa" value={resa.heure_resa} onChange={handleForm} required />
                     </div>
                     <div>
-                        <label htmlFor="mail_resa">Mail</label>
+                        <label htmlFor="mail_resa">Mail<span>*</span></label>
                         <input type="email" name="mail_resa" id="mail_resa" value={resa.mail_resa} onChange={handleForm} required />
                     </div>
                     <div>
-                        <label htmlFor="nom_resa">Nom</label>
+                        <label htmlFor="nom_resa">Nom<span>*</span></label>
                         <input type="text" name="nom_resa" id="nom_resa" value={resa.nom_resa} onChange={handleForm} required />
                     </div>
                     <div>
-                        <label htmlFor="prenom_resa">Prénom</label>
+                        <label htmlFor="prenom_resa">Prénom<span>*</span></label>
                         <input type="text" name="prenom_resa" id="prenom_resa" value={resa.prenom_resa} onChange={handleForm} required />
                     </div>
-                    {id!=0 ? 
-                    <ButtonUpdate id={id} type="resa" token={token} data={resa} /> :  
-                    <ButtonAdd type="resa" token={token} data={resa} />
+                    {id != 0 ?
+                        <ButtonUpdate id={id} type="resa" token={token} data={resa} /> :
+                        <ButtonAdd type="resa" token={token} data={resa} />
                     }
-                   
+
                 </fieldset>
             </form>
         </>

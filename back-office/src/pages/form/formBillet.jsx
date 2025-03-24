@@ -52,28 +52,28 @@ export function FormBillet() {
         <>
             <Nav />
             <h1>Formulaire de billet</h1>
-            <Link to={`/gest_billet/${resa}`} className="btn-back">Retour</Link>
+            <Link to={`/gest_billet/${resa}`} className="btn-back return-button">Retour</Link>
             <br />
             <form className="form">
                 <fieldset>
                     <legend>{id !== "0" ? "Modifier la réservation" : "Ajouter une réservation"}</legend>
                     <div>
-                        <label htmlFor="nom_billet">Nom</label>
+                        <label htmlFor="nom_billet">Nom<span>*</span></label>
                         <input type="text" id="nom_billet" value={billet.nom_billet} onChange={handleForm} required />
                     </div>
                     
                     <div>
-                        <label htmlFor="prenom_billet">Prénom</label>
+                        <label htmlFor="prenom_billet">Prénom<span>*</span></label>
                         <input type="text" id="prenom_billet" value={billet.prenom_billet} onChange={handleForm} required />
                     </div>
                     
                     <div>
-                        <label htmlFor="resa_billet">N°ID Réservation</label>
+                        <label htmlFor="resa_billet">N°ID Réservation<span>*</span></label>
                         <input type="text" id="resa_billet" value={billet.resa_billet} onChange={handleForm} required />
                     </div>
                     
                     <div>
-                        <label htmlFor="tarif_billet">Tarif</label>
+                        <label htmlFor="tarif_billet">Tarif<span>*</span></label>
                         <select id="tarif_billet" value={billet.tarif_billet} onChange={handleForm} required>
                             <option value="">Sélectionnez un tarif</option>
                             {tarifs.map((tarif) => (

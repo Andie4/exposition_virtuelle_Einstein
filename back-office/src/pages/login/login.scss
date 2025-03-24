@@ -18,7 +18,7 @@
 
 .login-form fieldset{
     width: 500px;
-    height: 30vh;
+    height: 350px;
     
     display: flex;
     flex-direction: column;
@@ -53,6 +53,7 @@
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #333;
+    height: 40px;
 }
 
 .login-form fieldset button[type="submit"]{

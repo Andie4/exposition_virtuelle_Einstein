@@ -41,17 +41,19 @@
     margin-bottom: 5px;
 }
 
-.form fieldset div input, .form fieldset div select{
+.form fieldset div input{
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #333;
+    height: 40px;
 }
 
 
-.login-form fieldset button[type="submit"]:hover{
-    background-color: #fff;
-    color: #333;
-}
+.form span{
+    color: red;
+    font-size: 0.8rem;
+    margin: 0 1vw;
+}   
 
 
 @media (max-width: 550px){

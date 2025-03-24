@@ -188,7 +188,7 @@ function updateLobby() {
 
     const progressElement = document.getElementById("chapterProgress");
     if (progressElement) {
-        progressElement.innerHTML = `<p class="chapterProgress">${completedCount} chapitre(s) sur 5 complétés </p>`;
+        progressElement.innerHTML = `<p class="chapterProgress" data-translate-key="chapter">${completedCount} chapitre(s) sur 5 complétés </p>`;
     }
 
     // Si le compteur atteint 5, afficher le pop-up

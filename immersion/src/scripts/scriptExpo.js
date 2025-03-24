@@ -51,6 +51,9 @@ document.body.appendChild(renderer.domElement);
 //orbit control
 const controls = new OrbitControls(camera, renderer.domElement);
 
+controls.minPolarAngle = Math.PI / 4;  
+controls.maxPolarAngle = Math.PI / 1.5;  
+
 
 
 //////////////////////////////////////////////////////////////////////////

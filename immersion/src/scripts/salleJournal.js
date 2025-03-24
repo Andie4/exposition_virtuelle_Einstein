@@ -56,8 +56,8 @@ document.body.appendChild(renderer.domElement);
 const controls = new OrbitControls(camera, renderer.domElement);
 // controls.autorotate = true;
 
-const maxAzimuthAngle = Math.PI + 10.4;
-const minAzimuthAngle = -Math.PI - 8.5;
+const maxAzimuthAngle = Math.PI + 2;
+const minAzimuthAngle = -Math.PI - 1;
 controls.maxAzimuthAngle = maxAzimuthAngle;
 controls.minAzimuthAngle = minAzimuthAngle;
 

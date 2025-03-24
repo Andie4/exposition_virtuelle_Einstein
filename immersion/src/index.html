@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RelatX</title>
+    <link rel="icon" href="media/favicon.svg" />
+    <script defer type="module" src="scripts/scriptExpo.js"></script>
+    <script src="scripts/trad.js"></script>
+    <link rel="stylesheet" href="styles/styleExpo.css">
+</head>
+<body>
+<header>
+    <div >
+        <a href="index.html"><img src="media/logo.svg" class="logo"></a>   
+    </div>
+
+    <div id="mySidenav" class="sidenav">
+        <a id="closeBtn" href="#" class="close">×</a>
+        <ul>
+            <li><a href="index.php" data-translate-key="lienAccueil">Accueil</a></li>
+            <li><a href="infos_pratique.php" data-translate-key="lienInfosPratiques">Infos pratique</a></li>
+            <li><a href="formulaire.php" data-translate-key="btnResa">Réserver un billet</a></li>
+            <li>
+                <select id="language-selector">
+                    <option value="fr">Français</option>
+                    <option value="en">English</option>
+                </select>
+            </li>
+
+        </ul>
+      </div>
+      
+      <a href="#" id="openBtn" class="openBtn">
+        <span class="burger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </a>
+</header>
+
+
+
+    <div class="blocIndications">
+        <p class="indications" data-translate-key="accueil"> Allumer la télévision</p>
+    </div>
+
+    
+    <!-- <div class="video hidden">
+        <div class="video-top">
+        </div>
+        <button><a href="lobby.html">aller au lobby</a></button>
+     </div> -->
+
+     <video id="videoIntro" src="media/neige.mp4" class="videoIntro"></video>
+     <video id="videoAspiration" class="videoAspiration" src="media/aspiration.mp4"></video>
+
+     
+
+</body>
+</html>

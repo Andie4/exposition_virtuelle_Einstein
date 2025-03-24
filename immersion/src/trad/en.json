@@ -1,0 +1,31 @@
+{
+    "accueil": "Turn on the television",
+    "recherche": "Search for clickable televisions",
+    "objets": "Click on the object",
+    "lobby": "Return to the lobby",
+
+
+    "boussole": "Click on the painting",
+    "texteBoussole": "At the age of 4, my father showed me a compass for the first time. The needle always pointed north, for no apparent reason. This small object confronted me with the invisible, awakening an insatiable curiosity in me. I then understood that there was a much larger universe, an eternal mystery that surrounded us and that we could try to solve. I remember that this experience marked the beginning of my quest. The world fascinated me deeply, and this fascination has never left me. As I grew up, I absorbed everything I could. But school did not suit me, and despite good results, I did not meet the expectations of the system. In 1895, at the age of 16, I failed the entrance exam to the Zurich Polytechnic School. Yet, physics called me, and I knew that my path was elsewhere.",
+
+
+    "cosmos": "Find the star that will reveal the text",
+    "texteCosmos": "When I studied gravitation, I realized that Newton described it as an invisible force attracting objects. However, I perceived this conception as an illusion. I understood that space and time formed a flexible canvas, deformed by the mass of the stars. The more massive a body was, the more it bent this canvas, thus dictating the movement of the others. This is how the Earth dances around the Sun and how light itself bends under the influence of black holes. Yet, a mystery persisted: how to reconcile this vision with quantum physics, where chance reigns? This idea deeply troubled me. I could never accept it. As I have often said: 'God does not play dice.'",
+
+    "journal": "Find the stamp",
+    "texteJournal": "I was never a model student. School bored me, and its rigid teaching was unbearable to me. Learning without understanding? Unthinkable. In 1900, I finally obtained my diploma from the Zurich Polytechnic School, but without a job, I found myself at the Bern Patent Office. A monotonous job, but an unexpected luxury: time to think. Between two files, my ideas took shape. In 1901, I published my first articles in Annalen der Physik, but my schedule made it difficult to access libraries. Fortunately, my discussions with my friend Michele Besso nourished my reflections. These years were essential: it was in the shadows that the light germinated.",
+
+    "textBalle": "In 1917, my equations of general relativity led me to a troubling conclusion: the universe was in motion. But this contradicted everything we believed. Did I make a mistake? To correct this paradox, I added the cosmological constant to freeze the universe. Then, in 1929, Hubble proved that galaxies were moving away: the universe was expanding. I then understood that this constant was a mistake, perhaps the greatest of my life. Ironically, it is now rehabilitated to explain an even larger mystery: dark energy. These mistakes taught me one thing: scientific truth evolves, and we must always be ready to review our certainties.",
+
+    "bombe": "Find the pen",
+    "texteBombe": "In 1939, with Leo Szilárd, we sent a letter to President Roosevelt to warn him of the risk ... faire la trad de la suite ",
+
+    "titrePopup": "Congratulations! You have completed all the chapters.",
+    "btnResa": "Book a place for the physical exhibition",
+    "btnRestart": "Restart the virtual exhibition",
+
+    "lienAccueil": "Home page",
+    "lienInfosPratiques": "Practical information",
+    "lienReserver": "Legal notices"
+    
+}

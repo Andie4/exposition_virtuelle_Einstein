@@ -1,5 +1,5 @@
 
-.btn-update, .btn-delete {
+.btn-update, .add-link {
     padding: 5px;
     border-radius: 10px;
     border: 1px solid #333;
@@ -11,4 +11,9 @@
     min-width: 150px;
     margin: 0 auto;
     cursor: pointer;
+}
+
+.btn-delete{
+    background-color: transparent;
+    border: none;
 }

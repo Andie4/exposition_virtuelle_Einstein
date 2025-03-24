@@ -18,11 +18,11 @@ h1 {
   display: block;
   margin-left: 5vw;
   text-align: center;
-  width: 70px;
+  width: 80px;
+  padding: 12px;
   text-decoration: none;
   background-color: #333;
   color: #fff;
-  padding: 5px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
@@ -350,7 +350,7 @@ h1 {
     grid-row: 2;
   }
 }
-.btn-update, .btn-delete {
+.btn-update, .add-link {
   padding: 5px;
   border-radius: 10px;
   border: 1px solid #333;
@@ -364,14 +364,51 @@ h1 {
   cursor: pointer;
 }
 
+.btn-delete {
+  background-color: transparent;
+  border: none;
+}
+
+.table {
+  width: 80vw;
+  max-width: 1500px;
+  min-width: 300px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.1294117647);
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f4f4f4;
+}
+
+.link-update {
+  margin-right: 10px;
+  text-decoration: none;
+  color: blue;
+}
+
+.link-update:hover {
+  text-decoration: underline;
+}
+
 .form {
   width: 500px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   margin: auto;
-  border: 1px solid #333;
+  padding-top: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1568627451);
   border-radius: 5px;
+  box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.4980392157);
 }
 
 .form fieldset {
@@ -418,6 +455,9 @@ h1 {
 }
 
 @media (max-width: 550px) {
+  .form {
+    width: 90vw;
+  }
   .form fieldset {
     width: 90vw;
   }

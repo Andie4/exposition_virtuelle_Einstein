@@ -1,0 +1,29 @@
+.table {
+    width: 80vw;
+    max-width: 1500px;
+    min-width: 300px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    box-shadow: 0 10px 15px 0 #00000021;
+}
+
+.table th,
+.table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f4f4f4;
+}
+
+.link-update {
+    margin-right: 10px;
+    text-decoration: none;
+    color: blue;
+}
+
+.link-update:hover {
+    text-decoration: underline;
+}

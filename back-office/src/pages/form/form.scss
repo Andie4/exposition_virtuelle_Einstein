@@ -5,8 +5,10 @@
     flex-direction: column;
     justify-content: space-around;
     margin: auto;
-    border : 1px solid #333;
+    padding-top: 20px;
+    border : 1px solid #00000028;
     border-radius: 5px;
+    box-shadow: 0 10px 15px 0 #0000007f;
 }
 
 
@@ -57,6 +59,9 @@
 
 
 @media (max-width: 550px){
+    .form{
+        width: 90vw;
+    }
     .form fieldset{
         width: 90vw;
     }

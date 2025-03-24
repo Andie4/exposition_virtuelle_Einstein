@@ -52,15 +52,27 @@ export function GestBillet() {
             <h2>Réservation n°{id}</h2>
             <Link to={`/gest_resa`}>Retour aux réservations</Link>
             <Link to={`/formBillet/${id}/0`}>Ajouter un billet</Link>
-            {billets.map((billet) => (
-                <CardBillet
-                    key={billet.id_billet}
-                    resa={id}
-                    billet={billet}
-                    tarif={tarifs[billet.tarif_billet] || { nom_tarif: "Tarif inconnu" }}
-                    onDelete={handleDelete}
-                />
-            ))}
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th>Billet ID</th>
+                        <th>Nom et Prénom</th>
+                        <th>Tarif</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {billets.map((billet) => (
+                        <CardBillet
+                            key={billet.id_billet}
+                            resa={id}
+                            billet={billet}
+                            tarif={tarifs[billet.tarif_billet] || { nom_tarif: "Tarif inconnu" }}
+                            onDelete={handleDelete}
+                        />
+                    ))}
+                </tbody>
+            </table>
         </>
     );
 }

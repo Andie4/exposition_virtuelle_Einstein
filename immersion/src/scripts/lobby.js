@@ -188,7 +188,7 @@ function updateLobby() {
 
     const progressElement = document.getElementById("chapterProgress");
     if (progressElement) {
-        progressElement.innerHTML = `<p class="chapterProgress">${completedCount} chapitre(s) sur 5 complétés </p>`;
+        progressElement.innerHTML = `<p class="chapterProgress" data-translate-key="chapter">${completedCount} chapitre(s) sur 5 complétés </p>`;
     }
 
     // Si le compteur atteint 5, afficher le pop-up
@@ -218,10 +218,7 @@ function showCompletionPopup() {
     document.getElementById("restartButton").addEventListener("click", () => {
         resetChapters(); 
         document.body.removeChild(popup);
-        localStorage.clear();
         window.location.href = "index.html"; 
-        localStorage.clear();
-
     });
 }
 

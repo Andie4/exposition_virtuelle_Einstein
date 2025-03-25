@@ -20,6 +20,7 @@ mdp : admin01
 
 Local:
 cd back-office
+npm install
 npm run dev pour lancer l'app
 
 
@@ -28,6 +29,7 @@ Exposition : Three.js + Vite + GASAP + Splitting
 https://albert.xploria.fr/
 
 Local :
+npm install
 npm run dev pour lancer l'app
 
 

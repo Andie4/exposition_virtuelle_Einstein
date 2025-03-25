@@ -17,7 +17,7 @@
     <section>
         <h1 id="content">Practical Information</h1>
         <div class="spaceBetweenText box bigMarginBottom">
-            <img src="images/img_planSalles.png" alt="">
+            <img src="../images/img_planSalles.png" alt="">
             <div class="bigMarginBottom marginLeft">
                 <h2>Exhibition Room Map</h2>
                 <p class="texte">Travel through space and time as you explore five rooms dedicated to Albert Einstein. From the central hall, you will discover his life, his office, general relativity, the impact of his work on the world, and a planetarium. At the center, a cathode-ray tower symbolizes the role of media in spreading his ideas. An immersive journey into Einstein's universe awaits you.</p>

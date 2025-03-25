@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/remerciement.css">
+    <link rel="icon" href="media/favicon.svg" />
     <title>Confirmation réservation - Albert, ayez sa vision</title>
 </head>
 <body>

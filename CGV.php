@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/CGV.css">
-    <title>Conditions Générales de Ventes</title>
+    <link rel="icon" href="media/favicon.svg" />
+    <title>Conditions Générales de Ventes - Albert, ayez sa vision</title>
 </head>
 <body>
     <?php include 'nav.php'; ?>

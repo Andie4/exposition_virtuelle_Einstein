@@ -89,25 +89,58 @@ function closeNav() {
 }
 
 
+// tableau: video et ecran coresspondant
+const videoMappings = [
+    { id: 'neige1', screenName: 'ecranTV002' },
+    { id: 'neige2', screenName: 'ecranTV006' },
+    { id: 'neige4', screenName: 'ecranTV003' },
+    { id: 'neige5', screenName: 'ecranTV007' },
+    { id: 'neige6', screenName: 'ecranTV009' }
+];
 
-// Chargement du modèle 3D 
+// Chargement du modèle 3D
 const loader = new GLTFLoader();
 loader.load(
     'models/salleLobby.glb',
     (gltf) => {
         const model = gltf.scene;
         model.position.set(0, 0.3, 0.2);
-        model.rotateY('4.8');
+        model.rotateY(4.8);
         scene.add(model);
         console.log("Modèle chargé");
-    },
-    (xhr) => {
-        console.log(`Chargement terminé`);
-    },
-    (error) => {
-        console.error("Erreur lors du chargement du modèle :", error);
+
+        // récupère les éléments de mon tableau pour chaque écran en fonction de son id 
+        videoMappings.forEach(({ id, screenName }) => {
+            const videoElement = document.getElementById(id);
+            if (!videoElement) {
+                console.warn(`Vidéo avec l'ID ${id} introuvable.`);
+                return;
+            }
+
+            // Lance la vidéo
+            videoElement.loop = true;
+            videoElement.play();
+
+            // création de la texture 
+            const textureVideo = new THREE.VideoTexture(videoElement);
+            textureVideo.minFilter = THREE.LinearFilter;
+            textureVideo.magFilter = THREE.LinearFilter;
+            textureVideo.format = THREE.RGBFormat;
+
+            // ajout de texture 
+            const screen = model.getObjectByName(screenName);
+            if (screen) {
+                screen.material = new THREE.MeshBasicMaterial({
+                    map: textureVideo,
+                    side: THREE.DoubleSide,
+                    toneMapped: false
+                });}
+        });
     }
 );
+
+
+
 
 const objetLiens = [
     { 
@@ -128,6 +161,11 @@ const objetLiens = [
         objet: "cosmos"
     }
 ];
+
+
+ 
+
+
 
 const raycaster = new THREE.Raycaster();
 

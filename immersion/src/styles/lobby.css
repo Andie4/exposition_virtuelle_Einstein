@@ -9,6 +9,24 @@ body{
     font-size: 1rem;
 }
 
+#neige1{
+    display: none;
+}
+
+#neige2{
+    display: none;
+}   
+
+#neige4{
+    display: none;
+}
+#neige5{
+    display: none;
+}
+#neige6{
+    display: none;
+}
+
 
 .blocChapterProgress{
     position: absolute;

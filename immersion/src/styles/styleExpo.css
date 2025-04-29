@@ -1,0 +1,590 @@
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+
+:root {
+    --black: #131313;
+    --white: #e3e3e3;
+    --text-color: #333;
+    --link-color: #007bff;
+    --link-color-hover: #0056b3;
+}
+
+
+.absolute{
+    position: absolute;
+}
+
+.flex{
+    display: flex;
+}
+.align-center{
+    align-items: center;
+}
+
+
+.videoIntro{
+    display: none;
+}
+
+#language-selector{
+   width: 5rem;
+}
+/* //////////////////////////////////////////////////: */
+
+/* .container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+} */
+/* 
+.zoom-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+} */
+
+#play.visible {
+    opacity: 1;
+}
+
+
+header{
+    position: absolute;
+}
+
+
+
+
+/* mobile  */
+@media screen and (max-width:767px){
+    .indications{
+        top: 90%;
+        left: 35%;
+        font-size: 1rem;
+        font-family: 'Roboto', sans-serif;
+        color: white;
+        text-align: center;
+        position: absolute;
+    }
+
+    header{
+      display: flex;
+      align-items: center;
+      width: 100%;
+      margin-top: 1.5rem;
+  }
+
+  .btnSuite{
+      font-size: 1rem;
+      top: 10%;
+      left: 85%;
+      background-color: var(--white);
+      color: var(--black);
+      padding: 10px 20px;
+      border-radius: 50px ;
+      /* text-align: center; */
+      transition-duration: 0.4s;
+      position: absolute;
+      top: 90%;
+      left: 45%;
+      transform: translate(-20%, -20%);
+      border:solid  0.02px;
+  }
+    .btnSuite a {
+        text-decoration: none;
+        color: var(--black);
+    }
+
+    .logo{
+        width: 5rem;
+        height: auto;
+        margin-left: 15%;
+        margin-top: 15%;
+    }
+      /* Sidenav menu */
+      .sidenav {
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: -100%;
+        background-color: rgb(5, 4, 36);
+        padding-top: 60px;
+        transition: left 0.5s ease;
+        right: 80%;
+    
+      }
+    
+      /* Sidenav menu links */
+      .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: rgb(213, 213, 213);
+        display: block;
+        transition: 0.3s;
+        font-size: 2rem;
+      }
+    
+      .sidenav a:hover {
+        color: #ececec;
+      }
+    
+      .sidenav ul {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        list-style-type: none;
+        padding: 3rem;
+        margin-top: 10rem;
+    
+      }
+    
+      ul li {
+        display: grid;
+        margin-bottom: 2rem;
+        align-items: center;
+      }
+    
+    
+      /* Active class */
+      .sidenav.active {
+        left: 0;
+      }
+    
+      /* Close btn */
+      .sidenav .close {
+        position: absolute;
+        top: 0;
+        right: 5%;
+        font-size: 36px;
+        font-size: 5rem;
+      }
+    
+      .openBtn{
+        position: absolute;
+        right: 10%;
+      }
+      /* Icône burger */
+      .burger-icon span {
+        display: block;
+        width: 35px;
+        height: 5px;
+        background-color: rgb(216, 216, 216);
+        margin: 6px 0;
+      }
+
+      
+    
+    .imgEinstein{
+        width: 10rem;
+        position: absolute;
+    }
+
+
+    .audioBtn{
+        color: var(--black);
+        background-color: var(--white);
+        padding: 8px 10px;
+        border-radius: 50px;
+        border: solid 0.02px;
+        position: absolute;
+        top: 10%;
+        right: 3%;
+    }
+
+
+    /* vidéo*/
+    video{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        margin-bottom: 0;
+
+    }
+    .boutonRetour{
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        background-color: #9d9d9d27;
+        border-radius: 15px;
+        padding: 1rem 2rem;
+        backdrop-filter: blur(5px);
+        cursor: pointer;
+        z-index: 3;
+    }
+
+    .logo{
+        width: 6rem;
+        height: auto;
+        margin-left: 15%;
+        margin-top: 15%;
+    }
+  
+
+}
+
+/* tablet  */
+@media screen and (min-width:768px) and (max-width:1023px) {
+    #play {
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -50%);
+    }
+    header{
+      display: flex;
+      align-items: center;
+      width: 90%;
+      margin-top: 1.5rem;
+  }
+  .openBtn{
+    position: absolute;
+    right: 5%;
+  }
+  
+    .audioBtn{
+        color: var(--black);
+        background-color: var(--white);
+        padding: 8px 10px;
+        border-radius: 50px;
+        border: solid 0.02px;
+        position: absolute;
+        top: 90%;
+        left: 3%;
+    }
+
+
+    .boutonRetour{
+      position: absolute;
+      text-decoration: none;
+      top: 12%;
+      right: 5%;
+      background-color: rgb(238, 238, 238);
+      border-radius: 15px;
+      padding: 1rem 2rem;
+      backdrop-filter: blur(5px);
+      cursor: pointer;
+      color: rgb(0, 0, 0);
+  }
+  .boutonRetour:hover {
+    background-color: rgb(5, 4, 36);
+    color: white;
+  }
+
+      /* Sidenav menu */
+      .sidenav {
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: -100%;
+        background-color: rgb(5, 4, 36);
+        padding-top: 60px;
+        transition: left 0.5s ease;
+        right: 80%;
+    
+      }
+    
+      /* Sidenav menu links */
+      .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: rgb(213, 213, 213);
+        display: block;
+        transition: 0.3s;
+        font-size: 2rem;
+      }
+    
+      .sidenav a:hover {
+        color: #ececec;
+      }
+    
+      .sidenav ul {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        list-style-type: none;
+        padding: 3rem;
+        margin-top: 10rem;
+    
+      }
+    
+      ul li {
+        display: grid;
+        margin-bottom: 2rem;
+        align-items: center;
+      }
+    
+    
+      /* Active class */
+      .sidenav.active {
+        left: 0;
+      }
+    
+      /* Close btn */
+      .sidenav .close {
+        position: absolute;
+        top: 0;
+        right: 5%;
+        font-size: 36px;
+        font-size: 5rem;
+      }      
+      /* Icône burger */
+      .burger-icon  {
+        height: 8px;
+        margin-top: 55%;
+      }
+      /* Icône burger */
+      .burger-icon span {
+        display: block;
+        width: 35px;
+        height: 4px;
+        background-color: rgb(255, 255, 255);
+        margin: 6px 0;
+      }
+      .logo{
+        width: 18rem;   
+                height: auto;
+        margin-left: 15%;
+        margin-top: 15%;
+    }
+    .blocIndications{
+      display: flex;
+      top: 90%;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+
+  }
+  .videoAspiration{
+      display: none;
+  }
+
+  .indications{
+      font-size: 1rem;
+      color: rgb(0, 0, 0);
+      position: absolute;
+      background-color: #ffffff93;
+      padding:12px 20px;
+      justify-content: center;
+
+      
+  }
+
+    
+}
+
+/*desktop*/
+@media screen and (min-width:1024px) {
+  .logo{
+    width: 8rem;   
+  }
+    #play {
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -50%);
+    }
+    .blocIndications{
+        display: flex;
+        top: 90%;
+        justify-content: center;
+        position: absolute;
+        width: 100%;
+
+    }
+    .videoAspiration{
+        display: none;
+    }
+
+    .indications{
+        font-size: 1rem;
+        color: rgb(0, 0, 0);
+        position: absolute;
+        background-color: #ffffff93;
+        padding:12px 20px;
+        justify-content: center;
+
+        
+    }
+    .audioBtn{
+        color: var(--black);
+        background-color: var(--white);
+        padding: 8px 10px;
+        border-radius: 50px;
+        border: solid 0.02px;
+        position: absolute;
+        top: 90%;
+        left: 3%;
+    }
+
+    .boutonRetour{
+        position: absolute;
+        text-decoration: none;
+        top: 12%;
+        right: 5%;
+        background-color: rgb(238, 238, 238);
+        border-radius: 15px;
+        padding: 1rem 2rem;
+        backdrop-filter: blur(5px);
+        cursor: pointer;
+        color: rgb(1, 1, 2);
+    }
+    .boutonRetour:hover {
+      background-color: rgb(5, 4, 36);
+      color: white;
+      border: solid 0.02px rgb(228, 228, 228);
+    }
+
+  
+
+      /* Sidenav menu */
+  .sidenav {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: -100%;
+    background-color: rgb(5, 4, 36);
+    padding-top: 60px;
+    transition: left 0.5s ease;
+    right: 80%;
+
+  }
+
+  /* Sidenav menu links */
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: rgb(213, 213, 213);
+    display: block;
+    transition: 0.3s;
+    font-size: 2rem;
+  }
+
+  .sidenav a:hover {
+    color: #ececec;
+  }
+
+  .sidenav ul {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    padding: 3rem;
+    margin-top: 10rem;
+
+  }
+
+  ul li {
+    display: grid;
+    margin-bottom: 2rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  /* Active class */
+  .sidenav.active {
+    left: 0;
+  }
+
+  /* Close btn */
+  .sidenav .close {
+    position: absolute;
+    top: 0;
+    right: 5%;
+    font-size: 36px;
+    font-size: 5rem;
+  }
+
+  .openBtn{
+    position: absolute;
+    right: 10%;
+  }
+  /* Icône burger */
+  .burger-icon span {
+    display: block;
+    width: 35px;
+    height: 5px;
+    background-color: rgb(216, 216, 216);
+    margin: 6px 0;
+  }
+    header{
+      display: flex;
+      align-items: center;
+      width: 105%;
+      margin-top: 1.5rem;
+  }
+  
+
+      .logo{
+        width: 10rem;
+        height: auto;
+        margin-left: 15%;
+        margin-top: 15%;
+    }
+
+    /* pop-up */
+    .popup-container{
+      position: fixed;
+      top : 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgb(5, 8, 26);
+      border-radius: 10px;
+      border: solid 0.02px;
+      color: white;
+      padding: 4rem;
+      text-align: center;
+    }
+
+    .title{
+      font-size: 1.5rem;
+      color: rgb(225, 223, 223);
+      margin-bottom: 4rem;
+    }
+
+    .buttonPopup{
+      margin: 10px; 
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      cursor: pointer;
+      border: solid 0.02px rgb(233, 233, 233);
+
+    }
+    .buttonPopup:hover{
+      transition: 0.3s;
+      transform: matrix(1.1, 0, 0, 1.1, 0, 0);
+      background-color: rgb(5, 8, 26);
+      color: rgb(233, 233, 233);
+      border: solid 0.02px rgb(233, 233, 233);
+
+    }
+
+    .chapterProgress{
+      position: relative;
+      display: grid;
+      top: 30%;
+    }
+
+
+}
+

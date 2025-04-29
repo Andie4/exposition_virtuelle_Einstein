@@ -1,0 +1,37 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+
+body{
+    font-size: 1rem;
+}
+
+
+.blocChapterProgress{
+    position: absolute;
+    width : 100%; 
+    margin: auto;
+    top: 12%;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+
+
+}
+.chapterProgress{
+    position: absolute;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-color: #08072f;
+    width :20rem;
+
+    font-size: 1rem;
+    color: rgb(227, 227, 227);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+

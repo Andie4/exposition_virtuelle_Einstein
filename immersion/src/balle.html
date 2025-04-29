@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>balle</title>
+    <link rel="icon" href="media/favicon.svg" />
+    <script defer type="module" src="scripts/salleBalle.js"></script>
+    <script src="scripts/trad.js"></script>
+    <link rel="stylesheet" href="styles/balle.css">
+    <link rel="stylesheet" href="styles/styleExpo.css">
+</head>
+<body>
+    <header>
+        
+    <a href="index.html"><img src="media/logo.png" class="logo"></a>   
+        
+    
+        <div id="mySidenav" class="sidenav">
+            <a id="closeBtn" href="#" class="close">×</a>
+            <ul>
+                <li><a href="index.php" data-translate-key="acceuil">Accueil</a></li>
+                <li><a href="infos_pratique.php" data-translate-key="lienInfosPratiques">Infos pratique</a></li>
+                <li><a href="formulaire.php" data-translate-key="btnResa">Réserver un billet</a></li>
+                <li><a href="https://xploria.fr/" data-translate-key="lienAgence">Site de l'agence</a></li>
+                <li>
+                    <select id="language-selector">
+                        <option value="fr">Français</option>
+                        <option value="en">English</option>
+                    </select>
+                </li>
+            </ul>
+          </div>
+          
+          <a href="#" id="openBtn" class="openBtn">
+            <span class="burger-icon">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </a>
+    </header>
+
+    <audio autoplay loop id="audio" src="media/objets.MP3"></audio> 
+
+    <a id="boutonRetour" class="boutonRetour" href="lobby.html" data-translate-key="lobby">Retourner au lobby</a>
+
+
+    <img class="einstein mover" src="media/tv3_einstein_espacetemps.png" alt="">
+
+    <video src="media/videoBalle.mp4"  autoplay loop muted></video>
+
+    <div class="controls">
+        <button class="audioBtn" type="button" id="buttonMute"><img src="media/volume_off.svg" alt="mute"></button>
+        <button class="audioBtn" type="button" id="buttonDemute"><img src="media/volume_up.svg" alt="demute"></button>
+    </div>
+
+    <div class="blocText" id="blocText">
+        <p data-splitting data-translate-key="textBalle">À 4 ans, mon père me montra pour la première fois une boussole. L'aiguille pointait toujours vers le nord, sans raison apparente. Ce petit objet me confronta à l'invisible, éveillant en moi une curiosité insatiable. Je compris qu'il existait un univers bien plus grand, un mystère éternel qui nous entourait, mais que nous pouvions tenter de comprendre. <br> <br>
+
+        Je me souviens que cette expérience marqua le début de ma quête. Le monde me fascinait profondément, et cette fascination ne m’a jamais quitté. <br><br>
+
+        En grandissant, j’absorbais tout ce que je pouvais, j’avais soif de savoir — la physique, les mathématiques… Mais l’école ne me convenait pas, et malgré de bons résultats, je n’étais pas à la hauteur du système. En 1895, à 16 ans, je ne réussis pas l’examen pour l'École polytechnique de Zurich, mais la physique, elle, m'appelait, et je savais que ma route serait ailleurs.</p>
+    </div>
+
+
+        
+
+</body>
+</html>

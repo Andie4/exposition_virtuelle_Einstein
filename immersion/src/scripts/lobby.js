@@ -103,12 +103,12 @@ const loader = new GLTFLoader();
 loader.load(
     'models/salleLobby.glb',
     (gltf) => {
+
         const model = gltf.scene;
         model.position.set(0, 0.3, 0.2);
         model.rotateY(4.8);
         scene.add(model);
         console.log("Modèle chargé");
-
         // récupère les éléments de mon tableau pour chaque écran en fonction de son id 
         videoMappings.forEach(({ id, screenName }) => {
             const videoElement = document.getElementById(id);
@@ -116,11 +116,9 @@ loader.load(
                 console.warn(`Vidéo avec l'ID ${id} introuvable.`);
                 return;
             }
-
             // Lance la vidéo
             videoElement.loop = true;
             videoElement.play();
-
             // création de la texture 
             const textureVideo = new THREE.VideoTexture(videoElement);
             textureVideo.minFilter = THREE.LinearFilter;
@@ -134,11 +132,11 @@ loader.load(
                     map: textureVideo,
                     side: THREE.DoubleSide,
                     toneMapped: false
-                });}
+                });
+            }
         });
     }
 );
-
 
 
 
@@ -229,13 +227,13 @@ function updateLobby() {
         progressElement.innerHTML = `<p class="chapterProgress">${completedCount} chapitre(s) sur 5 complétés </p>`;
     }
 
-    // Si le compteur atteint 5, afficher le pop-up
+    // Si le compteur atteint 5, afficher le pop-in
     if (completedCount === 5) {
         showCompletionPopup();
     }
 }
 
-// pop-up
+// pop-in
 function showCompletionPopup() {
     console.log("les 5 chapitres sont faits");
 
@@ -277,6 +275,7 @@ function animate() {
     requestAnimationFrame(animate);
     controls.update();
     renderer.render(scene, camera);
+
 }
 
 animate();

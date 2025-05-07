@@ -1,22 +1,22 @@
 {
-    "accueil": "Turn on the television",
+    "accueil": "What if you turned on the television...",
     "recherche": "Search for clickable televisions",
-    "objets": "Click on the object",
+    "objets": "You are invited to click on the object to be teleported...",
     "lobby": "Return to the lobby",
 
-    "boussole": "Find the correct black square on the painting",
+    "boussole": "Will you be able to find the black square on the board that will reveal the text ?",
     "texteBoussole": "At the age of 4, my father showed me a compass for the first time. The needle always pointed north, for no apparent reason. This small object confronted me with the invisible, awakening an insatiable curiosity in me. Then I understand that, the univers was much larger, an eternal mystery that surrounded us and that we could try to solve.  <br><br> I remember that this experience marked the beginning of my quest. The world fascinated me deeply, and this fascination has never left me.  <br><br> As I grew up, I absorbed everything I could. But school did not suit me, and despite good results, I did not meet the expectations of the system. In 1895, at the age of 16, I failed the entrance exam to the Zurich Polytechnic School. Yet, physics called me, and I knew that my path was elsewhere.",
 
 
-    "cosmos": "Find the star that will reveal the text",
+    "cosmos": "Will you be able to find the star that will reveal the text ?",
     "texteCosmos": "When I studied gravitation, I realized that Newton described it as an invisible force attracting objects. However I perceived this conception as an illusion. I understood that space and time formed a flexible cloth, deformed by the mass of the stars. The more massive a body was, the more it bent this canvas, thus dictating the movement of the others. This is how the Earth dances around the Sun and how light itself bends under the influence of black holes. <br><br> Yet, a mystery persisted: how to reconcile this vision with quantum physics, where chance reigns? This idea deeply troubled me. I could never accept it. As I have often said: 'God does not play dice.'",
 
-    "journal": "Find the stamp",
+    "journal": "Will you be able to find the stamp ?",
     "texteJournal": "I was never a model student. School bored me, and its rigid teaching was unbearable to me. Learning without understanding? Unthinkable. <br><br> In 1900, I finally obtained my diploma from the Zurich Polytechnic School, but without a job, I found myself at the Bern Patent Office. A monotonous job, but an unexpected luxury: time to think. Between two files, my ideas took shape. <br><br> In 1901, I published my first articles in Annalen der Physik, but my schedule made it difficult to access libraries. Fortunately, my discussions with my friend Michele Besso nourished my reflections. These years were essential: it was in the shadows that the light germinated.",
 
     "textBalle": "In 1917, my equations of general relativity led me to a troubling conclusion: the universe was in motion. But this contradicted everything we believed. Did I make a mistake? To correct this paradox, I added the cosmological constant to freeze the universe. <br><br> Then, in 1929, Hubble proved that galaxies were moving away: the universe was expanding. I then understood that this constant was a mistake, perhaps the greatest of my life. Ironically, it is now rehabilitated to explain an even larger mystery: dark energy.  <br><br> These mistakes taught me one thing: scientific truth evolves, and we must always be ready to review our certainties.",
 
-    "bombe": "Find the pen",
+    "bombe": "Will you be able to find the pen ?",
     "texteBombe": "In 1939, Leo Szilárd and I wrote a letter to President Roosevelt warning him of the risk that Nazi Germany might develop an atomic bomb. Taking the threat seriously, Roosevelt launched the Manhattan Project, which resulted in the first atomic bomb, dropped on Hiroshima in 1945. <br> <br> I was not informed. Deeply affected, I later said: 'If I had known that the Germans would fail, I would have done nothing.' <br><br> This burden weighed on my conscience, reminding me that any scientific advance, however promising, can be misused for destructive purposes.",
 
     "titrePopup": "Congratulations! You have completed all the chapters.",

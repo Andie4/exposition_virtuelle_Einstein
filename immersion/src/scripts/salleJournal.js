@@ -85,6 +85,10 @@ function closeNav() {
   sidenav.classList.remove("active");
 }
 
+let blinkInterval = null;
+let tampon = null;
+let originalColor = null;
+
 // Chargement du modèle 3D 
 const loader = new GLTFLoader();
 loader.load(
@@ -95,6 +99,14 @@ loader.load(
         model.rotateY(-3);
         scene.add(model);
         console.log("Modèle chargé");
+
+
+
+        tampon = model.getObjectByName("Cube112");
+        if (tampon && tampon.material) {
+            originalColor = tampon.material.color.clone();
+            startBlinking(tampon);
+        }
     },
     (xhr) => {
         console.log(`Chargement terminé`);
@@ -112,6 +124,25 @@ sprite.position.set( 0., -0.49, -1);
 scene.add( sprite );
 
 
+//clignotement du tampon
+function startBlinking(object3D) {
+    const blinkColor = new THREE.Color("#FFDDA9"); 
+    let toggle = false;
+    blinkInterval = setInterval(() => {
+        object3D.material.color.set(toggle ? blinkColor : originalColor);
+        toggle = !toggle;
+    }, 500);
+}
+
+function stopBlinking() {
+    if (blinkInterval !== null) {
+        clearInterval(blinkInterval);
+        blinkInterval = null;
+        if (tampon && originalColor) {
+            tampon.material.color.set(originalColor);
+        }
+    }
+}
 
 // mettre le son sur pause 
 window.onload = function() {

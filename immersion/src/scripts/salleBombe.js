@@ -8,7 +8,7 @@ scene.position.set(0,1.3,1.8)
 scene.rotateY(11);
 
 // lumieres
-const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+const ambientLight = new THREE.AmbientLight(0xffffff, 3);
 scene.add(ambientLight);
 
 const light = new THREE.DirectionalLight(0xffffff, 19);
@@ -75,7 +75,7 @@ window.onload = function() {
 };
 
 
-
+//video
 let textureVideo = null;
 const video = document.getElementById('video');
 video.muted = true;
@@ -88,6 +88,11 @@ textureVideo.minFilter = THREE.LinearFilter;
 textureVideo.magFilter = THREE.LinearFilter;    
 textureVideo.format = THREE.RGBFormat;        
 
+let blinkInterval = null;
+let pencil = null;
+let originalColor = null;
+
+
 // Chargement du modèle 3D 
 const loader = new GLTFLoader();
 loader.load(
@@ -96,6 +101,12 @@ loader.load(
         const model = gltf.scene;
         scene.add(model);
         console.log("✅ Modèle chargé");
+
+        pencil = model.getObjectByName("Pencil_Цилиндр004");
+        if (pencil && pencil.material) {
+            originalColor = pencil.material.color.clone();
+            startBlinking(pencil);
+        }
 
         //objet 3d avec le nom ecrantv
         const tvScreen = model.getObjectByName("ecranTV");
@@ -113,6 +124,25 @@ loader.load(
     (error) => console.error("Erreur affiche du model :", error)
 );
 
+//clignotement du crayon
+function startBlinking(object3D) {
+    const blinkColor = new THREE.Color("#F5F5DC"); 
+    let toggle = false;
+    blinkInterval = setInterval(() => {
+        object3D.material.color.set(toggle ? blinkColor : originalColor);
+        toggle = !toggle;
+    }, 500);
+}
+
+function stopBlinking() {
+    if (blinkInterval !== null) {
+        clearInterval(blinkInterval);
+        blinkInterval = null;
+        if (tampon && originalColor) {
+            tampon.material.color.set(originalColor);
+        }
+    }
+}
 
 // afficher le texte 
 // cacher le texte par defaut

@@ -88,6 +88,10 @@ textureVideo.format = THREE.RGBFormat;
 
 // Chargement du modèle 3D 
 const loader = new GLTFLoader();
+let blinkInterval = null;
+let tvButton = null;
+let originalColor = null;
+
 loader.load(
     'models/intro-F.glb',
     (gltf) => {
@@ -95,30 +99,72 @@ loader.load(
         scene.add(model);
         console.log("Modèle chargé");
 
-                //objet 3d avec le nom ecrantv
-                const tvScreen = model.getObjectByName("ecranTv");
-                if (tvScreen) {
-                    tvScreen.material = new THREE.MeshBasicMaterial({ 
-                        map: textureVideo, 
-                        side: THREE.DoubleSide,
-                        toneMapped: false
-                    });
+        const tvScreen = model.getObjectByName("ecranTv");
+        if (tvScreen) {
+            tvScreen.material = new THREE.MeshBasicMaterial({ 
+                map: textureVideo, 
+                side: THREE.DoubleSide,
+                toneMapped: false
+            });
+            tvScreen.material.visible = false;
+        }
 
-                    tvScreen.material.visible = false;
-                
-                
-                } else {
-                    // console.eror("Erreur pour trouver l'obj 3D ecrantv");
-                }
-          
+        tvButton = model.getObjectByName("Text006_8");
+        if (tvButton && tvButton.material) {
+            originalColor = tvButton.material.color.clone();
+            startBlinking(tvButton);
+        }
     },
-    (xhr) => {
-        console.log("Chargement terminé");
-    },
+    undefined,
     (error) => {
         console.error("Erreur lors du chargement du modèle :", error);
     }
 );
+
+//clignotement du 
+function startBlinking(object3D) {
+    const blinkColor = new THREE.Color("#F5F5DC"); 
+    let toggle = false;
+    blinkInterval = setInterval(() => {
+        object3D.material.color.set(toggle ? blinkColor : originalColor);
+        toggle = !toggle;
+    }, 500);
+}
+
+function stopBlinking() {
+    if (blinkInterval !== null) {
+        clearInterval(blinkInterval);
+        blinkInterval = null;
+        if (tvButton && originalColor) {
+            tvButton.material.color.set(originalColor);
+        }
+    }
+}
+
+document.addEventListener("mousedown", (event) => {
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+    raycaster.setFromCamera(mouse, camera);
+
+    const intersects = raycaster.intersectObjects(scene.children, true);
+    if (intersects.length > 0) {
+        let clickedObject = intersects[0].object;
+        console.log(`objets: ${clickedObject.name}`);
+
+        if (clickedObject.name === "Text006_8") {
+            stopBlinking();
+            video.play();
+            gresillement.play();
+            console.log("video en cours");
+
+            const tvScreen = scene.getObjectByName("ecranTv");
+            if (tvScreen) {
+                tvScreen.material.visible = true;
+            }
+        }
+    }
+});
+
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -198,7 +244,7 @@ videoAspiration.addEventListener('ended', () => {
 });
 
 
-
+// // faire clignoter le btn 
 
 
 ///////////////////////////////////////////////////////////////////////

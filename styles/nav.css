@@ -71,8 +71,8 @@
 
 @media  screen and (max-width: 425px){
     header {
+        padding-top: 5rem;
         margin-bottom: 5rem;
-        margin-top: 2rem;
     }
 
 }
